@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  entity_id: 
+  type_certificate_id: 
+  title: MyString
+  description: 
+  issued_at: 
+  expire_at: 2014-08-04
+
+two:
+  entity_id: 
+  type_certificate_id: 
+  title: MyString
+  description: 
+  issued_at: 
+  expire_at: 2014-08-04

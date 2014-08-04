@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  entity_id_id: 
+  parent_id_id: 
+  text: MyString
+  link: MyString
+
+two:
+  entity_id_id: 
+  parent_id_id: 
+  text: MyString
+  link: MyString
