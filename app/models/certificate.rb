@@ -6,6 +6,6 @@ class Certificate < ActiveRecord::Base
   has_many :attachments, as: :attachment_ref
   has_many :awards, as: :award_ref
   
-  has_and_belongs_to_many :tags
+  acts_as_taggable_on :tags
   
 end

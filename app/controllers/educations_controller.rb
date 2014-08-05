@@ -1,13 +1,13 @@
 class EducationsController < ApplicationController
   
   def index
-    #@education = Education.find(1)
-    #render text: @education.tags.map{|tag| tag.tag}
-      
-      
-   @tag = Tag.find(1)
-   render text: @tag.educations.map{|education| education.title}
-   
+    @education = Education.find(1)
+    
+    @education.tag_list.add("Computer Science")   # add a single tag. alias for <<
+    @education.tag_list.add("computer science")   # add a single tag. alias for <<
+    
+    render text: @education.tags.map{|tag| tag.name}
+    
   end
   
 end
