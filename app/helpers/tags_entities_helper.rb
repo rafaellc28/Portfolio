@@ -1,0 +1,2 @@
+module TagsEntitiesHelper
+end

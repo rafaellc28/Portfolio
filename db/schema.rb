@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804203522) do
+ActiveRecord::Schema.define(version: 20140805135627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "academic_periods", force: true do |t|
-    t.integer  "entity_id"
+    t.integer  "entity_id",               default: 2
     t.integer  "education_id"
     t.string   "name",         limit: 50
     t.date     "done_at"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20140804203522) do
   add_index "awards", ["entity_id"], name: "index_awards_on_entity_id", using: :btree
 
   create_table "certificates", force: true do |t|
-    t.integer  "entity_id"
+    t.integer  "entity_id",                        default: 5
     t.integer  "types_certificate_id"
     t.string   "title",                limit: 100
     t.text     "description"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20140804203522) do
   add_index "certificates", ["types_certificate_id"], name: "index_certificates_on_types_certificate_id", using: :btree
 
   create_table "companies", force: true do |t|
-    t.integer  "entity_id"
+    t.integer  "entity_id",               default: 3
     t.string   "name",        limit: 100
     t.text     "description"
     t.datetime "created_at"
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 20140804203522) do
   add_index "companies", ["entity_id"], name: "index_companies_on_entity_id", using: :btree
 
   create_table "educations", force: true do |t|
-    t.integer  "entity_id"
+    t.integer  "entity_id",               default: 1
     t.string   "title",       limit: 50
     t.string   "institution", limit: 100
     t.text     "description"
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 20140804203522) do
   end
 
   create_table "jobs", force: true do |t|
-    t.integer  "entity_id"
+    t.integer  "entity_id",              default: 6
     t.integer  "company_id"
     t.string   "title",       limit: 50
     t.text     "description"
@@ -135,7 +135,7 @@ ActiveRecord::Schema.define(version: 20140804203522) do
   add_index "links", ["entity_id"], name: "index_links_on_entity_id", using: :btree
 
   create_table "publications", force: true do |t|
-    t.integer  "entity_id"
+    t.integer  "entity_id",                default: 4
     t.string   "title",        limit: 500
     t.text     "description"
     t.date     "published_at"
