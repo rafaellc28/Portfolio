@@ -1,0 +1,26 @@
+<h2><%= @label_education_index %></h1>
+
+<table>
+  <tr>
+    <th><%= @label_title %></th>
+    <th><%= @label_description %></th>
+    <th></th>
+    <th></th>
+  </tr>
+  
+  <% @educations.each do |education| %>
+    <tr>
+      <td><%= link_to h(education.title), education_path(education) %>&nbsp;</td>
+      <td>&nbsp;<%= h truncate(education.institution, :length => 50) %>&nbsp;</td>
+      <td>&nbsp;<%= h truncate(education.description, :length => 50) %>&nbsp;</td>
+      <td>&nbsp;<%= link_to @label_linkToEdit, edit_education_path(education) %>&nbsp;</td>
+      <td>&nbsp;<%= link_to @label_linkToDestroy, education_path(education), method: :delete, data: { confirm: "#{@message_confirm}\n#{education.title}" } %>&nbsp;</td>
+    </tr>
+  <% end %>
+</table>
+
+<table>
+  <tr><td>
+    <%= will_paginate(@educations) %>
+  </td></tr>
+</table>

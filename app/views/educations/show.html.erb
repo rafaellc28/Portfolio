@@ -1,0 +1,20 @@
+<h2><%= @label_education_show %></h2>
+
+<% if flash[:success] -%>
+   <%= content_tag :div, flash[:success], class: :success %>
+<% end -%>
+
+<p>
+  <strong><%= @label_title %></strong>
+  <%= h @education.title %>
+</p>
+
+<p>
+  <strong><%= @label_institution %></strong>
+  <%= h @education.institution %>
+</p>
+
+<p>
+  <strong><%= @label_description %></strong>
+  <%= h @education.description %>
+</p>

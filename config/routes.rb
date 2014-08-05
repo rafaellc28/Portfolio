@@ -53,4 +53,13 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
+  resources :educations do
+    resources :academic_periods do
+      resources :academic_records
+    end
+  end
+  
+  root 'educations#index'
+  
 end
