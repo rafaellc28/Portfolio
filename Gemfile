@@ -39,4 +39,8 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'acts-as-taggable-on'
-
+gem 'will_paginate'
+gem 'devise'
+gem 'omniauth'
+gem 'mailcatcher' #catch smtp request and show emails in localhost:1080
+gem 'thin'
