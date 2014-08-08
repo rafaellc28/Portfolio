@@ -41,6 +41,9 @@ gem 'spring',        group: :development
 gem 'acts-as-taggable-on'
 gem 'will_paginate'
 gem 'devise'
+gem 'cancan'
 gem 'omniauth'
 gem 'mailcatcher' #catch smtp request and show emails in localhost:1080
 gem 'thin'
+gem 'active_model_serializers'
+

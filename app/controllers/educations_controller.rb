@@ -1,4 +1,4 @@
-require 'digest/md5'
+#require 'digest/md5'
 class EducationsController < ApplicationController
   
   #before_action :authenticate_user!

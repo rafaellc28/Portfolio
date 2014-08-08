@@ -66,6 +66,10 @@ Rails.application.routes.draw do
     end
   end
   
+  namespace :api, defaults: {format: :json} do
+    resources :educations, only: [:index, :show]
+  end
+  
   root 'educations#index'
   
 end
