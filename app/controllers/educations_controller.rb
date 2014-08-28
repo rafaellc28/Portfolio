@@ -1,11 +1,14 @@
 #require 'digest/md5'
 class EducationsController < ApplicationController
   
-  #before_action :authenticate_user!
-  before_filter :check_auth
+  before_action :authenticate_user!
+  #before_filter :check_auth
   
   def index
     @educations = Education.paginate(:page => params[:page] || 1)
+      
+    @user = User.find(1)
+    @user.save!
     
     #@education.reload
     #@str = @education.tags.map{|tag| tag.name}.to_s
@@ -23,7 +26,9 @@ class EducationsController < ApplicationController
     #render text: @str
     
   end
-  
+
+=begin
+
   def destroy
     sign_out :user
     redirect_to root_path
@@ -62,5 +67,6 @@ class EducationsController < ApplicationController
         format.html { render text: 'Bad credentials html', status: 401 }
       end
     end
-  
+=end
+
 end

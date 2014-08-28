@@ -1,0 +1,32 @@
+<table ng-show="jobs == 0">
+	<tr><td>{{ label.experiences.companies.jobs.empty_msg }}</td></tr>
+</table>
+<table ng-init="checkOrdPos(job, company_id)" id="jobs_list">
+	<tr>
+		<th>
+			<a href ng-click="order(job, 'title', company_id, string)">
+				<canvas iconordering data-parent="{{ company_id }}" data-neighbors="canvas_job_done_at_{{ company_id }},canvas_job_started_at_{{ company_id }}" data-type="job" data-field="title" id="canvas_job_title_{{ company_id }}" width="16" height="16"></canvas>
+			</a>
+			{{ label.experiences.companies.jobs.title }}&nbsp;&nbsp;&nbsp;
+		</th>
+		<th>{{ label.experiences.companies.jobs.description }}&nbsp;&nbsp;&nbsp;</th>
+		<th>
+			<a href ng-click="order(job, 'started_at', company_id, date)">
+				<canvas iconordering data-parent="{{ company_id }}" data-neighbors="canvas_job_done_at_{{ company_id }},canvas_job_title_{{ company_id }}" data-type="job" data-field="started_at" id="canvas_job_started_at_{{ company_id }}" width="16" height="16"></canvas>
+			</a>
+			{{ label.experiences.companies.jobs.started_at }}&nbsp;&nbsp;&nbsp;
+		</th>
+		<th>
+			<a href ng-click="order(job, 'done_at', company_id, date)">
+				<canvas iconordering data-parent="{{ company_id }}" data-neighbors="canvas_job_started_at_{{ company_id }},canvas_job_title_{{ company_id }}" data-type="job" data-field="done_at" id="canvas_job_done_at_{{ company_id }}" width="16" height="16"></canvas>
+			</a>
+			{{ label.experiences.companies.jobs.done_at }}
+		</th>
+	</tr>
+	<tr class="rows" ng-repeat="job in jobs |  orderObjectBy : orderFuncField(job, company_id) : orderFuncReverse(job, company_id) : orderFuncType(job, company_id)" id="job_{{job.id}}" data-tags="{{job.tags | tags}}">
+		<td>{{job.title}}&nbsp;&nbsp;&nbsp;</td>
+		<td>{{job.description}}&nbsp;&nbsp;&nbsp;</td>
+		<td>{{job.started_at | date:'MM/yyyy'}}&nbsp;&nbsp;&nbsp;</td>
+		<td>{{job.done_at | date:'MM/yyyy'}}</td>
+	</tr>
+</table>

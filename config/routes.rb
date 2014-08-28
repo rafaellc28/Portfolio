@@ -60,16 +60,31 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   
-  resources :educations do
-    resources :academic_periods do
-      resources :academic_records
-    end
-  end
+  #resources :educations do
+  #  resources :academic_periods do
+  #    resources :academic_records
+  #  end
+  #end
   
   namespace :api, defaults: {format: :json} do
     resources :educations, only: [:index, :show]
+    resources :publications, only: [:index, :show]
+    resources :certificates, only: [:index, :show]
+    resources :types_certificates, only: [:index, :show]
+    resources :companies, only: [:index, :show]
+    resources :labels, only: [:index, :show]
+    resources :spa, only: [:index]
   end
   
-  root 'educations#index'
+  root :to => 'templates#index'
+  
+  #get '/educations_index.html'
+  
+  get '/tests' => 'tests#index'
+  get '/' => 'templates#index'
+  get '/spa' => 'templates#index'
+  get '/educations' => 'templates#index'
+  get '/educations/:id' => 'templates#index'
+  get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/  }
   
 end

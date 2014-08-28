@@ -16,7 +16,7 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { :host => 'localhost:3001' }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {:address => "localhost", :port => 1025}
   
@@ -30,6 +30,9 @@ Rails.application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+  
+  # run 'RAILS_ENV=production bundle exec rake assets:precompile' on app directory
+  config.assets.precompile += ['*.css', '*.js', '*.js.coffee', '*.png', '*.jpg', '*.jpeg', '*.gif']
 
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
@@ -39,6 +42,12 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   
-  # Default url options
-  config.action_mailer.default_url_options = { host: 'localhost:3001' }
+  config.assets.js_compressor = Uglifier.new(mangle: false)
+  
+  config.serve_static_assets = false
+  
+  # Logger configuration to the development environment
+  #Rails.logger = Logger.new(STDOUT)
+  #Rails.logger.level = :info
+
 end
