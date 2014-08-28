@@ -6,4 +6,12 @@ class Publication < ActiveRecord::Base
   
   acts_as_taggable_on :tags
   
+  def serializable_hash(options = nil)
+    options = { 
+      :include => [:links, :attachments, :awards, {:tags => {:only => :name}}] 
+    }.update(options)
+    
+    super options
+  end
+  
 end

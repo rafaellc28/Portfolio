@@ -1,0 +1,12 @@
+<div ng-cloak>
+<div ng-init="init()">
+
+	<div ng-show="lists == 0">
+		{{ No education records. }}
+	</div>
+
+	<li ng-repeat="list in lists">
+		{{list.title + " - " + list.institution + " - " + list.title}}
+	</li>
+</div>
+</div>

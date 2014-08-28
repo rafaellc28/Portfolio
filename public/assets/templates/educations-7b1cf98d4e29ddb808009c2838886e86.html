@@ -1,0 +1,1 @@
+angular.module("templates").run(["$templateCache",function($templateCache){$templateCache.put("educations.html",'<div ng-cloak>\n<div ng-init="init()">\n\n	<div ng-show="lists == 0">\n		{{ No education records. }}\n	</div>\n\n	<li ng-repeat="list in lists">\n		{{list.title + " - " + list.institution + " - " + list.title}}\n	</li>\n</div>\n</div>')}]);

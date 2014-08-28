@@ -29,6 +29,8 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
+  config.serve_static_assets = false
+  
   # Generate digests for assets URLs.
   config.assets.digest = true
 
@@ -83,4 +85,9 @@ Rails.application.configure do
   
   # Default url options
   config.action_mailer.default_url_options = { host: 'rafaellimacuri.herokuapp.com' }
+    
+  config.action_controller.perform_caching = true
+  
+  config.assets.js_compressor = Uglifier.new(mangle: false)
+
 end

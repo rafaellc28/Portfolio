@@ -1,0 +1,73 @@
+angular.module('portfolioApp').filter "tags", () ->
+
+  func = (items) ->
+
+    filtered = []
+ 
+    for item in items
+      filtered.push(item.name)
+    
+    filtered.join(' , ')
+
+angular.module('portfolioApp').filter "number", () ->
+
+  func = (item, decimal_sep, fraction_size) ->
+    if isNaN(item)
+      item
+    else
+      Number(item).toFixed(fraction_size).toString().replace('.', decimal_sep)
+
+angular.module('portfolioApp').filter 'orderObjectBy', () ->
+  func = (items, field, reverse, isNum) ->
+    #alert("#{field} - #{reverse} - #{isNum}")
+    filtered = []
+    
+    angular.forEach items, (item) ->
+      filtered.push(item)
+    
+    filtered.sort (a, b) ->
+      if isNum
+        x = Number(a[field])
+        y = Number(b[field])
+      else
+        x = a[field]
+        y = b[field]
+      
+      if x > y
+        1
+      else
+        -1
+    
+    if reverse
+      filtered.reverse()
+    
+    filtered
+
+angular.module('portfolioApp').filter 'orderObjectBy2', () ->
+  func = (items, field, reverse, type) ->
+    #alert("#{field} - #{reverse} - #{isNum}")
+    filtered = []
+    
+    angular.forEach items, (item) ->
+      filtered.push(item)
+    
+    filtered.sort (a, b) ->
+      if type == 'num'
+        x = Number(a[field])
+        y = Number(b[field])
+      else if type == 'date'
+        x = new Date(a[field])
+        y = new Date(b[field])
+      else
+        x = a[field]
+        y = b[field]
+      
+      if x > y
+        1
+      else
+        -1
+    
+    if reverse
+      filtered.reverse()
+    
+    filtered
