@@ -37,6 +37,10 @@ table, th, td {
   cursor: pointer;
 }
 
+.icon:hover {
+  cursor: pointer;
+}
+
 th {
   padding-left: 5px;
   padding-right: 5px;
