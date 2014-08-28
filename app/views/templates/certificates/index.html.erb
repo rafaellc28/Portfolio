@@ -4,9 +4,7 @@
 <table ng-init="checkOrdPos(cert, type_certificate_id)" id="certificates_list">
 	<tr>
 		<th>
-			<a href ng-click="order(cert, 'title', type_certificate_id, string)">
-				<canvas iconordering data-parent="{{ type_certificate_id }}" data-neighbors="canvas_cert_issued_at_{{ type_certificate_id }}" data-type="cert" data-field="title" id="canvas_cert_title_{{ type_certificate_id }}" width="16" height="16"></canvas>
-			</a>
+			<canvas class="icon" ng-click="order(cert, 'title', type_certificate_id, string)" iconordering data-parent="{{ type_certificate_id }}" data-neighbors="canvas_cert_issued_at_{{ type_certificate_id }}" data-type="cert" data-field="title" id="canvas_cert_title_{{ type_certificate_id }}" width="16" height="16"></canvas>
 			{{ label.types_certificates.certificates.title }}&nbsp;&nbsp;&nbsp;
 		</th>
 		<th>{{ label.types_certificates.certificates.description }}&nbsp;&nbsp;&nbsp;</th>
