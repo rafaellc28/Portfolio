@@ -1,0 +1,39 @@
+<table ng-show="academic_periods == 0">
+	<tr><td>{{ label.educations.academic_periods.empty_msg }}</td></tr>
+</table>
+<table ng-init="checkOrdPos(ed_per, education_id)" id="academic_periods_list">
+	<tr>
+		<th>
+			<a href ng-click="order(ed_per, 'name', education_id, 'string')">
+				<canvas iconordering data-parent="{{ education_id }}" data-neighbors="canvas_ed_per_started_at_{{ education_id }},canvas_ed_per_done_at_{{ education_id }}" data-type="ed_per" data-field="name" id="canvas_ed_per_name_{{ education_id }}" width="16" height="16"></canvas>
+			</a>
+			{{ label.educations.academic_periods.name }}&nbsp;&nbsp;&nbsp;
+		</th>
+		<th>
+			<a href ng-click="order(ed_per, 'started_at', education_id, 'date')">
+				<canvas iconordering data-parent="{{ education_id }}" data-neighbors="canvas_ed_per_name_{{ education_id }},canvas_ed_per_done_at_{{ education_id }}" data-type="ed_per" data-field="started_at" id="canvas_ed_per_started_at_{{ education_id }}" width="16" height="16"></canvas>
+			</a>
+			{{ label.educations.academic_periods.started_at }}&nbsp;&nbsp;&nbsp;
+		</th>
+		<th>
+			<a href ng-click="order(ed_per, 'done_at', education_id, 'date')">
+				<canvas iconordering data-parent="{{ education_id }}" data-neighbors="canvas_ed_per_name_{{ education_id }},canvas_ed_per_started_at_{{ education_id }}" data-type="ed_per" data-field="done_at" id="canvas_ed_per_done_at_{{ education_id }}" width="16" height="16"></canvas>
+			</a>
+			{{ label.educations.academic_periods.done_at }}
+		</th>
+	</tr>
+	<tr class="rows" ng-repeat="academicPeriod in academic_periods | orderObjectBy : orderFuncField(ed_per, education_id) : orderFuncReverse(ed_per, education_id) : orderFuncType(ed_per, education_id)" id="academic_period_{{academicPeriod.id}}" data-tags="{{academicPeriod.tags | tags}}">
+		<td><a href ng-click="selectItem(ed_per, academicPeriod.id)">{{academicPeriod.name}}</a>&nbsp&nbsp;&nbsp;</td>
+		<td>{{academicPeriod.started_at | date:'MM/yyyy'}}&nbsp;&nbsp;&nbsp;</td>
+		<td>{{academicPeriod.done_at | date:'MM/yyyy'}}</td>
+	</tr>
+</table>
+<table class="noborder">
+	<tr ng-repeat="academicPeriod in education.academic_periods" data-tags="{{academicPeriod.tags | tags}}" class="noborder">
+		<td class="noborder">
+			<div ng-hide="true">{{ academic_records = academicPeriod.academic_records }}</div>
+			<div ng-hide="true">{{ academic_period_id = academicPeriod.id }}</div>
+			<div ng-show="isSelectedItem(ed_per, academicPeriod.id)" ng-include="'templates/academic_records/index.html'"></div>
+		</td>
+	</tr>
+</table>

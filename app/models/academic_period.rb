@@ -9,4 +9,27 @@ class AcademicPeriod < ActiveRecord::Base
   
   acts_as_taggable_on :tags
   
+  validate :validate_tag
+  
+  scope :ordered, lambda { order("done_at DESC") }
+  
+  def validate_tag(tag = nil)
+    if tag.nil?
+      tag_list.each do |tag|
+       self.education.validate_tag(tag)
+      end
+    else
+      tag_list.add(tag)
+      self.education.validate_tag(tag)
+    end
+  end
+  
+  def serializable_hash(options = nil)
+    options = { 
+      :include => [:academic_records, :links, :attachments, :awards, {:tags => {:only => :name}}] 
+    }.update(options)
+    
+    super options
+  end
+  
 end

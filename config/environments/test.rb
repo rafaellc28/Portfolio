@@ -39,4 +39,9 @@ Rails.application.configure do
   
   # Default url options
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+    
+  config.action_controller.perform_caching = true
+  
+  config.assets.js_compressor = Uglifier.new(mangle: false)
+
 end

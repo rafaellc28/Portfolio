@@ -1,0 +1,27 @@
+<table ng-show="companies == 0">
+	<tr><td>{{ label.experiences.companies.empty_msg }}</td></tr>
+</table>
+<table ng-init="checkOrdPos(comp, 0)" id="companies_list">
+	<tr>
+		<th>
+			<a href ng-click="order(comp, 'name', 0, string)">
+				<canvas iconordering data-parent="0" data-neighbors="" data-type="comp" data-field="name" id="canvas_comp_name" width="16" height="16"></canvas>
+			</a>
+			{{ label.experiences.companies.name }}&nbsp;&nbsp;&nbsp;
+		</th>
+		<th>{{ label.experiences.companies.description }}</th>
+	</tr>
+	<tr class="rows" ng-repeat="company in companies |  orderObjectBy : orderFuncField(comp, 0) : orderFuncReverse(comp, 0) : orderFuncType(comp, 0)" id="company_{{company.id}}" data-tags="{{company.tags | tags}}">
+		<td><a href ng-click="selectItem(comp, company.id)">{{company.name}}</a>&nbsp;&nbsp;&nbsp;</td>
+		<td>{{company.description}}</td>
+	</tr>
+</table>
+<table class="noborder">
+	<tr ng-repeat="company in companies" data-tags="{{company.tags | tags}}" class="noborder">
+		<td class="noborder">
+			<div ng-hide="true">{{ jobs = company.jobs }}</div>
+			<div ng-hide="true">{{ company_id = company.id }}</div>
+			<div ng-show="isSelectedItem(comp, company.id)" ng-include="'templates/jobs/index.html'"></div>
+		</td>
+	</tr>
+</table>

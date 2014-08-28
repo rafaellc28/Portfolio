@@ -1,0 +1,28 @@
+<table ng-show="certificates == 0">
+	<tr><td>{{ label.types_certificates.certificates.empty_msg }}</td></tr>
+</table>
+<table ng-init="checkOrdPos(cert, type_certificate_id)" id="certificates_list">
+	<tr>
+		<th>
+			<a href ng-click="order(cert, 'title', type_certificate_id, string)">
+				<canvas iconordering data-parent="{{ type_certificate_id }}" data-neighbors="canvas_cert_issued_at_{{ type_certificate_id }}" data-type="cert" data-field="title" id="canvas_cert_title_{{ type_certificate_id }}" width="16" height="16"></canvas>
+			</a>
+			{{ label.types_certificates.certificates.title }}&nbsp;&nbsp;&nbsp;
+		</th>
+		<th>{{ label.types_certificates.certificates.description }}&nbsp;&nbsp;&nbsp;</th>
+		<th>
+			<a href ng-click="order(cert, 'issued_at', type_certificate_id, date)">
+				<canvas iconordering data-parent="{{ type_certificate_id }}" data-neighbors="canvas_cert_title_{{ type_certificate_id }}" data-type="cert" data-field="issued_at" id="canvas_cert_issued_at_{{ type_certificate_id }}" width="16" height="16"></canvas>
+			</a>
+			{{ label.types_certificates.certificates.issued_at }}
+		</th>
+	</tr>
+	<tr class="rows link" title="{{ label.types_certificates.certificates.tooltip }}" 
+	ng-repeat="certificate in certificates | orderObjectBy : orderFuncField(cert, type_certificate_id) : orderFuncReverse(cert, type_certificate_id) : orderFuncType(cert, type_certificate_id)" id="certificate_{{certificate.id}}"
+	data-tags="{{certificate.tags | tags}}" 
+	popover-html-unsafe="{{ popover_msgs_func(certificate.id, certificate.title, certificate.links, certificate.attachments) }}">
+		<td>{{certificate.title}}&nbsp;&nbsp;&nbsp;</td>
+		<td>{{certificate.description}}&nbsp;&nbsp;&nbsp;</td>
+		<td>{{certificate.issued_at | date:'MM/yyyy'}}</td>
+	</tr>
+</table>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140806143336) do
+ActiveRecord::Schema.define(version: 20140821141443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20140806143336) do
 
   create_table "academic_records", force: true do |t|
     t.integer  "academic_period_id"
-    t.string   "course",             limit: 50
+    t.string   "course",             limit: 100
     t.string   "grade",              limit: 5
     t.text     "description"
     t.datetime "created_at"
@@ -162,6 +162,7 @@ ActiveRecord::Schema.define(version: 20140806143336) do
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "authentication_token"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

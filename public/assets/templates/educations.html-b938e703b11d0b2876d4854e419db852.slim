@@ -1,0 +1,9 @@
+.ng-cloak(ng-init="init()")
+
+  div
+    ul(ng-show="lists == 0")
+      li
+        ' No education records.      
+    ul
+      li(ng-repeat="list in lists")
+        ' {{list.title}} - {{list.institution}} - {{list.description}}
