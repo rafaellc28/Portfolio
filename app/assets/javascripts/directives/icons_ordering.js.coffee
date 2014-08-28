@@ -56,13 +56,11 @@ angular.module('portfolioApp').directive "iconordering", (Ordering) ->
       none = (ctx_param) ->
         ctx_param.fillRect(3,9,10,3)
       
-      pos = scope.ordPos(elem.getAttribute('data-type'), elem.getAttribute('data-field'), elem.getAttribute('data-parent'))
+      curPos = scope.ordPos(elem.getAttribute('data-type'), elem.getAttribute('data-field'), elem.getAttribute('data-parent'))
       
-      if pos == Ordering.up
-        curPos = Ordering.up
+      if curPos == Ordering.up
         up(ctx)
-      else if pos == Ordering.down
-        curPos = Ordering.down
+      else if curPos == Ordering.down
         down(ctx)
       else
         curPos = Ordering.none
