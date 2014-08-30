@@ -4,9 +4,6 @@ angular.module('portfolioApp').factory 'Section', [ "Ordering", (Ordering) ->
     @open: 'open'
     @close: 'close'
     
-    #@orderController: {}
-    #initParentId: 0
-    
     constructor: (id, initOrder) ->
       @id = id
       @initParentId = initOrder.getParentId()

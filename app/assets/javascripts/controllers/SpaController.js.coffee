@@ -19,7 +19,6 @@ angular.module('portfolioApp').controller "SpaController", ($scope, Educations, 
     
     $scope.item = {}
     
-    #$scope.orderings = {}
     $scope.popover_msgs = {}
     
     $scope.item[$scope.ed] = new Section(0, new Ordering(0, ['-done_at'], '-done_at', Ordering.date))
@@ -30,30 +29,6 @@ angular.module('portfolioApp').controller "SpaController", ($scope, Educations, 
     $scope.item[$scope.cert] = new Section(0, new Ordering(0, ['-issued_at'], '-issued_at', Ordering.date))
     $scope.item[$scope.pub] = new Section(0, new Ordering(0, ['-published_at'], '-published_at', Ordering.date))
     $scope.item[$scope.type_cert] = new Section(0, new Ordering(0, ['name'], 'name', Ordering.string))
-    
-    #$scope.orderings[$scope.ed] = {}
-    #$scope.orderings[$scope.ed][0] = new Ordering(0, ['-done_at'], '-done_at', Ordering.date)
-    
-    #$scope.orderings[$scope.ed_per] = {}
-    #$scope.orderings[$scope.ed_per][0] = new Ordering(0, ['-done_at'], '-done_at', Ordering.date)
-    
-    #$scope.orderings[$scope.ed_per_rec] = {}
-    #$scope.orderings[$scope.ed_per_rec][0] = new Ordering(0, ['-grade'], '-grade', Ordering.number)
-    
-    #$scope.orderings[$scope.comp] = {}
-    #$scope.orderings[$scope.comp][0] = new Ordering(0, ['-last_job_date'], '-last_job_date', Ordering.date)
-    
-    #$scope.orderings[$scope.job] = {}
-    #$scope.orderings[$scope.job][0] = new Ordering(0, ['-done_at'], '-done_at', Ordering.date)
-    
-    #$scope.orderings[$scope.cert] = {}
-    #$scope.orderings[$scope.cert][0] = new Ordering(0, ['-issued_at'], '-issued_at', Ordering.date)
-    
-    #$scope.orderings[$scope.type_cert] = {}
-    #$scope.orderings[$scope.type_cert][0] = new Ordering(0, ['name'], 'name', Ordering.string)
-    
-    #$scope.orderings[$scope.pub] = {}
-    #$scope.orderings[$scope.pub][0] = new Ordering(0, ['-published_at'], '-published_at', Ordering.date)
     
     @educationsService = new Educations(serverErrorHandler)
     $scope.educations = @educationsService.all()
@@ -98,46 +73,24 @@ angular.module('portfolioApp').controller "SpaController", ($scope, Educations, 
   $scope.validateOrder = (id, parent_id) ->
     $scope.item[id].validateOrder(parent_id)
   
-  #$scope.validateOrder = (id, parent_id) ->
-  #  if not $scope.orderings[id][parent_id]
-  #    $scope.orderings[id][parent_id] = jQuery.extend(true, {}, $scope.orderings[id][0])
-  #    $scope.orderings[id][parent_id].setParentId(parent_id)
-  
   $scope.orderFuncField = (id, parent_id) ->
     $scope.item[id].getOrder(parent_id).currentOrderField()
-  
-  #$scope.orderFuncField = (id, parent_id) ->
-  #  alert("#{id} - #{parent_id} - #{$scope.orderings[id][parent_id].currentOrderField()}")
-  #  $scope.orderings[id][parent_id].currentOrderField()
   
   $scope.orderFuncReverse = (id, parent_id) ->
     $scope.item[id].getOrder(parent_id).currentOrderReversibility()
   
-  #$scope.orderFuncReverse = (id, parent_id) ->
-  #  $scope.orderings[id][parent_id].currentOrderReversibility()
-  
   $scope.orderFuncType = (id, parent_id) ->
     $scope.item[id].getOrder(parent_id).getCurrentType()
-  
-  #$scope.orderFuncType = (id, parent_id) ->
-  #  $scope.orderings[id][parent_id].getCurrentType()
   
   $scope.currentOrderBySection = (id, parent_id, field) ->
     $scope.validateOrder(id, parent_id)
     $scope.item[id].getOrder(parent_id).checkOrderByField(field)
-    #$scope.orderings[id][parent_id].checkOrderByField(field)
   
   $scope.updateOrder = (id, parent_id, field, type) ->
     if not $scope.item[id].getOrder(parent_id)
       $scope.item[id].addOrder(parent_id, new Ordering(id, parent_id, [field], field, type))
     else
       $scope.item[id].getOrder(parent_id).updateOrder(field, type)
-  
-  #$scope.updateOrder = (id, parent_id, field, type) ->
-  #  if not $scope.orderings[id][parent_id]
-  #    $scope.orderings[id][parent_id] = new Ordering(id, parent_id, [field], field, type)
-  #  else
-  #    $scope.orderings[id][parent_id].updateOrder(field, type)
   
   $scope.selectItem = (id, sel) ->
     if $scope.isSelectedItem(id, sel)
