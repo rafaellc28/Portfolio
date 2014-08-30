@@ -1,15 +1,15 @@
 <table ng-show="certificates == 0">
 	<tr><td>{{ label.types_certificates.certificates.empty_msg }}</td></tr>
 </table>
-<table ng-init="checkOrdPos(cert, type_certificate_id)" id="certificates_list">
+<table ng-init="validateOrder(cert, type_certificate_id)" id="certificates_list">
 	<tr>
 		<th>
-			<canvas class="icon" ng-click="order(cert, 'title', type_certificate_id, string)" icon-sorting data-parent="{{ type_certificate_id }}" data-neighbors="canvas_cert_issued_at_{{ type_certificate_id }}" data-type="cert" data-field="title" id="canvas_cert_title_{{ type_certificate_id }}" width="16" height="16"></canvas>
+			<canvas class="icon" ng-click="updateOrder(cert, type_certificate_id, 'title', string)" icon-sorting data-parent="{{ type_certificate_id }}" data-neighbors="canvas_cert_issued_at_{{ type_certificate_id }}" data-type="cert" data-field="title" id="canvas_cert_title_{{ type_certificate_id }}" width="16" height="16"></canvas>
 			{{ label.types_certificates.certificates.title }}&nbsp;&nbsp;&nbsp;
 		</th>
 		<th>{{ label.types_certificates.certificates.description }}&nbsp;&nbsp;&nbsp;</th>
 		<th>
-			<canvas class="icon" ng-click="order(cert, 'issued_at', type_certificate_id, date)" icon-sorting data-parent="{{ type_certificate_id }}" data-neighbors="canvas_cert_title_{{ type_certificate_id }}" data-type="cert" data-field="issued_at" id="canvas_cert_issued_at_{{ type_certificate_id }}" width="16" height="16"></canvas>
+			<canvas class="icon" ng-click="updateOrder(cert, type_certificate_id, 'issued_at', date)" icon-sorting data-parent="{{ type_certificate_id }}" data-neighbors="canvas_cert_title_{{ type_certificate_id }}" data-type="cert" data-field="issued_at" id="canvas_cert_issued_at_{{ type_certificate_id }}" width="16" height="16"></canvas>
 			{{ label.types_certificates.certificates.issued_at }}
 		</th>
 	</tr>

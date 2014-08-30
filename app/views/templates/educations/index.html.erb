@@ -2,10 +2,10 @@
 	<table ng-show="educations == 0">
 		<tr><td>{{ label.educations.empty_msg }}</td></tr>
 	</table>
-	<table ng-init="checkOrdPos(ed, 0)" id="educations_list">
+	<table ng-init="validateOrder(ed, 0)" id="educations_list">
 		<tr>
 			<th>
-				<canvas class="icon" ng-click="order(ed, 'title', 0, string)" icon-sorting data-parent="0" data-neighbors="canvas_ed_started_at,canvas_ed_done_at" data-type="ed" data-field="title" id="canvas_ed_title" width="16" height="16"></canvas>
+				<canvas class="icon" ng-click="updateOrder(ed, 0, 'title', string)" icon-sorting data-parent="0" data-neighbors="canvas_ed_started_at,canvas_ed_done_at" data-type="ed" data-field="title" id="canvas_ed_title" width="16" height="16"></canvas>
 				{{ label.educations.title }}&nbsp;&nbsp;&nbsp;
 			</th>
 			<th>
@@ -15,11 +15,11 @@
 				{{ label.educations.description }}</a>&nbsp;&nbsp;&nbsp;
 			</th>
 			<th>
-				<canvas class="icon" ng-click="order(ed, 'started_at', 0, date)" icon-sorting data-parent="0" data-neighbors="canvas_ed_done_at,canvas_ed_title" data-type="ed" data-field="started_at" id="canvas_ed_started_at" width="16" height="16"></canvas>
+				<canvas class="icon" ng-click="updateOrder(ed, 0, 'started_at', date)" icon-sorting data-parent="0" data-neighbors="canvas_ed_done_at,canvas_ed_title" data-type="ed" data-field="started_at" id="canvas_ed_started_at" width="16" height="16"></canvas>
 				{{ label.educations.started_at }}&nbsp;&nbsp;&nbsp;
 			</th>
 			<th>
-				<canvas class="icon" ng-click="order(ed, 'done_at', 0, date)" icon-sorting data-parent="0" data-neighbors="canvas_ed_started_at,canvas_ed_title" data-type="ed" data-field="done_at" id="canvas_ed_done_at" width="16" height="16"></canvas>
+				<canvas class="icon" ng-click="updateOrder(ed, 0, 'done_at', date)" icon-sorting data-parent="0" data-neighbors="canvas_ed_started_at,canvas_ed_title" data-type="ed" data-field="done_at" id="canvas_ed_done_at" width="16" height="16"></canvas>
 				{{ label.educations.done_at }}
 			</th>
 		</tr>

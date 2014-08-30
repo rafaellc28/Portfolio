@@ -1,15 +1,15 @@
 <table ng-show="publications == 0">
 	<tr><td>{{ label.publications.empty_msg }}</td></tr>
 </table>
-<table ng-init="checkOrdPos(pub, 0)" class="publications_list">
+<table ng-init="validateOrder(pub, 0)" class="publications_list">
 	<tr>
 		<th>
-			<canvas class="icon" ng-click="order(pub, 'title', 0, string)" icon-sorting data-parent="0" data-neighbors="canvas_pub_published_at" data-type="pub" data-field="title" id="canvas_pub_title" width="16" height="16"></canvas>
+			<canvas class="icon" ng-click="updateOrder(pub, 0, 'title', string)" icon-sorting data-parent="0" data-neighbors="canvas_pub_published_at" data-type="pub" data-field="title" id="canvas_pub_title" width="16" height="16"></canvas>
 			{{ label.publications.title }}&nbsp;&nbsp;&nbsp;
 		</th>
 		<th>{{ label.publications.description }}&nbsp;&nbsp;&nbsp;</th>
 		<th>
-			<canvas class="icon" ng-click="order(pub, 'published_at', 0, date)" icon-sorting data-parent="0" data-neighbors="canvas_pub_title" data-type="pub" data-field="published_at" id="canvas_pub_published_at" width="16" height="16"></canvas>
+			<canvas class="icon" ng-click="updateOrder(pub, 0, 'published_at', date)" icon-sorting data-parent="0" data-neighbors="canvas_pub_title" data-type="pub" data-field="published_at" id="canvas_pub_published_at" width="16" height="16"></canvas>
 			{{ label.publications.published_at }}
 		</th>
 	</tr>

@@ -19,41 +19,41 @@ angular.module('portfolioApp').controller "SpaController", ($scope, Educations, 
     
     $scope.item = {}
     
-    $scope.orderings = {}
+    #$scope.orderings = {}
     $scope.popover_msgs = {}
     
-    $scope.item[$scope.ed] = new Section(0)
-    $scope.item[$scope.ed_per] = new Section(0)
-    $scope.item[$scope.ed_per_rec] = new Section(0)
-    $scope.item[$scope.comp] = new Section(0)
-    $scope.item[$scope.job] = new Section(0)
-    $scope.item[$scope.cert] = new Section(0)
-    $scope.item[$scope.pub] = new Section(0)
-    $scope.item[$scope.type_cert] = new Section(0)
+    $scope.item[$scope.ed] = new Section(0, new Ordering(0, ['-done_at'], '-done_at', Ordering.date))
+    $scope.item[$scope.ed_per] = new Section(0, new Ordering(0, ['-done_at'], '-done_at', Ordering.date))
+    $scope.item[$scope.ed_per_rec] = new Section(0, new Ordering(0, ['-grade'], '-grade', Ordering.number))
+    $scope.item[$scope.comp] = new Section(0, new Ordering(0, ['-last_job_date'], '-last_job_date', Ordering.date))
+    $scope.item[$scope.job] = new Section(0, new Ordering(0, ['-done_at'], '-done_at', Ordering.date))
+    $scope.item[$scope.cert] = new Section(0, new Ordering(0, ['-issued_at'], '-issued_at', Ordering.date))
+    $scope.item[$scope.pub] = new Section(0, new Ordering(0, ['-published_at'], '-published_at', Ordering.date))
+    $scope.item[$scope.type_cert] = new Section(0, new Ordering(0, ['name'], 'name', Ordering.string))
     
-    $scope.orderings[$scope.ed] = {}
-    $scope.orderings[$scope.ed][0] = new Ordering($scope.ed, 0, ['-done_at'], '-done_at', Ordering.date)
+    #$scope.orderings[$scope.ed] = {}
+    #$scope.orderings[$scope.ed][0] = new Ordering(0, ['-done_at'], '-done_at', Ordering.date)
     
-    $scope.orderings[$scope.ed_per] = {}
-    $scope.orderings[$scope.ed_per][0] = new Ordering($scope.ed_per, 0, ['-done_at'], '-done_at', Ordering.date)
+    #$scope.orderings[$scope.ed_per] = {}
+    #$scope.orderings[$scope.ed_per][0] = new Ordering(0, ['-done_at'], '-done_at', Ordering.date)
     
-    $scope.orderings[$scope.ed_per_rec] = {}
-    $scope.orderings[$scope.ed_per_rec][0] = new Ordering($scope.ed_per_rec, 0, ['-grade'], '-grade', Ordering.number)
+    #$scope.orderings[$scope.ed_per_rec] = {}
+    #$scope.orderings[$scope.ed_per_rec][0] = new Ordering(0, ['-grade'], '-grade', Ordering.number)
     
-    $scope.orderings[$scope.comp] = {}
-    $scope.orderings[$scope.comp][0] = new Ordering($scope.comp, 0, ['-last_job_date'], '-last_job_date', Ordering.date)
+    #$scope.orderings[$scope.comp] = {}
+    #$scope.orderings[$scope.comp][0] = new Ordering(0, ['-last_job_date'], '-last_job_date', Ordering.date)
     
-    $scope.orderings[$scope.job] = {}
-    $scope.orderings[$scope.job][0] = new Ordering($scope.job, 0, ['-done_at'], '-done_at', Ordering.date)
+    #$scope.orderings[$scope.job] = {}
+    #$scope.orderings[$scope.job][0] = new Ordering(0, ['-done_at'], '-done_at', Ordering.date)
     
-    $scope.orderings[$scope.cert] = {}
-    $scope.orderings[$scope.cert][0] = new Ordering($scope.cert, 0, ['-issued_at'], '-issued_at', Ordering.date)
+    #$scope.orderings[$scope.cert] = {}
+    #$scope.orderings[$scope.cert][0] = new Ordering(0, ['-issued_at'], '-issued_at', Ordering.date)
     
-    $scope.orderings[$scope.type_cert] = {}
-    $scope.orderings[$scope.type_cert][0] = new Ordering($scope.type_cert, 0, ['name'], 'name', Ordering.string)
+    #$scope.orderings[$scope.type_cert] = {}
+    #$scope.orderings[$scope.type_cert][0] = new Ordering(0, ['name'], 'name', Ordering.string)
     
-    $scope.orderings[$scope.pub] = {}
-    $scope.orderings[$scope.pub][0] = new Ordering($scope.pub, 0, ['-published_at'], '-published_at', Ordering.date)
+    #$scope.orderings[$scope.pub] = {}
+    #$scope.orderings[$scope.pub][0] = new Ordering(0, ['-published_at'], '-published_at', Ordering.date)
     
     @educationsService = new Educations(serverErrorHandler)
     $scope.educations = @educationsService.all()
@@ -95,73 +95,49 @@ angular.module('portfolioApp').controller "SpaController", ($scope, Educations, 
   $scope.isSelected = (selTab) ->
     @tab == selTab
   
-  $scope.checkOrdPos = (id, parent_id) ->
-    if not $scope.orderings[id][parent_id]
-      #$scope.orderings[id][parent_id] = new Ordering(id, parent_id, $scope.orderings[id][0].getFields(), $scope.orderings[id][0].getCurrentField(), $scope.orderings[id][0].getCurrentType())
-      $scope.orderings[id][parent_id] = jQuery.extend(true, {}, $scope.orderings[id][0])
-      $scope.orderings[id][parent_id].setParentId(parent_id)
+  $scope.validateOrder = (id, parent_id) ->
+    $scope.item[id].validateOrder(parent_id)
+  
+  #$scope.validateOrder = (id, parent_id) ->
+  #  if not $scope.orderings[id][parent_id]
+  #    $scope.orderings[id][parent_id] = jQuery.extend(true, {}, $scope.orderings[id][0])
+  #    $scope.orderings[id][parent_id].setParentId(parent_id)
   
   $scope.orderFuncField = (id, parent_id) ->
-    $scope.orderings[id][parent_id].currentOrderField()
+    $scope.item[id].getOrder(parent_id).currentOrderField()
   
   #$scope.orderFuncField = (id, parent_id) ->
-  #  currField = $scope.orderings[id][parent_id].getCurrentField()
-  #  if currField[0] == '-'
-  #    currField.substr(1)
-  #  else
-  #    currField
+  #  alert("#{id} - #{parent_id} - #{$scope.orderings[id][parent_id].currentOrderField()}")
+  #  $scope.orderings[id][parent_id].currentOrderField()
   
   $scope.orderFuncReverse = (id, parent_id) ->
-    $scope.orderings[id][parent_id].currentOrderReversibility()
+    $scope.item[id].getOrder(parent_id).currentOrderReversibility()
   
   #$scope.orderFuncReverse = (id, parent_id) ->
-  #  currField = $scope.orderings[id][parent_id].getCurrentField()
-  #  #alert("2: #{currField}")
-  #  currField[0] == '-'
+  #  $scope.orderings[id][parent_id].currentOrderReversibility()
   
   $scope.orderFuncType = (id, parent_id) ->
-    $scope.orderings[id][parent_id].getCurrentType()
+    $scope.item[id].getOrder(parent_id).getCurrentType()
   
-  $scope.ordPos = (id, name, parent_id) ->
-    $scope.checkOrdPos(id, parent_id)
-    $scope.orderings[id][parent_id].checkOrderByField(name)
+  #$scope.orderFuncType = (id, parent_id) ->
+  #  $scope.orderings[id][parent_id].getCurrentType()
   
-  #$scope.ordPos = (id, name, parent_id) ->
-  #  $scope.checkOrdPos(id, parent_id)
-  #  if $scope.orderings[id][parent_id].getCurrentField() == name
-  #    Ordering.down
-  #  else if $scope.orderings[id][parent_id].getCurrentField() == "-#{name}"
-  #    Ordering.up
-  #  else
-  #    Ordering.none
+  $scope.currentOrderBySection = (id, parent_id, field) ->
+    $scope.validateOrder(id, parent_id)
+    $scope.item[id].getOrder(parent_id).checkOrderByField(field)
+    #$scope.orderings[id][parent_id].checkOrderByField(field)
   
-  $scope.order = (id, name, parent_id, type) ->
-    #alert(type)
-    if not $scope.orderings[id][parent_id]
-      $scope.orderings[id][parent_id] = new Ordering(id, parent_id, [name], name, type)
+  $scope.updateOrder = (id, parent_id, field, type) ->
+    if not $scope.item[id].getOrder(parent_id)
+      $scope.item[id].addOrder(parent_id, new Ordering(id, parent_id, [field], field, type))
     else
-      $scope.orderings[id][parent_id].updateOrder(name, type)
-      #fields = $scope.orderings[id][parent_id].getFields()
-      #idx = fields.indexOf(name)
-      
-      #if idx == -1
-      #  idx = fields.indexOf("-#{name}")
-      
-      #if idx == -1
-      #  fields.push(name)
-      #  #$scope.orderings[id][parent_id].setFields(fields)
-      #  $scope.orderings[id][parent_id].setCurrentField(name)
-      #else
-      #  if fields[idx][0] == '-'
-      #    fields[idx] = name
-      #    #$scope.orderings[id][parent_id].setFields(fields)
-      #    $scope.orderings[id][parent_id].setCurrentField(name)
-      #  else
-      #    fields[idx] = "-#{name}"
-      #    #$scope.orderings[id][parent_id].setFields(fields)
-      #    $scope.orderings[id][parent_id].setCurrentField("-#{name}")
-    
-    #$scope.orderings[id][parent_id].setCurrentType(type)
+      $scope.item[id].getOrder(parent_id).updateOrder(field, type)
+  
+  #$scope.updateOrder = (id, parent_id, field, type) ->
+  #  if not $scope.orderings[id][parent_id]
+  #    $scope.orderings[id][parent_id] = new Ordering(id, parent_id, [field], field, type)
+  #  else
+  #    $scope.orderings[id][parent_id].updateOrder(field, type)
   
   $scope.selectItem = (id, sel) ->
     if $scope.isSelectedItem(id, sel)
@@ -173,4 +149,4 @@ angular.module('portfolioApp').controller "SpaController", ($scope, Educations, 
     $scope.item[id].getId() == sel
   
   serverErrorHandler = ->
-    alert("There was a server error, please reload the page and try again!")
+    alert("Server error!")

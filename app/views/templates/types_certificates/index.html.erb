@@ -1,10 +1,10 @@
 <table ng-show="typesCertificates == 0">
 	<tr><td>{{ label.types_certificates.empty_msg }}</td></tr>
 </table>
-<table ng-init="checkOrdPos(type_cert, 0)" id="types_certificates_list">
+<table ng-init="validateOrder(type_cert, 0)" id="types_certificates_list">
 	<tr>
 		<th>
-			<canvas class="icon" ng-click="order(type_cert, 'name', 0, string)" icon-sorting data-parent="0" data-neighbors="" data-type="type_cert" data-field="name" id="canvas_type_cert_name" width="16" height="16"></canvas>
+			<canvas class="icon" ng-click="updateOrder(type_cert, 0, 'name', string)" icon-sorting data-parent="0" data-neighbors="" data-type="type_cert" data-field="name" id="canvas_type_cert_name" width="16" height="16"></canvas>
 			{{ label.types_certificates.name }}&nbsp;&nbsp;&nbsp;
 		</th>
 		<th>{{ label.types_certificates.description }}</th>
