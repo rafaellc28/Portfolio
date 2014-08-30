@@ -1,9 +1,9 @@
-angular.module('portfolioApp').directive "iconordering", (Ordering) ->
+angular.module('portfolioApp').directive "iconSorting", (Ordering) ->
   ret =
     restrict: "A"
     link: (scope, element) ->
       
-      curPos = Ordering.none
+      curStatus = Ordering.none
       elem = element[0]
       ctx = elem.getContext('2d')
       ctx.fillStyle="#2B65EC"
@@ -11,7 +11,7 @@ angular.module('portfolioApp').directive "iconordering", (Ordering) ->
       element.bind 'click', (event) ->
         
         elem.width = elem.width
-        neighbors = elem.getAttribute('data-neighbors')
+        neighbors = elem.dataset.neighbors
         
         if neighbors
           neighbors = neighbors.split(',')
@@ -27,11 +27,11 @@ angular.module('portfolioApp').directive "iconordering", (Ordering) ->
         
         ctx.fillStyle="#2B65EC"
         
-        if curPos == Ordering.up or curPos == Ordering.none
-          curPos = Ordering.down
+        if curStatus == Ordering.up or curStatus == Ordering.none
+          curStatus = Ordering.down
           down(ctx)
         else
-          curPos = Ordering.up
+          curStatus = Ordering.up
           up(ctx)
       
       #Draw up triangle
@@ -56,12 +56,12 @@ angular.module('portfolioApp').directive "iconordering", (Ordering) ->
       none = (ctx_param) ->
         ctx_param.fillRect(3,9,10,3)
       
-      curPos = scope.ordPos(elem.getAttribute('data-type'), elem.getAttribute('data-field'), elem.getAttribute('data-parent'))
+      curStatus = scope.ordPos(elem.dataset.type, elem.dataset.field, elem.dataset.parent)
       
-      if curPos == Ordering.up
+      if curStatus == Ordering.up
         up(ctx)
-      else if curPos == Ordering.down
+      else if curStatus == Ordering.down
         down(ctx)
       else
-        curPos = Ordering.none
+        curStatus = Ordering.none
         none(ctx)

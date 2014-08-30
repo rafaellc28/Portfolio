@@ -4,26 +4,23 @@
 <table ng-init="checkOrdPos(ed_per, education_id)" id="academic_periods_list">
 	<tr>
 		<th>
-			<a href ng-click="order(ed_per, 'name', education_id, 'string')">
-				<canvas iconordering data-parent="{{ education_id }}" data-neighbors="canvas_ed_per_started_at_{{ education_id }},canvas_ed_per_done_at_{{ education_id }}" data-type="ed_per" data-field="name" id="canvas_ed_per_name_{{ education_id }}" width="16" height="16"></canvas>
-			</a>
+			<canvas class="icon" ng-click="order(ed_per, 'name', education_id, string)" icon-sorting data-parent="{{ education_id }}" data-neighbors="canvas_ed_per_started_at_{{ education_id }},canvas_ed_per_done_at_{{ education_id }}" data-type="ed_per" data-field="name" id="canvas_ed_per_name_{{ education_id }}" width="16" height="16"></canvas>
 			{{ label.educations.academic_periods.name }}&nbsp;&nbsp;&nbsp;
 		</th>
 		<th>
-			<a href ng-click="order(ed_per, 'started_at', education_id, 'date')">
-				<canvas iconordering data-parent="{{ education_id }}" data-neighbors="canvas_ed_per_name_{{ education_id }},canvas_ed_per_done_at_{{ education_id }}" data-type="ed_per" data-field="started_at" id="canvas_ed_per_started_at_{{ education_id }}" width="16" height="16"></canvas>
-			</a>
+			<canvas class="icon" ng-click="order(ed_per, 'started_at', education_id, date)" icon-sorting data-parent="{{ education_id }}" data-neighbors="canvas_ed_per_name_{{ education_id }},canvas_ed_per_done_at_{{ education_id }}" data-type="ed_per" data-field="started_at" id="canvas_ed_per_started_at_{{ education_id }}" width="16" height="16"></canvas>
 			{{ label.educations.academic_periods.started_at }}&nbsp;&nbsp;&nbsp;
 		</th>
 		<th>
-			<a href ng-click="order(ed_per, 'done_at', education_id, 'date')">
-				<canvas iconordering data-parent="{{ education_id }}" data-neighbors="canvas_ed_per_name_{{ education_id }},canvas_ed_per_started_at_{{ education_id }}" data-type="ed_per" data-field="done_at" id="canvas_ed_per_done_at_{{ education_id }}" width="16" height="16"></canvas>
-			</a>
+			<canvas class="icon" ng-click="order(ed_per, 'done_at', education_id, date)" icon-sorting data-parent="{{ education_id }}" data-neighbors="canvas_ed_per_name_{{ education_id }},canvas_ed_per_started_at_{{ education_id }}" data-type="ed_per" data-field="done_at" id="canvas_ed_per_done_at_{{ education_id }}" width="16" height="16"></canvas>
 			{{ label.educations.academic_periods.done_at }}
 		</th>
 	</tr>
 	<tr class="rows" ng-repeat="academicPeriod in academic_periods | orderObjectBy : orderFuncField(ed_per, education_id) : orderFuncReverse(ed_per, education_id) : orderFuncType(ed_per, education_id)" id="academic_period_{{academicPeriod.id}}" data-tags="{{academicPeriod.tags | tags}}">
-		<td><a href ng-click="selectItem(ed_per, academicPeriod.id)">{{academicPeriod.name}}</a>&nbsp&nbsp;&nbsp;</td>
+		<td>
+			<canvas class="icon" ng-click="selectItem(ed_per, academicPeriod.id)" icon-section data-neighbors="canvas_ed_per_id_" id="canvas_ed_per_id_{{ academicPeriod.id }}" width="16" height="16"></canvas>
+			{{academicPeriod.name}}&nbsp&nbsp;&nbsp;
+		</td>
 		<td>{{academicPeriod.started_at | date:'MM/yyyy'}}&nbsp;&nbsp;&nbsp;</td>
 		<td>{{academicPeriod.done_at | date:'MM/yyyy'}}</td>
 	</tr>

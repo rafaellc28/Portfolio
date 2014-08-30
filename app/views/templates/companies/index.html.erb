@@ -4,16 +4,27 @@
 <table ng-init="checkOrdPos(comp, 0)" id="companies_list">
 	<tr>
 		<th>
-			<a href ng-click="order(comp, 'name', 0, string)">
-				<canvas iconordering data-parent="0" data-neighbors="" data-type="comp" data-field="name" id="canvas_comp_name" width="16" height="16"></canvas>
-			</a>
+			<canvas class="icon" ng-click="order(comp, 'name', 0, string)" icon-sorting data-parent="0" data-neighbors="canvas_comp_first_job_date,canvas_comp_last_job_date" data-type="comp" data-field="name" id="canvas_comp_name" width="16" height="16"></canvas>
 			{{ label.experiences.companies.name }}&nbsp;&nbsp;&nbsp;
 		</th>
 		<th>{{ label.experiences.companies.description }}</th>
+		<th>
+			<canvas class="icon" ng-click="order(comp, 'first_job_date', 0, date)" icon-sorting data-parent="0" data-neighbors="canvas_comp_last_job_date,canvas_comp_name" data-type="comp" data-field="first_job_date" id="canvas_comp_first_job_date" width="16" height="16"></canvas>
+			{{ label.experiences.companies.first_job_date }}&nbsp;&nbsp;&nbsp;
+		</th>
+		<th>
+			<canvas class="icon" ng-click="order(comp, 'last_job_date', 0, date)" icon-sorting data-parent="0" data-neighbors="canvas_comp_first_job_date,canvas_comp_name" data-type="comp" data-field="last_job_date" id="canvas_comp_last_job_date" width="16" height="16"></canvas>
+			{{ label.experiences.companies.last_job_date }}&nbsp;&nbsp;&nbsp;
+		</th>
 	</tr>
 	<tr class="rows" ng-repeat="company in companies |  orderObjectBy : orderFuncField(comp, 0) : orderFuncReverse(comp, 0) : orderFuncType(comp, 0)" id="company_{{company.id}}" data-tags="{{company.tags | tags}}">
-		<td><a href ng-click="selectItem(comp, company.id)">{{company.name}}</a>&nbsp;&nbsp;&nbsp;</td>
+		<td>
+			<canvas class="icon" ng-click="selectItem(comp, company.id)" icon-section data-neighbors="canvas_comp_id_" id="canvas_comp_id_{{ company.id }}" width="16" height="16"></canvas>
+			{{company.name}}&nbsp;&nbsp;&nbsp;
+		</td>
 		<td>{{company.description}}</td>
+		<td>{{company.first_job_date}}</td>
+		<td>{{company.last_job_date}}</td>
 	</tr>
 </table>
 <table class="noborder">
