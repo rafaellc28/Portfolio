@@ -4,15 +4,16 @@
 <table ng-init="checkOrdPos(type_cert, 0)" id="types_certificates_list">
 	<tr>
 		<th>
-			<a href ng-click="order(type_cert, 'name', 0, string)">
-				<canvas iconordering data-parent="0" data-neighbors="" data-type="type_cert" data-field="name" id="canvas_type_cert_name" width="16" height="16"></canvas>
-			</a>
+			<canvas class="icon" ng-click="order(type_cert, 'name', 0, string)" icon-sorting data-parent="0" data-neighbors="" data-type="type_cert" data-field="name" id="canvas_type_cert_name" width="16" height="16"></canvas>
 			{{ label.types_certificates.name }}&nbsp;&nbsp;&nbsp;
 		</th>
 		<th>{{ label.types_certificates.description }}</th>
 	</tr>
 	<tr class="rows" ng-repeat="typeCert in typesCertificates |  orderObjectBy : orderFuncField(type_cert, 0) : orderFuncReverse(type_cert, 0) : orderFuncType(type_cert, 0)" id="type_certificate_{{typeCert.id}}" data-tags="{{typeCert.tags | tags}}">
-		<td><a href ng-click="selectItem(type_cert, typeCert.id)">{{typeCert.name}}</a>&nbsp;&nbsp;&nbsp;</td>
+		<td>
+			<canvas class="icon" ng-click="selectItem(type_cert, typeCert.id)" icon-section data-neighbors="canvas_type_cert_id_" id="canvas_type_cert_id_{{ typeCert.id }}" width="16" height="16"></canvas>
+			{{typeCert.name}}&nbsp;&nbsp;&nbsp;
+		</td>
 		<td>{{typeCert.description}}</td>
 	</tr>
 </table>

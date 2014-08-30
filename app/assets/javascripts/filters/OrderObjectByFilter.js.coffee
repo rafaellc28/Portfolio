@@ -13,11 +13,8 @@ angular.module('portfolioApp').filter 'orderObjectBy', (Ordering) ->
         x = new Date(a[field])
         y = new Date(b[field])
       else
-        x = new String(a[field])
-        y = new String(b[field])
-        
-        x = normalize(x)
-        y = normalize(y)
+        x = normalize(a[field])
+        y = normalize(b[field])
       
       if x > y
         1
