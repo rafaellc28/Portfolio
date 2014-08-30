@@ -1,18 +1,18 @@
 <table ng-show="academic_periods == 0">
 	<tr><td>{{ label.educations.academic_periods.empty_msg }}</td></tr>
 </table>
-<table ng-init="checkOrdPos(ed_per, education_id)" id="academic_periods_list">
+<table ng-init="validateOrder(ed_per, education_id)" id="academic_periods_list">
 	<tr>
 		<th>
-			<canvas class="icon" ng-click="order(ed_per, 'name', education_id, string)" icon-sorting data-parent="{{ education_id }}" data-neighbors="canvas_ed_per_started_at_{{ education_id }},canvas_ed_per_done_at_{{ education_id }}" data-type="ed_per" data-field="name" id="canvas_ed_per_name_{{ education_id }}" width="16" height="16"></canvas>
+			<canvas class="icon" ng-click="updateOrder(ed_per, education_id, 'name', string)" icon-sorting data-parent="{{ education_id }}" data-neighbors="canvas_ed_per_started_at_{{ education_id }},canvas_ed_per_done_at_{{ education_id }}" data-type="ed_per" data-field="name" id="canvas_ed_per_name_{{ education_id }}" width="16" height="16"></canvas>
 			{{ label.educations.academic_periods.name }}&nbsp;&nbsp;&nbsp;
 		</th>
 		<th>
-			<canvas class="icon" ng-click="order(ed_per, 'started_at', education_id, date)" icon-sorting data-parent="{{ education_id }}" data-neighbors="canvas_ed_per_name_{{ education_id }},canvas_ed_per_done_at_{{ education_id }}" data-type="ed_per" data-field="started_at" id="canvas_ed_per_started_at_{{ education_id }}" width="16" height="16"></canvas>
+			<canvas class="icon" ng-click="updateOrder(ed_per, education_id, 'started_at', date)" icon-sorting data-parent="{{ education_id }}" data-neighbors="canvas_ed_per_name_{{ education_id }},canvas_ed_per_done_at_{{ education_id }}" data-type="ed_per" data-field="started_at" id="canvas_ed_per_started_at_{{ education_id }}" width="16" height="16"></canvas>
 			{{ label.educations.academic_periods.started_at }}&nbsp;&nbsp;&nbsp;
 		</th>
 		<th>
-			<canvas class="icon" ng-click="order(ed_per, 'done_at', education_id, date)" icon-sorting data-parent="{{ education_id }}" data-neighbors="canvas_ed_per_name_{{ education_id }},canvas_ed_per_started_at_{{ education_id }}" data-type="ed_per" data-field="done_at" id="canvas_ed_per_done_at_{{ education_id }}" width="16" height="16"></canvas>
+			<canvas class="icon" ng-click="updateOrder(ed_per, education_id, 'done_at', date)" icon-sorting data-parent="{{ education_id }}" data-neighbors="canvas_ed_per_name_{{ education_id }},canvas_ed_per_started_at_{{ education_id }}" data-type="ed_per" data-field="done_at" id="canvas_ed_per_done_at_{{ education_id }}" width="16" height="16"></canvas>
 			{{ label.educations.academic_periods.done_at }}
 		</th>
 	</tr>

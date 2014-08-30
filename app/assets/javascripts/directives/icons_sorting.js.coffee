@@ -56,7 +56,7 @@ angular.module('portfolioApp').directive "iconSorting", (Ordering) ->
       none = (ctx_param) ->
         ctx_param.fillRect(3,9,10,3)
       
-      curStatus = scope.ordPos(elem.dataset.type, elem.dataset.field, elem.dataset.parent)
+      curStatus = scope.currentOrderBySection(elem.dataset.type, elem.dataset.parent, elem.dataset.field)
       
       if curStatus == Ordering.up
         up(ctx)

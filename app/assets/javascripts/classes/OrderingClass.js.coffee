@@ -9,23 +9,18 @@ angular.module('portfolioApp').factory 'Ordering', () ->
     @string = 'string'
     @date = 'date'
     
-    constructor: (@id, @parent_id, @sortFields, @currentField, @currentType, @currentReversibility = false) ->
+    constructor: (@parentId, @sortFields, @currentField, @currentType) ->
     
-    setParentId: (@parent_id) ->
+    setParentId: (@parentId) ->
     
     setCurrentField: (@currentField) ->
     
     setCurrentType: (@currentType) ->
     
-    setCurrentReversibility: (@currentReversibility) ->
-    
     setFields: (@sortFields) ->
     
-    getId: ->
-      @id
-    
     getParentId: ->
-      @parent_id
+      @parentId
     
     getFields: ->
       @sortFields
@@ -35,9 +30,6 @@ angular.module('portfolioApp').factory 'Ordering', () ->
     
     getCurrentType: ->
       @currentType
-    
-    getCurrentReversibility: ->
-      @currentReversibility
     
     checkOrderByField: (field) ->
       if @currentField == field
@@ -60,11 +52,9 @@ angular.module('portfolioApp').factory 'Ordering', () ->
         if @sortFields[idx][0] == '-'
           @sortFields[idx] = field
           @setCurrentField(field)
-          @setCurrentReversibility(false)
         else
           @sortFields[idx] = "-#{field}"
           @setCurrentField("-#{field}")
-          @setCurrentReversibility(true)
       
       @setCurrentType(type)
     
