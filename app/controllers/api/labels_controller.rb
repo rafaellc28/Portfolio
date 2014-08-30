@@ -4,6 +4,12 @@ class Api::LabelsController < Api::BaseController
     
     labels = Hash.new
     
+    labels[:messages] = Hash.new
+    labels[:messages][:attachments] = "Anexos:"
+    labels[:messages][:links] = "Referências:"
+    labels[:messages][:close_msg] = "Clique novamente na linha abaixo para fechar esta janela."
+    labels[:messages][:tooltip] = "Clique para ver mais detalhes ..."
+    
     labels[:educations] = Hash.new
     labels[:educations][:label] = "Educação"
     labels[:educations][:empty_msg] = "Não há registro de educação cadastrado."
@@ -29,13 +35,15 @@ class Api::LabelsController < Api::BaseController
     
     labels[:experiences] = Hash.new
     labels[:experiences][:label] = "Experiência"
-      
+    
     labels[:experiences][:companies] = Hash.new
     labels[:experiences][:companies][:label] = "Empresas"
     labels[:experiences][:companies][:empty_msg] = "Não há empresas cadastradas"
     labels[:experiences][:companies][:name] = "Empresa"
     labels[:experiences][:companies][:description] = "Descrição"
-      
+    labels[:experiences][:companies][:first_job_date] = "Data de Entrada"
+    labels[:experiences][:companies][:last_job_date] = "Data de Saída"
+    
     labels[:experiences][:companies][:jobs] = Hash.new
     labels[:experiences][:companies][:jobs][:label] = "Cargos"
     labels[:experiences][:companies][:jobs][:empty_msg] = "Não há cargos cadastrados para essa empresa."
@@ -51,10 +59,7 @@ class Api::LabelsController < Api::BaseController
     labels[:types_certificates][:description] = "Descrição"
     labels[:types_certificates][:certificates] = Hash.new
     labels[:types_certificates][:certificates][:label] = "Certificados"
-    labels[:types_certificates][:certificates][:attachments] = "Anexos:"
-    labels[:types_certificates][:certificates][:links] = "Referências:"
     labels[:types_certificates][:certificates][:empty_msg] = "Não há certificados cadastrados"
-    labels[:types_certificates][:certificates][:tooltip] = "Clique para ver mais detalhes ..."
     labels[:types_certificates][:certificates][:title] = "Título"
     labels[:types_certificates][:certificates][:description] = "Descrição"
     labels[:types_certificates][:certificates][:issued_at] = "Emissão"

@@ -4,20 +4,17 @@
 <table ng-init="checkOrdPos(pub, 0)" class="publications_list">
 	<tr>
 		<th>
-			<a href ng-click="order(pub, 'title', 0, string)">
-				<canvas iconordering data-parent="0" data-neighbors="canvas_pub_published_at" data-type="pub" data-field="title" id="canvas_pub_title" width="16" height="16"></canvas>
-			</a>
+			<canvas class="icon" ng-click="order(pub, 'title', 0, string)" icon-sorting data-parent="0" data-neighbors="canvas_pub_published_at" data-type="pub" data-field="title" id="canvas_pub_title" width="16" height="16"></canvas>
 			{{ label.publications.title }}&nbsp;&nbsp;&nbsp;
 		</th>
 		<th>{{ label.publications.description }}&nbsp;&nbsp;&nbsp;</th>
 		<th>
-			<a href ng-click="order(pub, 'published_at', 0, date)">
-				<canvas iconordering data-parent="0" data-neighbors="canvas_pub_title" data-type="pub" data-field="published_at" id="canvas_pub_published_at" width="16" height="16"></canvas>
-			</a>
+			<canvas class="icon" ng-click="order(pub, 'published_at', 0, date)" icon-sorting data-parent="0" data-neighbors="canvas_pub_title" data-type="pub" data-field="published_at" id="canvas_pub_published_at" width="16" height="16"></canvas>
 			{{ label.publications.published_at }}
 		</th>
 	</tr>
-	<tr class="rows" ng-repeat="publication in publications |  orderObjectBy : orderFuncField(pub, 0) : orderFuncReverse(pub, 0) : orderFuncType(pub, 0)" id="publication_{{publication.id}}" data-tags="{{publication.tags | tags}}">
+	<tr class="rows link" ng-repeat="publication in publications |  orderObjectBy : orderFuncField(pub, 0) : orderFuncReverse(pub, 0) : orderFuncType(pub, 0)" id="publication_{{publication.id}}" data-tags="{{publication.tags | tags}}"
+	popover-html-unsafe="{{ popover_msgs_func(publication.title, publication.links, publication.attachments) }}">
 		<td>{{publication.title}}</td>
 		<td>{{publication.description}}</td>
 		<td>{{publication.published_at | date:'MM/yyyy'}}</td>

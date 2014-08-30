@@ -37,6 +37,11 @@ table, th, td {
   cursor: pointer;
 }
 
+/*.rows.link:active {
+  background-color: yellow;
+}*/
+
+
 .icon:hover {
   cursor: pointer;
 }

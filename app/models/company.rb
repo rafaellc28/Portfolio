@@ -15,9 +15,22 @@ class Company < ActiveRecord::Base
     end
   end
   
+  def first_job_date
+    jobs.order("started_at").first.started_at
+  end
+  
+  def last_job_date
+    jobs.order("done_at DESC").first.done_at
+  end
+  
+  def FirstAndLastJobDates
+    [jobs.order("started_at").first.started_at.strftime("%Y-%m-%d"), jobs.order("done_at DESC").first.done_at.strftime("%Y-%m-%d")]
+  end
+  
   def serializable_hash(options = nil)
-    options = { 
-      :include => [:jobs, :links, :attachments, :awards, {:tags => {:only => :name}}] 
+    options = {
+      :methods => [:first_job_date, :last_job_date], 
+      :include => [:jobs, :links, :attachments, :awards, {:tags => {:only => :name}}]
     }.update(options)
     
     super options
