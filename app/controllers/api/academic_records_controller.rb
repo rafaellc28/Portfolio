@@ -1,4 +1,4 @@
-class Api::AcademicRecordsController < BaseController
+class Api::AcademicRecordsController < Api::BaseController
   
   def index
     render json: AcademicRecord.all
