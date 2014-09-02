@@ -4,18 +4,18 @@
 <table ng-init="validateOrder(ed_per_rec, academic_period_id)" id="academic_records_list">
 	<tr>
 		<th>
-			<canvas class="icon" ng-click="updateOrder(ed_per_rec, academic_period_id, 'course', string)" icon-sorting data-parent="{{ academic_period_id }}" data-neighbors="canvas_ed_per_rec_grade_{{ academic_period_id }}" data-type="ed_per_rec" data-field="course" id="canvas_ed_per_rec_course_{{ academic_period_id }}" width="16" height="16"></canvas>
+			<canvas class="icon" ng-click="updateOrder(ed_per_rec, academic_period_id, 'course', string)" icon-sorting data-parent="{{ academic_period_id }}" data-neighbors="canvas_ed_per_rec_grade_{{ academic_period_id }}" data-type="ed_per_rec" data-field="course" data-color="#2B65EC" id="canvas_ed_per_rec_course_{{ academic_period_id }}" width="16" height="16"></canvas>
 			{{ label.educations.academic_periods.academic_records.course }}&nbsp;&nbsp;&nbsp;
 		</th>
 		<th>
-			<canvas class="icon" ng-click="updateOrder(ed_per_rec, academic_period_id, 'grade', num)" icon-sorting data-parent="{{ academic_period_id }}" data-neighbors="canvas_ed_per_rec_course_{{ academic_period_id }}" data-type="ed_per_rec" data-field="grade" id="canvas_ed_per_rec_grade_{{ academic_period_id }}" width="16" height="16"></canvas>
+			<canvas class="icon" ng-click="updateOrder(ed_per_rec, academic_period_id, 'grade', num)" icon-sorting data-parent="{{ academic_period_id }}" data-neighbors="canvas_ed_per_rec_course_{{ academic_period_id }}" data-type="ed_per_rec" data-field="grade" data-color="#2B65EC" id="canvas_ed_per_rec_grade_{{ academic_period_id }}" width="16" height="16"></canvas>
 			{{ label.educations.academic_periods.academic_records.grade }}&nbsp;&nbsp;&nbsp;
 		</th>
 		<th>{{ label.educations.academic_periods.academic_records.description }}</th>
 	</tr>
-	<tr class="rows" ng-repeat="academicRecord in academic_records | orderObjectBy : orderFuncField(ed_per_rec, academic_period_id) : orderFuncReverse(ed_per_rec, academic_period_id) : orderFuncType(ed_per_rec, academic_period_id)" id="academic_record_{{academicRecord.id}}" data-tags="{{academicRecord.tags | tags}}">
-		<td>{{academicRecord.course}}&nbsp;&nbsp;&nbsp;</td>
-		<td>{{academicRecord.grade | number:',':3}}&nbsp;&nbsp;&nbsp;</td>
+	<tr class="rows" ng-repeat="academicRecord in academic_records | orderObjectBy : getOrderField(ed_per_rec, academic_period_id) : getOrderReversibility(ed_per_rec, academic_period_id) : getOrderType(ed_per_rec, academic_period_id)" id="academic_record_{{academicRecord.id}}" data-tags="{{academicRecord.tags | tags}}">
+		<td width="30%">{{academicRecord.course}}&nbsp;&nbsp;&nbsp;</td>
+		<td width="10%">{{academicRecord.grade | number:',':3}}&nbsp;&nbsp;&nbsp;</td>
 		<td>{{academicRecord.description}}</td>
 	</tr>
 </table>

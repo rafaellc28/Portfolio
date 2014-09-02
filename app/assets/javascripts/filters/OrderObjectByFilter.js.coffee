@@ -1,4 +1,4 @@
-angular.module('portfolioApp').filter 'orderObjectBy', (Ordering) ->
+angular.module('portfolioApp').filter 'orderObjectBy', (Sorting) ->
   func = (items, field, reverse, type) ->
     filtered = []
     
@@ -6,10 +6,10 @@ angular.module('portfolioApp').filter 'orderObjectBy', (Ordering) ->
       filtered.push(item)
     
     filtered.sort (a, b) ->
-      if type == Ordering.number
+      if type == Sorting.number
         x = Number(a[field])
         y = Number(b[field])
-      else if type == Ordering.date
+      else if type == Sorting.date
         x = new Date(a[field])
         y = new Date(b[field])
       else

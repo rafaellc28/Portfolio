@@ -2,9 +2,158 @@ class TestsController < ApplicationController
   
   def index
     
-    #@certificate.tag_list.add("Game Theory")
-    #@certificate.tag_list.add("Computation Theory")
+    @certificate = Certificate.find(12)
     
+    @certificate.reload
+    
+    @certificate.tag_list.add("Visual Computing")
+    @certificate.tag_list.add("Image Processing")
+    @certificate.tag_list.add("Artificial Intelligence")
+    @certificate.tag_list.add("Computer Graphics")
+    @certificate.tag_list.add("Computational Geometry")
+    
+    @certificate.save
+    @certificate.reload
+    
+    @str = @certificate.tags.map{|e| e.name}.to_s
+    @str += "<br>"
+    
+    @certificate = Certificate.find(13)
+    
+    @certificate.reload
+    
+    @certificate.tag_list.add("Software Engineering")
+    @certificate.tag_list.add("Databases")
+    @certificate.tag_list.add("Software Validation and Verification")
+    @certificate.tag_list.add("Network Computing")
+    @certificate.tag_list.add("Distributed Computing")
+    
+    @certificate.save
+    @certificate.reload
+    
+    @str += @certificate.tags.map{|e| e.name}.to_s
+    @str += "<br>"
+    
+    @certificate = Certificate.find(14)
+    
+    @certificate.reload
+    
+    @certificate.tag_list.add("Optical Networking")
+    @certificate.tag_list.add("Grid Computing")
+    @certificate.tag_list.add("Optical Burst Switching")
+    
+    @certificate.save
+    @certificate.reload
+    
+    @str += @certificate.tags.map{|e| e.name}.to_s
+    @str += "<br>"
+    
+    @certificate = Certificate.find(15)
+    
+    @certificate.reload
+    
+    @certificate.tag_list.add("Task Scheduling")
+    @certificate.tag_list.add("Grid Computing")
+    @certificate.tag_list.add("Directed Acyclic Graph")
+    
+    @certificate.save
+    @certificate.reload
+    
+    @str += @certificate.tags.map{|e| e.name}.to_s
+    @str += "<br>"
+    
+    @certificate = Certificate.find(16)
+    
+    @certificate.reload
+    
+    @certificate.tag_list.add("Game Theory")
+    @certificate.tag_list.add("Extensive-form Games")
+    @certificate.tag_list.add("Normal-form Games")
+    @certificate.tag_list.add("Bayesian Games")
+    @certificate.tag_list.add("Repeated Games")
+    @certificate.tag_list.add("Stochastic Games")
+    
+    @certificate.save
+    @certificate.reload
+    
+    @str += @certificate.tags.map{|e| e.name}.to_s
+    @str += "<br>"
+    
+    @certificate = Certificate.find(17)
+    
+    @certificate.reload
+    
+    @certificate.tag_list.add("Game Theory")
+    @certificate.tag_list.add("Auction Theory")
+    @certificate.tag_list.add("Social Choice Theory")
+    @certificate.tag_list.add("Mechanism Design")
+    
+    @certificate.save
+    @certificate.reload
+    
+    @str += @certificate.tags.map{|e| e.name}.to_s
+    @str += "<br>"
+    
+    @certificate = Certificate.find(18)
+    
+    @certificate.reload
+    
+    @certificate.tag_list.add("Game Theory")
+    @certificate.tag_list.add("Social and Economic Networks")
+    @certificate.tag_list.add("Network Formation")
+    @certificate.tag_list.add("Random Graph Models")
+    @certificate.tag_list.add("Statistical Models")
+    
+    @certificate.save
+    @certificate.reload
+    
+    @str += @certificate.tags.map{|e| e.name}.to_s
+    @str += "<br>"
+    
+    @certificate = Certificate.find(19)
+    
+    @certificate.reload
+    
+    @certificate.tag_list.add("Game Theory")
+    @certificate.tag_list.add("Voting Theory")
+    @certificate.tag_list.add("Social Choice Theory")
+    @certificate.tag_list.add("Fair Division")
+    
+    @certificate.save
+    @certificate.reload
+    
+    @str += @certificate.tags.map{|e| e.name}.to_s
+    @str += "<br>"
+    
+    @certificate = Certificate.find(20)
+    
+    @certificate.reload
+    
+    @certificate.tag_list.add("General Game Playing")
+    @certificate.tag_list.add("Propositional Nets")
+    
+    @certificate.save
+    @certificate.reload
+    
+    @str += @certificate.tags.map{|e| e.name}.to_s
+    @str += "<br>"
+    
+    @certificate = Certificate.find(21)
+    
+    @certificate.reload
+    
+    @certificate.tag_list.add("Probabilistic Graphical Models")
+    @certificate.tag_list.add("Bayesian Graphical Models")
+    
+    @certificate.save
+    @certificate.reload
+    
+    @str += @certificate.tags.map{|e| e.name}.to_s
+    @str += "<br>"
+    
+    render text: @str
+    
+=begin
     @publication = Publication.find(1)
     
     @publication.reload

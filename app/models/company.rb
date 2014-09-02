@@ -12,6 +12,7 @@ class Company < ActiveRecord::Base
   def validate_tag(tag = nil)
     if not tag.nil?
       tag_list.add(tag)
+      save
     end
   end
   
