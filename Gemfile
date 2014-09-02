@@ -31,7 +31,7 @@ gem 'spring',        group: :development
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -44,10 +44,10 @@ gem 'will_paginate'
 gem 'devise'
 gem 'cancan'
 gem 'omniauth'
-gem 'mailcatcher' #catch smtp request and show emails in localhost:1080
+#gem 'mailcatcher' #catch smtp request and show emails in localhost:1080
 gem 'thin'
 gem 'active_model_serializers'
 gem 'acts_as_list'
 #gem 'angularjs-rails'
 #gem 'angular-rails-templates'
-gem 'slim'
+#gem 'slim'
