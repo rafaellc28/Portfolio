@@ -89,5 +89,8 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
   
   config.assets.js_compressor = Uglifier.new(mangle: false)
-
+  
+  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+  config.force_ssl = true
+  
 end
