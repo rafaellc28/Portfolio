@@ -1,0 +1,24 @@
+<table ng-show="tags == 0">
+	<tr><td>{{ label.tags.empty_msg }}</td></tr>
+</table>
+<div ng-controller="TagsController" ng-init="init()">
+    <div id="tag_cloud">
+		<table id="tag_section_list" ng-init="validateOrder(tag_section, 0)" class="noborder" width="100%">
+			<tr width="100%">
+				<th width="50%" class="noborder">
+					<canvas class="icon" ng-click="updateOrder(tag_section, 0, 'taggings_count', number)" icon-sorting data-parent="0" data-neighbors="canvas_tag_section_name" data-type="tag_section" data-field="taggings_count" data-color="#2B65EC" id="canvas_tag_section_taggings_count" width="16" height="16"></canvas>
+					{{ labels[0].tags.taggings_count }}&nbsp;&nbsp;&nbsp;
+				</th>
+				<th width="50%" class="noborder">
+					<canvas class="icon" ng-click="updateOrder(tag_section, 0, 'name', string)" icon-sorting data-parent="0" data-neighbors="canvas_tag_section_taggings_count" data-type="tag_section" data-field="name" data-color="#2B65EC" id="canvas_tag_section_name" width="16" height="16"></canvas>
+					{{ labels[0].tags.name }}&nbsp;&nbsp;&nbsp;
+				</th>
+			</tr>
+		</table>
+		<ul class="nav nav-pills">
+			<li ng-repeat="tag in tags | orderObjectBy : getOrderField(tag_section, 0) : getOrderReversibility(tag_section, 0) : getOrderType(tag_section, 0)"" id="{{tag.id}}" name="{{tag.name}}" title="{{tag.name}}">
+		  		<a tag-cloud data-cloud='tag-cloud' name="{{tag.name}}" title="{{tag.name}}" id="{{tag.id}}" class="{{tag.css_class}}">{{tag.name}}</a>
+		  	</li>
+		</ul>
+	</div>
+</div>

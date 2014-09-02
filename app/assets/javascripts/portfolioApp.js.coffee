@@ -17,8 +17,7 @@ portfolioApp.config ($routeProvider, $locationProvider) ->
 portfolioApp.config ($tooltipProvider) ->
   opt = 
     trigger: 'click'
-    placement: 'top'
-    #html-unsafe: ''
+    placement: 'bottom'
   
   $tooltipProvider.options(opt)
   

@@ -1,12 +1,12 @@
-angular.module('portfolioApp').directive "iconSorting", (Ordering) ->
+angular.module('portfolioApp').directive "iconSorting", (Sorting) ->
   ret =
     restrict: "A"
     link: (scope, element) ->
       
-      curStatus = Ordering.none
+      curStatus = Sorting.none
       elem = element[0]
       ctx = elem.getContext('2d')
-      ctx.fillStyle="#2B65EC"
+      ctx.fillStyle = elem.dataset.color
       
       element.bind 'click', (event) ->
         
@@ -22,20 +22,20 @@ angular.module('portfolioApp').directive "iconSorting", (Ordering) ->
           neighbor = document.getElementById(id)
           neighbor.width = neighbor.width
           ctx_aux = neighbor.getContext('2d')
-          ctx_aux.fillStyle="#2B65EC"
+          ctx_aux.fillStyle = neighbor.dataset.color
           none(ctx_aux)
         
-        ctx.fillStyle="#2B65EC"
+        ctx.fillStyle = elem.dataset.color
         
-        if curStatus == Ordering.up or curStatus == Ordering.none
-          curStatus = Ordering.down
-          down(ctx)
+        if curStatus == Sorting.desc or curStatus == Sorting.none
+          curStatus = Sorting.asc
+          asc(ctx)
         else
-          curStatus = Ordering.up
-          up(ctx)
+          curStatus = Sorting.desc
+          desc(ctx)
       
       #Draw up triangle
-      up = (ctx_param) ->
+      desc = (ctx_param) ->
         ctx_param.beginPath()
         ctx_param.moveTo(8,5)
         ctx_param.lineTo(14,16)
@@ -44,7 +44,7 @@ angular.module('portfolioApp').directive "iconSorting", (Ordering) ->
         ctx_param.fill()
       
       #Draw down triangle
-      down = (ctx_param) ->
+      asc = (ctx_param) ->
         ctx_param.beginPath()
         ctx_param.moveTo(2,5)
         ctx_param.lineTo(14,5)
@@ -54,14 +54,22 @@ angular.module('portfolioApp').directive "iconSorting", (Ordering) ->
       
       #Draw none
       none = (ctx_param) ->
-        ctx_param.fillRect(3,9,10,3)
-      
+        #ctx_param.fillRect(3,9,10,3)
+        centerX = elem.width / 2
+        centerY = 10
+        radius = 3
+        
+        ctx_param.beginPath()
+        ctx_param.arc(centerX, centerY, radius, 0, 2 * Math.PI, false)
+        ctx_param.closePath()
+        ctx_param.fill()
+            
       curStatus = scope.currentOrderBySection(elem.dataset.type, elem.dataset.parent, elem.dataset.field)
       
-      if curStatus == Ordering.up
-        up(ctx)
-      else if curStatus == Ordering.down
-        down(ctx)
+      if curStatus == Sorting.desc
+        desc(ctx)
+      else if curStatus == Sorting.asc
+        asc(ctx)
       else
-        curStatus = Ordering.none
+        curStatus = Sorting.none
         none(ctx)

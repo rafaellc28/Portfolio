@@ -5,7 +5,7 @@ angular.module('portfolioApp').directive "iconSection", (Section) ->
       
       elem = element[0]
       ctx = elem.getContext('2d')
-      ctx.fillStyle="#2B65EC"
+      ctx.fillStyle = elem.dataset.color
       
       element.bind 'click', (event) ->
         
@@ -19,10 +19,10 @@ angular.module('portfolioApp').directive "iconSection", (Section) ->
             neighbor.width = neighbor.width
             neighbor.dataset.status = Section.open
             ctx_aux = neighbor.getContext('2d')
-            ctx_aux.fillStyle="#2B65EC"
+            ctx_aux.fillStyle = neighbor.dataset.color
             open(ctx_aux)
         
-        ctx.fillStyle="#2B65EC"
+        ctx.fillStyle = elem.dataset.color
         
         if elem.dataset.status == Section.open
           elem.dataset.status = Section.close

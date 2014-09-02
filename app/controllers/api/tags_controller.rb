@@ -1,7 +1,9 @@
-class TemplatesController < ApplicationController
-  #before_filter :authenticate_user!
-
+class Api::TagsController < Api::BaseController
+  
+  include ActsAsTaggableOn::TagsHelper
+  
   def index
+    
     @certificates_tags = Certificate.tag_counts_on(:tags)
     @types_certificates_tags = TypesCertificate.tag_counts_on(:tags)
     @publications_tags = Publication.tag_counts_on(:tags)
@@ -15,17 +17,27 @@ class TemplatesController < ApplicationController
     @educations_tags + @academic_periods_tags + @academic_records_tags +
     @companies_tags + @jobs_tags
     
-    @tags = @tags.uniq.sort_by{|tag| -tag.taggings_count }
+    @tags = @tags.uniq
+    #@tags = @tags.sort_by{|tag| -tag.taggings_count }
     
-    #render text: @tags.map{|tag| [tag.name, tag.taggings_count]}
-  end
-  
-  #def tag_cloud
-  #  @tags = Certificate.tag_counts_on(:tags)
-  #end
-  
-  def template
-    render :template => 'templates/' + params[:path], :layout => nil
+    @tags_json = []
+      
+    tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
+      
+      tag_aux = {}
+      tag_aux[:id] = tag.id
+      tag_aux[:name] = tag.name
+      tag_aux[:taggings_count] = tag.taggings_count
+      tag_aux[:count] = tag.count
+      tag_aux[:css_class] = css_class
+      
+      @tags_json.push(tag_aux)
+    end
+    
+    @tags_json.to_json
+    
+    render json: @tags_json
+    
   end
   
 end

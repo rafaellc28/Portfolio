@@ -1,4 +1,4 @@
-angular.module('portfolioApp').factory 'Section', [ "Ordering", (Ordering) ->
+angular.module('portfolioApp').factory 'Section', [ "Sorting", (Sorting) ->
   class Section
     
     @open: 'open'

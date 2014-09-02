@@ -21,6 +21,7 @@ class AcademicPeriod < ActiveRecord::Base
     else
       tag_list.add(tag)
       self.education.validate_tag(tag)
+      save
     end
   end
   
