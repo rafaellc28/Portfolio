@@ -1,19 +1,11 @@
 <div class="ng-cloak">
 
-<div ng-controller="TagsController" ng-init="init()">
-    <div id="tag_cloud">
-		<ul class="nav nav-pills">
-			<% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-				<li id="<%= tag.id %>" name="<%= tag.name %>" title="<%= tag.name %>">
-		  			<a data-class="tag_cloud" name="<%= tag.name %>" title="<%= tag.name %>" id="<%= tag.id %>" class="<%= css_class %>"><%= tag.name %></a>
-		  		</li>
-			<% end %>
-		</ul>
-	</div>
-</div>
-
-<div>&nbsp;<br>&nbsp;</div>
-
-<div ng-view="">
-</div>
+<table class="noborder"><tr>
+<td width="70%" valign="top" class="noborder">
+<div ng-view=""></div>
+</td>
+<td class="noborder" ng-include="'templates/tags/index.html'">
+</td>
+<!--<div>&nbsp;<br>&nbsp;</div>-->
+</tr></table>
 </div>

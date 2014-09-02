@@ -4,10 +4,15 @@ class Api::LabelsController < Api::BaseController
     
     labels = Hash.new
     
+    labels[:tags] = Hash.new
+    labels[:tags][:name] = "Nome"
+    labels[:tags][:taggings_count] = "Quantidade"
+    labels[:tags][:empty_msg] = "Não há tags cadastradas."
+    
     labels[:messages] = Hash.new
     labels[:messages][:attachments] = "Anexos:"
     labels[:messages][:links] = "Referências:"
-    labels[:messages][:close_msg] = "Clique novamente na linha abaixo para fechar esta janela."
+    labels[:messages][:close_msg] = "Clique novamente na linha acima para fechar esta janela."
     labels[:messages][:tooltip] = "Clique para ver mais detalhes ..."
     
     labels[:educations] = Hash.new

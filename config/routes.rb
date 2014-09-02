@@ -73,6 +73,7 @@ Rails.application.routes.draw do
     resources :types_certificates, only: [:index, :show]
     resources :companies, only: [:index, :show]
     resources :labels, only: [:index, :show]
+    resources :tags, only: [:index, :show]
     resources :spa, only: [:index]
   end
   

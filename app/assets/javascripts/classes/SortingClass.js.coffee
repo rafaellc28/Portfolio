@@ -1,8 +1,8 @@
-angular.module('portfolioApp').factory 'Ordering', () ->
-  class Ordering
+angular.module('portfolioApp').factory 'Sorting', () ->
+  class Sorting
     
-    @up: 'up'
-    @down: 'down'
+    @asc: 'asc'
+    @desc: 'desc'
     @none: 'none'
     
     @number = 'num'
@@ -33,11 +33,11 @@ angular.module('portfolioApp').factory 'Ordering', () ->
     
     checkOrderByField: (field) ->
       if @currentField == field
-        Ordering.down
+        Sorting.asc
       else if @currentField == "-#{field}"
-        Ordering.up
+        Sorting.desc
       else
-        Ordering.none
+        Sorting.none
     
     updateOrder: (field, type) ->
       idx = @sortFields.indexOf(field)
