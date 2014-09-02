@@ -23,5 +23,7 @@ test:
   database: portfolio_test
 
 production:
-  <<: *default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
   database: portfolio_production
