@@ -27,5 +27,4 @@ production:
   pool: 5
   timeout: 5000
   encoding: unicode
-  database: portfolio_production
-
+  database: db/production
