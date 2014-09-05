@@ -5,9 +5,9 @@
 	<tr>
 		<th>
 			<canvas class="icon" ng-click="updateOrder(cert, type_certificate_id, 'title', string)" icon-sorting data-parent="{{ type_certificate_id }}" data-neighbors="canvas_cert_issued_at_{{ type_certificate_id }}" data-type="cert" data-field="title" data-color="#2B65EC" id="canvas_cert_title_{{ type_certificate_id }}" width="16" height="16"></canvas>
-			{{ label.types_certificates.certificates.title }}&nbsp;&nbsp;&nbsp;
+			{{ label.types_certificates.certificates.title }}
 		</th>
-		<th>{{ label.types_certificates.certificates.description }}&nbsp;&nbsp;&nbsp;</th>
+		<th>{{ label.types_certificates.certificates.description }}</th>
 		<th>
 			<canvas class="icon" ng-click="updateOrder(cert, type_certificate_id, 'issued_at', date)" icon-sorting data-parent="{{ type_certificate_id }}" data-neighbors="canvas_cert_title_{{ type_certificate_id }}" data-type="cert" data-field="issued_at" data-color="#2B65EC" id="canvas_cert_issued_at_{{ type_certificate_id }}" width="16" height="16"></canvas>
 			{{ label.types_certificates.certificates.issued_at }}
@@ -16,9 +16,9 @@
 	<tr class="rows link" title="{{ label.messages.tooltip }}" 
 	ng-repeat="certificate in certificates | orderObjectBy : getOrderField(cert, type_certificate_id) : getOrderReversibility(cert, type_certificate_id) : getOrderType(cert, type_certificate_id)" id="certificate_{{certificate.id}}"
 	data-tags="{{certificate.tags | tags}}" 
-	popover-html-unsafe="{{ popover_message(certificate.title, certificate.links, certificate.attachments) }}">
-		<td>{{certificate.title}}&nbsp;&nbsp;&nbsp;</td>
-		<td>{{certificate.description}}&nbsp;&nbsp;&nbsp;</td>
+	popover-html-unsafe="{{ popover_message(certificate.title, certificate.links, certificate.attachments, certificate.tags) }}">
+		<td>{{certificate.title}}</td>
+		<td>{{certificate.description}}</td>
 		<td>{{certificate.issued_at | date:'MM/yyyy'}}</td>
 	</tr>
 </table>

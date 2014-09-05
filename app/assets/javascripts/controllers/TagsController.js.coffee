@@ -2,6 +2,8 @@ angular.module('portfolioApp').controller "TagsController", ($scope, Tags, Label
   
   $scope.init = ->
     
+    $scope.search_text = ''
+    
     $scope.number = Sorting.number
     $scope.date = Sorting.date
     $scope.string = Sorting.string

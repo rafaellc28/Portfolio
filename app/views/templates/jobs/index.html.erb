@@ -5,22 +5,22 @@
 	<tr>
 		<th>
 			<canvas class="icon" ng-click="updateOrder(job, company_id, 'title', string)" icon-sorting data-parent="{{ company_id }}" data-neighbors="canvas_job_done_at_{{ company_id }},canvas_job_started_at_{{ company_id }}" data-type="job" data-field="title" data-color="#2B65EC" id="canvas_job_title_{{ company_id }}" width="16" height="16"></canvas>
-			{{ label.experiences.companies.jobs.title }}&nbsp;&nbsp;&nbsp;
+			{{ label.experiences.companies.jobs.title }}
 		</th>
-		<th>{{ label.experiences.companies.jobs.description }}&nbsp;&nbsp;&nbsp;</th>
-		<th>
+		<th>{{ label.experiences.companies.jobs.description }}</th>
+		<th width="10%">
 			<canvas class="icon" ng-click="updateOrder(job, company_id, 'started_at', date)" icon-sorting data-parent="{{ company_id }}" data-neighbors="canvas_job_done_at_{{ company_id }},canvas_job_title_{{ company_id }}" data-type="job" data-field="started_at" data-color="#2B65EC" id="canvas_job_started_at_{{ company_id }}" width="16" height="16"></canvas>
-			{{ label.experiences.companies.jobs.started_at }}&nbsp;&nbsp;&nbsp;
+			{{ label.experiences.companies.jobs.started_at }}
 		</th>
-		<th>
+		<th width="15%">
 			<canvas class="icon" ng-click="updateOrder(job, company_id, 'done_at', date)" icon-sorting data-parent="{{ company_id }}" data-neighbors="canvas_job_started_at_{{ company_id }},canvas_job_title_{{ company_id }}" data-type="job" data-field="done_at" data-color="#2B65EC" id="canvas_job_done_at_{{ company_id }}" width="16" height="16"></canvas>
 			{{ label.experiences.companies.jobs.done_at }}
 		</th>
 	</tr>
 	<tr class="rows" ng-repeat="job in jobs |  orderObjectBy : getOrderField(job, company_id) : getOrderReversibility(job, company_id) : getOrderType(job, company_id)" id="job_{{job.id}}" data-tags="{{job.tags | tags}}">
-		<td>{{job.title}}&nbsp;&nbsp;&nbsp;</td>
-		<td>{{job.description}}&nbsp;&nbsp;&nbsp;</td>
-		<td>{{job.started_at | date:'MM/yyyy'}}&nbsp;&nbsp;&nbsp;</td>
+		<td>{{job.title}}</td>
+		<td>{{job.description}}</td>
+		<td>{{job.started_at | date:'MM/yyyy'}}</td>
 		<td>{{job.done_at | date:'MM/yyyy'}}</td>
 	</tr>
 </table>

@@ -14,25 +14,35 @@
 
 //= require jquery
 //= require jquery_ujs
-// require angular
-// require angular-resource
-// require angular-route
+//= require ./lib/angular.min
+//= require ./lib/angular-resource.min
+//= require ./lib/angular-route.min
+//= require ./lib/ui-bootstrap-tpls-0.9.0.min
+//= require ./lib/normalize
 //= require portfolioApp
-// require angular-rails-templates
-// require_tree ./templates
-//= require_tree ./controllers
-//= require_tree ./services
-//= require ./tags
+//= require ./controllers/SpaController
+//= require ./controllers/TagsController
+//= require ./services/CertificatesService
+//= require ./services/CompaniesService
+//= require ./services/EducationsService
+//= require ./services/LabelsService
+//= require ./services/PublicationsService
+//= require ./services/TagsService
+//= require ./services/TypesCertificatesService
 //= require_tree ./filters
 //= require_tree ./directives
 //= require_tree ./classes
-//= require ./lib/normalize
-//= require ./popoverHtmlUnsafe
-//= require ./ui-bootstrap-tpls-0.9.0.min
+
+// require ./tags
 // require ./canvas
 // require_tree ./docs
 // require ./tooltips
 // require turbolinks
+// require angular
+// require angular-resource
+// require angular-route
+// require angular-rails-templates
+// require_tree ./templates
 
 //$("tr[id^='certificate_']").on('click', function (){ 
 //   alert('click');

@@ -1,20 +1,20 @@
 <table ng-show="publications == 0">
 	<tr><td>{{ label.publications.empty_msg }}</td></tr>
 </table>
-<table ng-init="validateOrder(pub, 0)" class="publications_list">
+<table ng-init="validateOrder(pub, 0)" id="publications_list">
 	<tr>
 		<th>
 			<canvas class="icon" ng-click="updateOrder(pub, 0, 'title', string)" icon-sorting data-parent="0" data-neighbors="canvas_pub_published_at" data-type="pub" data-field="title" data-color="#2B65EC" id="canvas_pub_title" width="16" height="16"></canvas>
-			{{ label.publications.title }}&nbsp;&nbsp;&nbsp;
+			{{ label.publications.title }}
 		</th>
-		<th>{{ label.publications.description }}&nbsp;&nbsp;&nbsp;</th>
-		<th>
+		<th>{{ label.publications.description }}</th>
+		<th width="15%">
 			<canvas class="icon" ng-click="updateOrder(pub, 0, 'published_at', date)" icon-sorting data-parent="0" data-neighbors="canvas_pub_title" data-type="pub" data-field="published_at" data-color="#2B65EC" id="canvas_pub_published_at" width="16" height="16"></canvas>
 			{{ label.publications.published_at }}
 		</th>
 	</tr>
 	<tr class="rows link" ng-repeat="publication in publications |  orderObjectBy : getOrderField(pub, 0) : getOrderReversibility(pub, 0) : getOrderType(pub, 0)" id="publication_{{publication.id}}" data-color="#2B65EC" data-tags="{{publication.tags | tags}}"
-	popover-html-unsafe="{{ popover_message(publication.title, publication.links, publication.attachments) }}">
+	popover-html-unsafe="{{ popover_message(publication.title, publication.links, publication.attachments, publication.tags) }}">
 		<td>{{publication.title}}</td>
 		<td>{{publication.description}}</td>
 		<td>{{publication.published_at | date:'MM/yyyy'}}</td>

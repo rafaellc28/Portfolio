@@ -8,22 +8,17 @@ class Certificate < ActiveRecord::Base
   
   acts_as_taggable_on :tags
   
-  validate :validate_tag
+  validate :validate_tags
   
-  def validate_tag(tag = nil)
-    if tag.nil?
-      tag_list.each do |tag|
-       self.types_certificate.validate_tag(tag)
-      end
-    else
-      tag_list.add(tag)
+  def validate_tags
+    tag_list.each do |tag|
       self.types_certificate.validate_tag(tag)
     end
   end
   
   def serializable_hash(options = nil)
     options = { 
-      :include => [:links, :attachments, :awards, {:tags => {:only => :name}}] 
+      :include => [:links, :attachments, :awards, {:tags => {:only => [:id, :name]}}] 
     }.update(options)
     
     super options

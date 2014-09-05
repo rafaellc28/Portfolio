@@ -11,8 +11,6 @@ class Education < ActiveRecord::Base
   
   #self.per_page = 30
   
-  validate :validate_tag
-  
   def validate_tag(tag = nil)
     if not tag.nil?
       tag_list.add(tag)
@@ -27,8 +25,10 @@ class Education < ActiveRecord::Base
   def serializable_hash(options = nil)
     
     options = { 
-      :include => [{:academic_periods => {:include => :academic_records}}, 
-      :links, :attachments, :awards, {:tags => {:only => :name}}] 
+      :include => [{:academic_periods => {:include => [{:academic_records => 
+      {:include => [{:tags => {:only => [:id, :name]}}, :links, :attachments, :awards]}}, 
+        {:tags => {:only => [:id, :name]}}, :links, :attachments, :awards]}}, 
+      :links, :attachments, :awards, {:tags => {:only => [:id, :name]}}] 
     }.update(options)
     
     super options

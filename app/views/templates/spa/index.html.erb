@@ -1,6 +1,6 @@
 <ng-cloak ng-init="init()"></ng-cloak>
-<div ng-bind-html-unsafe>
-	<div ng-hide="true">{{ label = labels[0]; }}</div>
+<div>
+	<div ng-hide="true">{{ label = labels[0][currentLanguage]; }}</div>
 	<div>
 		<ul class="nav nav-pills">
 			<li ng-class="{ active: isSelected(1) }">
