@@ -4,6 +4,8 @@ angular.module('portfolioApp').controller "SpaController", ($scope, Educations, 
   	
     @tab = 1
     
+    $scope.currentLanguage = 'en'
+    
     $scope.num = Sorting.number
     $scope.date = Sorting.date
     $scope.string = Sorting.string
@@ -30,6 +32,9 @@ angular.module('portfolioApp').controller "SpaController", ($scope, Educations, 
     $scope.item[$scope.pub] = new Section(0, new Sorting(0, ['-published_at'], '-published_at', Sorting.date))
     $scope.item[$scope.type_cert] = new Section(0, new Sorting(0, ['name'], 'name', Sorting.string))
     
+    @labelsService = new Labels(serverErrorHandler)
+    $scope.labels = @labelsService.all()
+    
     @educationsService = new Educations(serverErrorHandler)
     $scope.educations = @educationsService.all()
     
@@ -42,27 +47,42 @@ angular.module('portfolioApp').controller "SpaController", ($scope, Educations, 
     @companiesService = new Companies(serverErrorHandler)
     $scope.companies = @companiesService.all()
     
-    @labelsService = new Labels(serverErrorHandler)
-    $scope.labels = @labelsService.all()
+    #alert(JSON.stringify($scope.labels))
   
-  $scope.popover_message = (title, links, attachments) ->
+  $scope.popover_message = (title, links, attachments, tags) ->
     ret_str = "<center>#{title}</center><br>"
     
     if attachments.length > 0
-      ret_str += "#{$scope.labels[0].messages.attachments}<br>"
+      ret_str += "#{$scope.labels[0][$scope.currentLanguage].messages.attachments}<br>"
       
       for attachment in attachments
         ret_str += "<a href='#{attachment.path}' target='attach_#{attachment.id}'>#{attachment.name}</a><br>"
     
     if links.length > 0
-      ret_str += "#{$scope.labels[0].messages.links}<br>"
+      ret_str += "#{$scope.labels[0][$scope.currentLanguage].messages.links}<br>"
       
       for link in links
         ret_str += "<a href='#{link.link}' target='link_#{link.id}'>#{link.text}</a><br>"
     
-    ret_str += "<br><center>#{$scope.labels[0].messages.close_msg}</center><br>"
+    if tags.length > 0
+      ret_str += "#{$scope.labels[0][$scope.currentLanguage].messages.tags}<br>"
+      ret_str += "<ul class='nav nav-pills'>"
+      
+      for tag in tags
+        ret_str += "<li>"
+        ret_str += "<a tag-cloud data-cloud='tag-cloud' name='#{tag.name}' title='#{tag.name}' id='#{tag.id}' class='#{tag.css_class}'>#{tag.name}</a>"
+        ret_str += "</li>"
+      
+      ret_str += "</ul>"
+    
+    ret_str += "<br><center>#{$scope.labels[0][$scope.currentLanguage].messages.close_msg}</center><br>"
     
     ret_str
+  
+  $scope.bs_popover_message = (title, links, attachments, tags) ->
+    aux =
+      "title": ""
+      "content": $scope.popover_message(title, links, attachments, tags)
   
   $scope.selectTab = (selTab) ->
     @tab = selTab

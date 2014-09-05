@@ -72,12 +72,13 @@ Rails.application.routes.draw do
     resources :certificates, only: [:index, :show]
     resources :types_certificates, only: [:index, :show]
     resources :companies, only: [:index, :show]
+    resources :academic_periods, only: [:index]
     resources :labels, only: [:index, :show]
     resources :tags, only: [:index, :show]
     resources :spa, only: [:index]
   end
   
-  root :to => 'templates#index'
+  root :to => redirect('/spa')
   
   #get '/educations_index.html'
   

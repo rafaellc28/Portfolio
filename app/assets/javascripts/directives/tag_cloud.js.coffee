@@ -6,6 +6,7 @@ angular.module('portfolioApp').directive "tagCloud", (Sorting) ->
       elem = element[0]
       
       element.bind 'click', (event) ->
+        #alert(elem.id)
         
         if ($("##{elem.id}").prop('class')) == 'active'
           $("##{elem.id}").prop('class', '')

@@ -5,28 +5,35 @@
 	<tr>
 		<th>
 			<canvas class="icon" ng-click="updateOrder(ed_per, education_id, 'name', string)" icon-sorting data-parent="{{ education_id }}" data-neighbors="canvas_ed_per_started_at_{{ education_id }},canvas_ed_per_done_at_{{ education_id }}" data-type="ed_per" data-field="name" data-color="#2B65EC" id="canvas_ed_per_name_{{ education_id }}" width="16" height="16"></canvas>
-			{{ label.educations.academic_periods.name }}&nbsp;&nbsp;&nbsp;
+			{{ label.educations.academic_periods.name }}
 		</th>
 		<th>
 			<canvas class="icon" ng-click="updateOrder(ed_per, education_id, 'started_at', date)" icon-sorting data-parent="{{ education_id }}" data-neighbors="canvas_ed_per_name_{{ education_id }},canvas_ed_per_done_at_{{ education_id }}" data-type="ed_per" data-field="started_at" data-color="#2B65EC" id="canvas_ed_per_started_at_{{ education_id }}" width="16" height="16"></canvas>
-			{{ label.educations.academic_periods.started_at }}&nbsp;&nbsp;&nbsp;
+			{{ label.educations.academic_periods.started_at }}
 		</th>
 		<th>
 			<canvas class="icon" ng-click="updateOrder(ed_per, education_id, 'done_at', date)" icon-sorting data-parent="{{ education_id }}" data-neighbors="canvas_ed_per_name_{{ education_id }},canvas_ed_per_started_at_{{ education_id }}" data-type="ed_per" data-field="done_at" data-color="#2B65EC" id="canvas_ed_per_done_at_{{ education_id }}" width="16" height="16"></canvas>
 			{{ label.educations.academic_periods.done_at }}
 		</th>
+		<th>
+			{{ label.educations.academic_periods.details }}
+		</th>
 	</tr>
-	<tr class="rows" ng-repeat="academicPeriod in academic_periods | orderObjectBy : getOrderField(ed_per, education_id) : getOrderReversibility(ed_per, education_id) : getOrderType(ed_per, education_id)" id="academic_period_{{academicPeriod.id}}" data-tags="{{academicPeriod.tags | tags}}">
+	<tr class="rows" ng-repeat="academicPeriod in academic_periods | orderObjectBy : getOrderField(ed_per, education_id) : getOrderReversibility(ed_per, education_id) : getOrderType(ed_per, education_id)" id="academic_period_{{academicPeriod.id}}" data-test="test" data-tags="{{academicPeriod.tags | tags}}">
 		<td>
 			<canvas class="icon" ng-click="selectItem(ed_per, academicPeriod.id)" icon-section data-neighbors="canvas_ed_per_id_" data-color="#2B65EC" id="canvas_ed_per_id_{{ academicPeriod.id }}" width="16" height="16"></canvas>
-			{{academicPeriod.name}}&nbsp&nbsp;&nbsp;
+			{{academicPeriod.name}}
 		</td>
-		<td>{{academicPeriod.started_at | date:'MM/yyyy'}}&nbsp;&nbsp;&nbsp;</td>
+		<td>{{academicPeriod.started_at | date:'MM/yyyy'}}</td>
 		<td>{{academicPeriod.done_at | date:'MM/yyyy'}}</td>
+		<td align="center">
+			<canvas class="icon" icon-section data-neighbors="" data-color="#2B65EC" id="canvas_ed_per_details_id_{{ academicPeriod.id }}" width="16" height="16"
+			popover-html-unsafe="{{ popover_message(academicPeriod.name, academicPeriod.links, academicPeriod.attachments, academicPeriod.tags) }}"></canvas>
+		</td>
 	</tr>
 </table>
 <table class="noborder">
-	<tr ng-repeat="academicPeriod in education.academic_periods" data-tags="{{academicPeriod.tags | tags}}" class="noborder">
+	<tr ng-repeat="academicPeriod in education.academic_periods" class="noborder">
 		<td class="noborder">
 			<div ng-hide="true">{{ academic_records = academicPeriod.academic_records }}</div>
 			<div ng-hide="true">{{ academic_period_id = academicPeriod.id }}</div>

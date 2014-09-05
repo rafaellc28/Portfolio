@@ -4,8 +4,6 @@ class TypesCertificate < ActiveRecord::Base
   
   acts_as_taggable_on :tags
   
-  validate :validate_tag
-  
   def validate_tag(tag = nil)
     if not tag.nil?
       tag_list.add(tag)
