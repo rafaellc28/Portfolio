@@ -4,7 +4,7 @@
 
 $(document).ready ->
   
-  $("a[data-cloud*='tag-cloud']").on 'click', () ->
+  $("a[data-cloud='tag-cloud']").on 'click', () ->
     alert("test")
     if ($("##{@id}").prop('class')) == 'active'
       $("##{@id}").prop('class', '')

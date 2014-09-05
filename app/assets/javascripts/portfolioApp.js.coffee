@@ -1,4 +1,4 @@
-portfolioApp = angular.module('portfolioApp', ['ngResource', 'ngRoute', 'ui.bootstrap'])
+portfolioApp = angular.module('portfolioApp', ['ngResource', 'ngRoute', 'ui.bootstrap']) #, 'mgcrea.ngStrap', 'mgcrea.ngStrap.tooltip'
 
 # Makes AngularJS work with CSRF protection.
 portfolioApp.config ($httpProvider) ->
@@ -10,11 +10,17 @@ portfolioApp.config ($httpProvider) ->
 portfolioApp.config ($routeProvider, $locationProvider) ->
   $locationProvider.html5Mode true
   $routeProvider.when '/spa', templateUrl: '/templates/spa/index.html', controller: 'SpaController'
-  $routeProvider.when '/educations', templateUrl: '/templates/educations/index.html', controller: 'EducationsController'
-  $routeProvider.when '/educations/:id', templateUrl: '/templates/educations/show.html', controller: 'EducationController'
+  #$routeProvider.when '/educations', templateUrl: '/templates/educations/index.html', controller: 'EducationsController'
+  #$routeProvider.when '/educations/:id', templateUrl: '/templates/educations/show.html', controller: 'EducationController'
   #alert('"Hello"'.replace(/(^"|"$)/g, ''))
   
 portfolioApp.config ($tooltipProvider) ->
+  triggers = 
+    'click': 'click'
+    'focus': 'blur'
+  
+  $tooltipProvider.setTriggers(triggers)
+  
   opt = 
     trigger: 'click'
     placement: 'bottom'

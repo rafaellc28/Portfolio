@@ -8,7 +8,7 @@ class Publication < ActiveRecord::Base
   
   def serializable_hash(options = nil)
     options = { 
-      :include => [:links, :attachments, :awards, {:tags => {:only => :name}}] 
+      :include => [:links, :attachments, :awards, {:tags => {:only => [:id, :name]}}] 
     }.update(options)
     
     super options

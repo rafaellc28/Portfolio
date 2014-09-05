@@ -5,14 +5,14 @@
 	<tr>
 		<th>
 			<canvas class="icon" ng-click="updateOrder(type_cert, 0, 'name', string)" icon-sorting data-parent="0" data-neighbors="" data-type="type_cert" data-field="name" data-color="#2B65EC" id="canvas_type_cert_name" width="16" height="16"></canvas>
-			{{ label.types_certificates.name }}&nbsp;&nbsp;&nbsp;
+			{{ label.types_certificates.name }}
 		</th>
 		<th>{{ label.types_certificates.description }}</th>
 	</tr>
 	<tr class="rows" ng-repeat="typeCert in typesCertificates |  orderObjectBy : getOrderField(type_cert, 0) : getOrderReversibility(type_cert, 0) : getOrderType(type_cert, 0)" id="type_certificate_{{typeCert.id}}" data-tags="{{typeCert.tags | tags}}">
 		<td>
 			<canvas class="icon" ng-click="selectItem(type_cert, typeCert.id)" icon-section data-neighbors="canvas_type_cert_id_" data-color="#2B65EC" id="canvas_type_cert_id_{{ typeCert.id }}" width="16" height="16"></canvas>
-			{{typeCert.name}}&nbsp;&nbsp;&nbsp;
+			{{typeCert.name}}
 		</td>
 		<td>{{typeCert.description}}</td>
 	</tr>

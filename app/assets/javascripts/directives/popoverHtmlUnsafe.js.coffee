@@ -2,7 +2,7 @@
 
 angular.module("portfolioApp").directive "popoverHtmlUnsafePopup", () ->
   ret = 
-    restrict: "EA"
+    restrict: "A"
     replace: true,
     scope: 
       title: "@"
@@ -12,6 +12,5 @@ angular.module("portfolioApp").directive "popoverHtmlUnsafePopup", () ->
       isOpen: "&"
     templateUrl: "/templates/popover/popover-html-unsafe-popup.html"
 
-angular.module("portfolioApp").directive "popoverHtmlUnsafe", ["$tooltip", ($tooltip) ->
+angular.module("portfolioApp").directive "popoverHtmlUnsafe", ($tooltip) ->
   $tooltip("popoverHtmlUnsafe", "popover", "click")
-]

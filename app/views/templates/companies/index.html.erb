@@ -5,22 +5,22 @@
 	<tr>
 		<th>
 			<canvas class="icon" ng-click="updateOrder(comp, 0, 'name', string)" icon-sorting data-parent="0" data-neighbors="canvas_comp_first_job_date,canvas_comp_last_job_date" data-type="comp" data-field="name" data-color="#2B65EC" id="canvas_comp_name" width="16" height="16"></canvas>
-			{{ label.experiences.companies.name }}&nbsp;&nbsp;&nbsp;
+			{{ label.experiences.companies.name }}
 		</th>
 		<th>{{ label.experiences.companies.description }}</th>
 		<th>
 			<canvas class="icon" ng-click="updateOrder(comp, 0, 'first_job_date', date)" icon-sorting data-parent="0" data-neighbors="canvas_comp_last_job_date,canvas_comp_name" data-type="comp" data-field="first_job_date" data-color="#2B65EC" id="canvas_comp_first_job_date" width="16" height="16"></canvas>
-			{{ label.experiences.companies.first_job_date }}&nbsp;&nbsp;&nbsp;
+			{{ label.experiences.companies.first_job_date }}
 		</th>
 		<th>
 			<canvas class="icon" ng-click="updateOrder(comp, 0, 'last_job_date', date)" icon-sorting data-parent="0" data-neighbors="canvas_comp_first_job_date,canvas_comp_name" data-type="comp" data-field="last_job_date" data-color="#2B65EC" id="canvas_comp_last_job_date" width="16" height="16"></canvas>
-			{{ label.experiences.companies.last_job_date }}&nbsp;&nbsp;&nbsp;
+			{{ label.experiences.companies.last_job_date }}
 		</th>
 	</tr>
 	<tr class="rows" ng-repeat="company in companies |  orderObjectBy : getOrderField(comp, 0) : getOrderReversibility(comp, 0) : getOrderType(comp, 0)" id="company_{{company.id}}" data-tags="{{company.tags | tags}}">
 		<td>
 			<canvas class="icon" ng-click="selectItem(comp, company.id)" icon-section data-neighbors="canvas_comp_id_" data-color="#2B65EC" id="canvas_comp_id_{{ company.id }}" width="16" height="16"></canvas>
-			{{company.name}}&nbsp;&nbsp;&nbsp;
+			{{company.name}}
 		</td>
 		<td>{{company.description}}</td>
 		<td>{{company.first_job_date | date:'MM/yyyy'}}</td>
