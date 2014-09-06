@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, :skip => [:registrations, :passwords, :mailer]
+  devise_for :users, :skip => [:sessions, :registrations, :passwords, :mailer]
   
   devise_scope :user do
     get "sign_out", to: "educations#destroy"
