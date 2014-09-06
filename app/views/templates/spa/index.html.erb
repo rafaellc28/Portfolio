@@ -1,6 +1,7 @@
 <ng-cloak ng-init="init()"></ng-cloak>
 <div>
-	<div ng-hide="true">{{ label = labels[0][currentLanguage]; }}</div>
+    <div ng-hide="true">{{ setCurrentLanguage(); }}</div>
+	<div ng-hide="true">{{ label = labels[0][currentLanguage.language]; }}</div>
 	<div>
 		<ul class="nav nav-pills">
 			<li ng-class="{ active: isSelected(1) }">
@@ -17,7 +18,7 @@
 			</li>
 		</ul>
 	</div>
-
+	
 	<div ng-include="'templates/educations/index.html'" ng-show="isSelected(1)">
 	</div>
 	
