@@ -1,4 +1,8 @@
+# sort the records of a section
 angular.module('portfolioApp').filter 'orderObjectBy', (Sorting) ->
+  # return a filtered array ordered by field
+  # if reverse is true, it is ordered in descending order
+  # type define if field is a number, date or string
   func = (items, field, reverse, type) ->
     filtered = []
     
@@ -13,6 +17,7 @@ angular.module('portfolioApp').filter 'orderObjectBy', (Sorting) ->
         x = new Date(a[field])
         y = new Date(b[field])
       else
+        # strip accents to perform comparison between two strings
         x = normalize(a[field])
         y = normalize(b[field])
       

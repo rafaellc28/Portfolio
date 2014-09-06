@@ -34,8 +34,6 @@ class Api::TagsController < Api::BaseController
       @tags_json.push(tag_aux)
     end
     
-    @tags_json.to_json
-    
     render json: @tags_json
     
   end

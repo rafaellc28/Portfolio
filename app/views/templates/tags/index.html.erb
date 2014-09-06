@@ -1,17 +1,19 @@
-<table ng-show="tags == 0">
-	<tr><td>{{ label.tags.empty_msg }}</td></tr>
-</table>
 <div ng-controller="TagsController" ng-init="init()">
+	<div ng-hide="true">{{ setCurrentLanguage(); }}</div>
+	<div ng-hide="true">{{ label = labels[0][currentLanguage.language]; }}</div>
+	<table ng-show="tags == 0">
+		<tr><td>{{ label.tags.empty_msg }}</td></tr>
+	</table>
     <div id="tag_cloud">
 		<table id="tag_section_list" ng-init="validateOrder(tag_section, 0)" class="noborder" width="100%">
 			<tr width="100%">
 				<th width="30%" class="noborder">
 					<canvas class="icon" ng-click="updateOrder(tag_section, 0, 'taggings_count', number)" icon-sorting data-parent="0" data-neighbors="canvas_tag_section_name" data-type="tag_section" data-field="taggings_count" data-color="#2B65EC" id="canvas_tag_section_taggings_count" width="16" height="16"></canvas>
-					{{ labels[0].tags.taggings_count }}
+					{{ label.tags.taggings_count }}
 				</th>
 				<th width="30%" class="noborder">
 					<canvas class="icon" ng-click="updateOrder(tag_section, 0, 'name', string)" icon-sorting data-parent="0" data-neighbors="canvas_tag_section_taggings_count" data-type="tag_section" data-field="name" data-color="#2B65EC" id="canvas_tag_section_name" width="16" height="16"></canvas>
-					{{ labels[0].tags.name }}
+					{{ label.tags.name }}
 				</th>
 				<th width="40%" class="noborder">
 					<input ng-model="search_text" type="text" size="12"></input>
