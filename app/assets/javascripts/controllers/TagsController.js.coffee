@@ -1,7 +1,10 @@
-angular.module('portfolioApp').controller "TagsController", ($scope, Tags, Labels, Sorting, Section) ->
+angular.module('portfolioApp').controller "TagsController", ($scope, Tags, Labels, Languages, Sorting, Section) ->
+  
+  $scope.currentLanguage = Languages.getCurrentLanguage()
   
   $scope.init = ->
     
+    $scope.currentLanguage = ''
     $scope.search_text = ''
     
     $scope.number = Sorting.number
@@ -18,6 +21,12 @@ angular.module('portfolioApp').controller "TagsController", ($scope, Tags, Label
     
     @labelsService = new Labels(serverErrorHandler)
     $scope.labels = @labelsService.all()
+    
+    @languagesService = new Languages(serverErrorHandler)
+    $scope.languages = @languagesService.all()
+  
+  $scope.setCurrentLanguage = () ->
+    $scope.currentLanguage = Languages.getCurrentLanguage()
   
   $scope.validateOrder = (id, parent_id) ->
     $scope.item[id].validateOrder(parent_id)

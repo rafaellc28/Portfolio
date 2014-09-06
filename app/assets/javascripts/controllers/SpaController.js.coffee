@@ -1,10 +1,8 @@
-angular.module('portfolioApp').controller "SpaController", ($scope, Educations, Publications, TypesCertificates, Companies, Labels, Sorting, Section) ->
+angular.module('portfolioApp').controller "SpaController", ($scope, Educations, Publications, TypesCertificates, Companies, Labels, Languages, Sorting, Section) ->
   
   $scope.init = ->
   	
     @tab = 1
-    
-    $scope.currentLanguage = 'en'
     
     $scope.num = Sorting.number
     $scope.date = Sorting.date
@@ -35,6 +33,9 @@ angular.module('portfolioApp').controller "SpaController", ($scope, Educations, 
     @labelsService = new Labels(serverErrorHandler)
     $scope.labels = @labelsService.all()
     
+    #@languagesService = new Languages(serverErrorHandler)
+    #$scope.languages = @languagesService.all()
+    
     @educationsService = new Educations(serverErrorHandler)
     $scope.educations = @educationsService.all()
     
@@ -46,26 +47,27 @@ angular.module('portfolioApp').controller "SpaController", ($scope, Educations, 
     
     @companiesService = new Companies(serverErrorHandler)
     $scope.companies = @companiesService.all()
-    
-    #alert(JSON.stringify($scope.labels))
+  
+  $scope.setCurrentLanguage = () ->
+    $scope.currentLanguage = Languages.getCurrentLanguage()
   
   $scope.popover_message = (title, links, attachments, tags) ->
     ret_str = "<center>#{title}</center><br>"
     
     if attachments.length > 0
-      ret_str += "#{$scope.labels[0][$scope.currentLanguage].messages.attachments}<br>"
+      ret_str += "#{$scope.labels[0][$scope.currentLanguage.language].messages.attachments}<br>"
       
       for attachment in attachments
         ret_str += "<a href='#{attachment.path}' target='attach_#{attachment.id}'>#{attachment.name}</a><br>"
     
     if links.length > 0
-      ret_str += "#{$scope.labels[0][$scope.currentLanguage].messages.links}<br>"
+      ret_str += "#{$scope.labels[0][$scope.currentLanguage.language].messages.links}<br>"
       
       for link in links
         ret_str += "<a href='#{link.link}' target='link_#{link.id}'>#{link.text}</a><br>"
     
     if tags.length > 0
-      ret_str += "#{$scope.labels[0][$scope.currentLanguage].messages.tags}<br>"
+      ret_str += "#{$scope.labels[0][$scope.currentLanguage.language].messages.tags}<br>"
       ret_str += "<ul class='nav nav-pills'>"
       
       for tag in tags
@@ -75,14 +77,14 @@ angular.module('portfolioApp').controller "SpaController", ($scope, Educations, 
       
       ret_str += "</ul>"
     
-    ret_str += "<br><center>#{$scope.labels[0][$scope.currentLanguage].messages.close_msg}</center><br>"
+    ret_str += "<br><center>#{$scope.labels[0][$scope.currentLanguage.language].messages.close_msg}</center><br>"
     
     ret_str
   
-  $scope.bs_popover_message = (title, links, attachments, tags) ->
-    aux =
-      "title": ""
-      "content": $scope.popover_message(title, links, attachments, tags)
+  #$scope.bs_popover_message = (title, links, attachments, tags) ->
+  #  aux =
+  #    "title": ""
+  #    "content": $scope.popover_message(title, links, attachments, tags)
   
   $scope.selectTab = (selTab) ->
     @tab = selTab
