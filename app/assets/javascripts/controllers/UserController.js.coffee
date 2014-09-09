@@ -18,4 +18,4 @@ angular.module('portfolioApp').controller "UserController", ($scope, Users, Lang
     $scope.label = $scope.labels[0][$scope.currentLanguage]
   
   serverErrorHandler = ->
-    alert("Server error, please try again!")
+    alert("Server error in UserController, please try again!")

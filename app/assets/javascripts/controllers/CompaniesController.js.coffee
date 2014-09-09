@@ -5,4 +5,4 @@ angular.module('portfolioApp').controller "CompaniesController", ($scope, Compan
     $scope.companies = @companiesService.all()
   
   serverErrorHandler = ->
-    alert("Server error, please try again!")
+    alert("Server error in CompaniesController, please try again!")

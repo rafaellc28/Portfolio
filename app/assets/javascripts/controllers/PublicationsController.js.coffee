@@ -6,4 +6,4 @@ angular.module('portfolioApp').controller "PublicationsController", ($scope, Pub
     $scope.publications = @publicationsService.all()
   
   serverErrorHandler = ->
-    alert("Server error, please try again!")
+    alert("Server error in PublicationsController, please try again!")
