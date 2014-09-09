@@ -1,13 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  entity_id: 
   title: MyString
   description: 
-  published_at: 2014-08-04
+  published: 2014-08-04
 
 two:
-  entity_id: 
   title: MyString
   description: 
-  published_at: 2014-08-04
+  published: 2014-08-04

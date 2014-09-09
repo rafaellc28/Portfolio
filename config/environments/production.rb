@@ -93,4 +93,10 @@ Rails.application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
   
+  #Needed to load assets
+  # run 'RAILS_ENV=production bundle exec rake assets:precompile' on app directory
+  #config.assets.precompile += ['core.css', 'core-desktop.css', 'core-1200px.css', 
+  #  'core-noscript.css', 'style.css', 'style-desktop.css', 'jquery.js', 'init.js']
+  config.assets.precompile += ['*.css', '*.js', '*.js.coffee', '*.pdf', '*.png', '*.jpg', '*.jpeg', '*.gif']
+  
 end

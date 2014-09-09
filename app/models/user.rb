@@ -1,12 +1,27 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, #:registerable,
+  devise :database_authenticatable, :registerable,
          :trackable, :validatable, #:recoverable, :rememberable, 
          :timeoutable#, :lockable, :confirmable, :omniauthable
          
   #before_create :set_auth_token
   before_save :ensure_authentication_token
+  
+  has_many :links, as: :link_ref
+  has_many :attachments, as: :attachment_ref
+  has_many :awards, as: :award_ref
+  
+  # add its links, attachments and awards to the json of this model
+  # and include only the id, name e email fields
+  def serializable_hash(options = nil)
+    options = { 
+      :only => [:id, :name, :email],
+      :include => [:links, :attachments, :awards] 
+    }.update(options)
+    
+    super options
+  end
   
   private
     

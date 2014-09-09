@@ -8,13 +8,13 @@ class Api::TagsController < Api::BaseController
     @types_certificates_tags = TypesCertificate.tag_counts_on(:tags)
     @publications_tags = Publication.tag_counts_on(:tags)
     @educations_tags = Education.tag_counts_on(:tags)
-    @academic_periods_tags = AcademicPeriod.tag_counts_on(:tags)
-    @academic_records_tags = AcademicRecord.tag_counts_on(:tags)
+    @academic_terms_tags = AcademicTerm.tag_counts_on(:tags)
+    @academic_courses_tags = AcademicCourse.tag_counts_on(:tags)
     @companies_tags = Company.tag_counts_on(:tags)
     @jobs_tags = Job.tag_counts_on(:tags)
     
     @tags = @certificates_tags + @types_certificates_tags + @publications_tags + 
-    @educations_tags + @academic_periods_tags + @academic_records_tags +
+    @educations_tags + @academic_terms_tags + @academic_courses_tags +
     @companies_tags + @jobs_tags
     
     @tags = @tags.uniq

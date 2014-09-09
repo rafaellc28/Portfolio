@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Webfolio</title>
+  <title>SinglePagePortfolio</title>
   <%= csrf_meta_tags %>
 </head>
 <body ng-app="portfolioApp">
 
-<p><h1>Rafael Lima Curi</h1></p>
+<!--<p><h1>Rafael Lima Curi</h1></p>-->
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
@@ -16,6 +16,9 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" %>
   <%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" %>
+  <%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js" %>
+  <%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-resource.min.js" %>
+  <%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-route.min.js" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>  
   <%= javascript_include_tag "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" %>
 </body>

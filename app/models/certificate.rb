@@ -9,13 +9,24 @@ class Certificate < ActiveRecord::Base
   acts_as_taggable_on :tags
   
   validate :validate_tags
+  validate :validate_awards
   
+  # asserts the types_certificate parent also has the tags of this certificate
   def validate_tags
     tag_list.each do |tag|
-      self.types_certificate.validate_tag(tag)
+      types_certificate.validate_tag(tag)
+    end
+    types_certificate.save
+  end
+  
+  # asserts the types_certificate parent also has the awards of this certificate
+  def validate_awards
+    awards.each do |award|
+      types_certificate.validate_award(award)
     end
   end
   
+  # add links, attachments, awards and tags to the json of this model
   def serializable_hash(options = nil)
     options = { 
       :include => [:links, :attachments, :awards, {:tags => {:only => [:id, :name]}}] 

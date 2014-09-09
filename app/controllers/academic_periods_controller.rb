@@ -1,2 +1,0 @@
-class AcademicPeriodsController < ApplicationController
-end

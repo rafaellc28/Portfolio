@@ -10,7 +10,7 @@ angular.module('portfolioApp').directive "iconSection", (Section) ->
       ctx = elem.getContext('2d')
       
       # set the icon color
-      ctx.fillStyle = elem.dataset.color
+      ctx.fillStyle = '#2B65EC'#scope.getIconColor()
       
       # when the icon is clicked
       element.bind 'click', (event) ->
@@ -32,7 +32,7 @@ angular.module('portfolioApp').directive "iconSection", (Section) ->
             neighbor.dataset.status = Section.open
             ctx_aux = neighbor.getContext('2d')
             ctx_aux.fillStyle = neighbor.dataset.color
-            open(ctx_aux)
+            Section.drawOpen(ctx_aux, neighbor)
         
         # set the icon color
         ctx.fillStyle = elem.dataset.color
@@ -40,24 +40,15 @@ angular.module('portfolioApp').directive "iconSection", (Section) ->
         # if the previous status of this section was open, now it must be closed
         if elem.dataset.status == Section.open
           elem.dataset.status = Section.close
-          close(ctx)
+          Section.drawClose(ctx, elem)
         # if the previous status of this section was close, now it must be opened
         else
           elem.dataset.status = Section.open
-          open(ctx)
-      
-      #Draw open icon
-      open = (ctx_param) ->
-        ctx_param.fillRect(3,9,11,3)
-        ctx_param.fillRect(7,5,3,11)
-      
-      #Draw close icon
-      close = (ctx_param) ->
-        ctx_param.fillRect(3,9,10,3)
+          Section.drawOpen(ctx, elem)
       
       # set the icon according to the current status
       if elem.dataset.status == Section.close
-        close(ctx)
+        Section.drawClose(ctx, elem)
       else 
         elem.dataset.status = Section.open
-        open(ctx)
+        Section.drawOpen(ctx, elem)

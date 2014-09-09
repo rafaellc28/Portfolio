@@ -6,6 +6,7 @@ class Publication < ActiveRecord::Base
   
   acts_as_taggable_on :tags
   
+  # add its links, attachments, awards and tags to the json of this model
   def serializable_hash(options = nil)
     options = { 
       :include => [:links, :attachments, :awards, {:tags => {:only => [:id, :name]}}] 

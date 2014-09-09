@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, :skip => [:sessions, :registrations, :passwords, :mailer]
-  
-  devise_scope :user do
-    get "sign_out", to: "educations#destroy"
-  end
+  devise_for :users
   
   namespace :api, defaults: {format: :json} do
     resources :educations, only: [:index, :show]
@@ -11,18 +7,21 @@ Rails.application.routes.draw do
     resources :certificates, only: [:index, :show]
     resources :types_certificates, only: [:index, :show]
     resources :companies, only: [:index, :show]
-    resources :academic_periods, only: [:index]
+    resources :academic_periods, only: [:index, :show]
     resources :labels, only: [:index, :show]
     resources :tags, only: [:index, :show]
-    resources :spa, only: [:index]
-    resources :languages, only: [:index]
+    resources :portfolio, only: [:index, :show]
+    resources :languages, only: [:index, :show]
+    resources :projects, only: [:index, :show]
+    resources :users, only: [:index, :show]
   end
   
-  root :to => redirect('/spa')
+  root :to => redirect('/portfolio')
   
-  get '/tests' => 'tests#index'
+  get '/admin' => 'admin/welcome#index'
+  get '/admin/tests' => 'admin/tests#index'
   get '/' => 'templates#index'
-  get '/spa' => 'templates#index'
+  get '/portfolio' => 'templates#index'
   get '/educations' => 'templates#index'
   get '/educations/:id' => 'templates#index'
   get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/  }

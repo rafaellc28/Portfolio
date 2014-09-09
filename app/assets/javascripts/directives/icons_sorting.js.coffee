@@ -12,7 +12,7 @@ angular.module('portfolioApp').directive "iconSorting", (Sorting) ->
       ctx = elem.getContext('2d')
       
       # set the icon color
-      ctx.fillStyle = elem.dataset.color
+      ctx.fillStyle = scope.getIconColor()#'#2B65EC'
       
       # when the icon is clicked
       element.bind 'click', (event) ->
@@ -35,62 +35,36 @@ angular.module('portfolioApp').directive "iconSorting", (Sorting) ->
           neighbor.width = neighbor.width
           ctx_aux = neighbor.getContext('2d')
           ctx_aux.fillStyle = neighbor.dataset.color
-          none(ctx_aux)
+          Sorting.drawNone(ctx_aux, neighbor)
+          neighbor.dataset.status = Sorting.none
         
         # set the icon color
-        ctx.fillStyle = elem.dataset.color
+        ctx.fillStyle = scope.getIconColor()
         
         # if the previous icon was for descending sort or none, 
         # then the current is for ascending sort 
         if curStatus == Sorting.desc or curStatus == Sorting.none
           curStatus = Sorting.asc
-          asc(ctx)
+          Sorting.drawAsc(ctx, elem)
+          elem.dataset.status = Sorting.asc
         # if the previous icon was for ascending sort, 
         # then the current is for descending sort 
         else
           curStatus = Sorting.desc
-          desc(ctx)
-      
-      #Draw descending order icon
-      desc = (ctx_param) ->
-        # a tringle pointing up
-        ctx_param.beginPath()
-        ctx_param.moveTo(8,5)
-        ctx_param.lineTo(14,16)
-        ctx_param.lineTo(2,16)
-        ctx_param.closePath()
-        ctx_param.fill()
-      
-      #Draw ascending order icon
-      asc = (ctx_param) ->
-        # a triangle pointing down
-        ctx_param.beginPath()
-        ctx_param.moveTo(2,5)
-        ctx_param.lineTo(14,5)
-        ctx_param.lineTo(8,16)
-        ctx_param.closePath()
-        ctx_param.fill()
-      
-      #Draw no sorting order icon
-      none = (ctx_param) ->
-        # a circle
-        centerX = elem.width / 2
-        centerY = 10
-        radius = 3
-        
-        ctx_param.beginPath()
-        ctx_param.arc(centerX, centerY, radius, 0, 2 * Math.PI, false)
-        ctx_param.closePath()
-        ctx_param.fill()
+          Sorting.drawDesc(ctx, elem)
+          elem.dataset.status = Sorting.desc
       
       # get current sort order for the field
       curStatus = scope.currentOrderBySection(elem.dataset.type, elem.dataset.parent, elem.dataset.field)
       
       # set the icon according to the current sort order for the field
       if curStatus == Sorting.desc
-        desc(ctx)
+        Sorting.drawDesc(ctx, elem)
+        elem.dataset.status = Sorting.desc
       else if curStatus == Sorting.asc
-        asc(ctx)
+        Sorting.drawAsc(ctx, elem)
+        elem.dataset.status = Sorting.asc
       else
         curStatus = Sorting.none
-        none(ctx)
+        Sorting.drawNone(ctx, elem)
+        elem.dataset.status = Sorting.none

@@ -1,0 +1,1 @@
+(function(){angular.module("portfolioApp").factory("Tags",function($resource){var Tags;return Tags=function(){function Tags(errorHandler){this.service=$resource("/api/tags"),this.errorHandler=errorHandler}return Tags.prototype.all=function(){return this.service.query(function(){return null},this.errorHandler)},Tags}()})}).call(this);
