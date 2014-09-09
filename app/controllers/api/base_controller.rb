@@ -1,5 +1,5 @@
 class Api::BaseController < ActionController::Base
-  #before_action :check_auth
+  before_action :check_auth
   
   private
 
@@ -39,7 +39,7 @@ class Api::BaseController < ActionController::Base
   end
   
   def render_unauthorized
-    self.headers['WWW-Authenticate'] = 'Basic realm="Educations"' 
+    self.headers['WWW-Authenticate'] = 'Basic realm="Portfolio"' 
     
     respond_to do |format|
       format.json { render json: {error: 'unauthorized'}, status: :unauthorized } 
