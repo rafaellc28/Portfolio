@@ -4,21 +4,21 @@
 <table ng-init="validateOrder(cert, type_certificate_id)" id="certificates_list">
 	<tr>
 		<th>
-			<canvas class="icon" ng-click="updateOrder(cert, type_certificate_id, 'title', string)" icon-sorting data-parent="{{ type_certificate_id }}" data-neighbors="canvas_cert_issued_at_{{ type_certificate_id }}" data-type="cert" data-field="title" data-color="#2B65EC" id="canvas_cert_title_{{ type_certificate_id }}" width="16" height="16"></canvas>
+			<canvas class="icon" ng-click="updateOrder(cert, type_certificate_id, 'title', string)" icon-sorting data-parent="{{ type_certificate_id }}" data-neighbors="canvas_cert_issued_{{ type_certificate_id }}" data-type="cert" data-field="title" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_cert_title_{{ type_certificate_id }}" width="16" height="16"></canvas>
 			{{ label.types_certificates.certificates.title }}
 		</th>
 		<th>{{ label.types_certificates.certificates.description }}</th>
 		<th>
-			<canvas class="icon" ng-click="updateOrder(cert, type_certificate_id, 'issued_at', date)" icon-sorting data-parent="{{ type_certificate_id }}" data-neighbors="canvas_cert_title_{{ type_certificate_id }}" data-type="cert" data-field="issued_at" data-color="#2B65EC" id="canvas_cert_issued_at_{{ type_certificate_id }}" width="16" height="16"></canvas>
-			{{ label.types_certificates.certificates.issued_at }}
+			<canvas class="icon" ng-click="updateOrder(cert, type_certificate_id, 'issued', date)" icon-sorting data-parent="{{ type_certificate_id }}" data-neighbors="canvas_cert_title_{{ type_certificate_id }}" data-type="cert" data-field="issued" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_cert_issued_{{ type_certificate_id }}" width="16" height="16"></canvas>
+			{{ label.types_certificates.certificates.issued }}
 		</th>
 	</tr>
 	<tr class="rows link" title="{{ label.messages.tooltip }}" 
 	ng-repeat="certificate in certificates | orderObjectBy : getOrderField(cert, type_certificate_id) : getOrderReversibility(cert, type_certificate_id) : getOrderType(cert, type_certificate_id)" id="certificate_{{certificate.id}}"
 	data-tags="{{certificate.tags | tags}}" 
-	popover-html-unsafe="{{ popover_message(certificate.title, certificate.links, certificate.attachments, certificate.tags) }}">
+	popover-html-unsafe="{{ popover_message(certificate.title, certificate.links, certificate.attachments, certificate.tags, certificate.awards) }}">
 		<td>{{certificate.title}}</td>
 		<td>{{certificate.description}}</td>
-		<td>{{certificate.issued_at | date:'MM/yyyy'}}</td>
+		<td>{{certificate.issued | date:label.config.date_format}}</td>
 	</tr>
 </table>

@@ -1,0 +1,29 @@
+<table ng-show="projects == 0">
+	<tr><td>{{ label.projects.empty_msg }}</td></tr>
+</table>
+<table ng-init="validateOrder(proj, 0)" id="projects_list">
+	<tr>
+		<th>
+			<canvas class="icon" ng-click="updateOrder(proj, 0, 'name', string)" icon-sorting data-parent="0" data-neighbors="canvas_proj_created,canvas_proj_updated" data-type="proj" data-field="name" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_proj_name" width="16" height="16"></canvas>
+			{{ label.projects.name }}
+		</th>
+		<th>{{ label.projects.description }}</th>
+		<th width="15%">
+			<canvas class="icon" ng-click="updateOrder(proj, 0, 'created', date)" icon-sorting data-parent="0" data-neighbors="canvas_proj_name,canvas_proj_updated" data-type="proj" data-field="created" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_proj_created" width="16" height="16"></canvas>
+			{{ label.projects.created }}
+		</th>
+		<th width="15%">
+			<canvas class="icon" ng-click="updateOrder(proj, 0, 'updated', date)" icon-sorting data-parent="0" data-neighbors="canvas_proj_name,canvas_proj_created" data-type="proj" data-field="updated" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_proj_updated" width="16" height="16"></canvas>
+			{{ label.projects.updated }}
+		</th>
+		<th>{{ label.projects.version }}</th>
+	</tr>
+	<tr class="rows link" ng-repeat="project in projects |  orderObjectBy : getOrderField(proj, 0) : getOrderReversibility(proj, 0) : getOrderType(proj, 0)" id="project_{{project.id}}" data-tags="{{project.tags | tags}}"
+	popover-html-unsafe="{{ popover_message(project.name, project.links, project.attachments, project.tags, project.awards) }}">
+		<td>{{project.name}}</td>
+		<td>{{project.description}}</td>
+		<td>{{project.created | date:label.config.date_format}}</td>
+		<td>{{project.updated | date:label.config.date_format}}</td>
+		<td>{{project.version}}</td>
+	</tr>
+</table>

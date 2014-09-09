@@ -4,23 +4,24 @@
 <table ng-init="validateOrder(job, company_id)" id="jobs_list">
 	<tr>
 		<th>
-			<canvas class="icon" ng-click="updateOrder(job, company_id, 'title', string)" icon-sorting data-parent="{{ company_id }}" data-neighbors="canvas_job_done_at_{{ company_id }},canvas_job_started_at_{{ company_id }}" data-type="job" data-field="title" data-color="#2B65EC" id="canvas_job_title_{{ company_id }}" width="16" height="16"></canvas>
+			<canvas class="icon" ng-click="updateOrder(job, company_id, 'title', string)" icon-sorting data-parent="{{ company_id }}" data-neighbors="canvas_job_end_{{ company_id }},canvas_job_start_{{ company_id }}" data-type="job" data-field="title" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_job_title_{{ company_id }}" width="16" height="16"></canvas>
 			{{ label.experiences.companies.jobs.title }}
 		</th>
 		<th>{{ label.experiences.companies.jobs.description }}</th>
 		<th width="10%">
-			<canvas class="icon" ng-click="updateOrder(job, company_id, 'started_at', date)" icon-sorting data-parent="{{ company_id }}" data-neighbors="canvas_job_done_at_{{ company_id }},canvas_job_title_{{ company_id }}" data-type="job" data-field="started_at" data-color="#2B65EC" id="canvas_job_started_at_{{ company_id }}" width="16" height="16"></canvas>
-			{{ label.experiences.companies.jobs.started_at }}
+			<canvas class="icon" ng-click="updateOrder(job, company_id, 'start', date)" icon-sorting data-parent="{{ company_id }}" data-neighbors="canvas_job_end_{{ company_id }},canvas_job_title_{{ company_id }}" data-type="job" data-field="start" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_job_start_{{ company_id }}" width="16" height="16"></canvas>
+			{{ label.experiences.companies.jobs.start }}
 		</th>
 		<th width="15%">
-			<canvas class="icon" ng-click="updateOrder(job, company_id, 'done_at', date)" icon-sorting data-parent="{{ company_id }}" data-neighbors="canvas_job_started_at_{{ company_id }},canvas_job_title_{{ company_id }}" data-type="job" data-field="done_at" data-color="#2B65EC" id="canvas_job_done_at_{{ company_id }}" width="16" height="16"></canvas>
-			{{ label.experiences.companies.jobs.done_at }}
+			<canvas class="icon" ng-click="updateOrder(job, company_id, 'end', date)" icon-sorting data-parent="{{ company_id }}" data-neighbors="canvas_job_start_{{ company_id }},canvas_job_title_{{ company_id }}" data-type="job" data-field="end" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_job_end_{{ company_id }}" width="16" height="16"></canvas>
+			{{ label.experiences.companies.jobs.end }}
 		</th>
 	</tr>
-	<tr class="rows" ng-repeat="job in jobs |  orderObjectBy : getOrderField(job, company_id) : getOrderReversibility(job, company_id) : getOrderType(job, company_id)" id="job_{{job.id}}" data-tags="{{job.tags | tags}}">
+	<tr class="rows link" ng-repeat="job in jobs |  orderObjectBy : getOrderField(job, company_id) : getOrderReversibility(job, company_id) : getOrderType(job, company_id)" id="job_{{job.id}}" data-tags="{{job.tags | tags}}"
+	popover-html-unsafe="{{ popover_message(job.title, job.links, job.attachments, job.tags, job.awards) }}">
 		<td>{{job.title}}</td>
 		<td>{{job.description}}</td>
-		<td>{{job.started_at | date:'MM/yyyy'}}</td>
-		<td>{{job.done_at | date:'MM/yyyy'}}</td>
+		<td>{{job.start | date:label.config.date_format}}</td>
+		<td>{{job.end | date:label.config.date_format}}</td>
 	</tr>
 </table>

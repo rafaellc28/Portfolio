@@ -1,0 +1,1 @@
+(function(){angular.module("portfolioApp").controller("CompaniesController",function($scope,Companies){var serverErrorHandler;return $scope.init=function(){return this.companiesService=new Companies(serverErrorHandler),$scope.companies=this.companiesService.all()},serverErrorHandler=function(){return alert("Server error, please try again!")}})}).call(this);

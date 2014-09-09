@@ -10,9 +10,16 @@ angular.module('portfolioApp').factory 'Languages', ($resource) ->
     all: ->
       @service.query((-> null), @errorHandler)
     
+    @setLanguages: (current) ->
+      @current.languages = current
+      @current.language = @current.languages[0].acronym
+    
+    @getCurrent: () ->
+      @current.languages
+    
     @setCurrentLanguage: (language) ->
       @current.language = language
     
     @getCurrentLanguage: ->
-      @current
+      @current.language
       

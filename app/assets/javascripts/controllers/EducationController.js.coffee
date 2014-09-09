@@ -5,4 +5,4 @@ angular.module('portfolioApp').controller "EducationController", ($scope, $route
     $scope.education = @educationService.find $routeParams.id
     
   serverErrorHandler = ->
-    alert("There was a server error, please reload the page and try again!")
+    alert("Server error, please try again!")

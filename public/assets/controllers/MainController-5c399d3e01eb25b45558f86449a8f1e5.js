@@ -1,0 +1,1 @@
+(function(){angular.module("portfolioApp").controller("MainController",function($scope,Labels,Languages,initialData){return Labels.setLabels(initialData.labels),Languages.setLanguages(initialData.languages)})}).call(this);

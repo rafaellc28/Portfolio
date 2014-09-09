@@ -1,6 +1,6 @@
 # Manage the action of open/close a section and 
 # the sorting of the section and its subsections
-angular.module('portfolioApp').factory 'Section', [ "Sorting", (Sorting) ->
+angular.module('portfolioApp').factory 'Section', (Sorting) ->
   class Section
     
     # open / close status
@@ -34,4 +34,52 @@ angular.module('portfolioApp').factory 'Section', [ "Sorting", (Sorting) ->
       if not @orderController[parentId]
         @orderController[parentId] = jQuery.extend(true, {}, @orderController[@initParentId])
         @orderController[parentId].setParentId(parentId)
-]
+        
+    #Draw open icon
+    @drawOpen = (ctx_param, elem) ->
+      ctx_param.fillRect(3,9,11,3)
+      ctx_param.fillRect(7,5,3,11)
+    
+    #Draw close icon
+    @drawClose = (ctx_param, elem) ->
+      ctx_param.fillRect(3,9,10,3)
+    
+    @popover_message = (title, links, attachments, tags, awards, label) ->
+      ret_str = "<center>#{title}</center><br>"
+      
+      if awards.length > 0
+        ret_str += "#{label.messages.awards}<br>"
+        
+        for award in Sorting.sort(awards, 'title', false, Sorting.string)
+          
+          date_issued = new Date(award.issued)
+          date_fr = date_issued.format(label.config.date_format_js)
+          ret_str += "#{award.title} - #{date_fr}</a><br>"
+      
+      if attachments.length > 0
+        ret_str += "#{label.messages.attachments}<br>"
+        
+        for attachment in Sorting.sort(attachments, 'name', false, Sorting.string)
+          ret_str += "<a href='#{attachment.path}' target='attach_#{attachment.id}'>#{attachment.name}</a><br>"
+      
+      if links.length > 0
+        ret_str += "#{label.messages.links}<br>"
+        
+        for link in Sorting.sort(links, 'text', false, Sorting.string)
+          ret_str += "<a href='#{link.link}' target='link_#{link.id}'>#{link.text}</a><br>"
+      
+      if tags.length > 0
+        ret_str += "#{label.messages.tags}<br>"
+        ret_str += "<ul class='nav nav-pills'>"
+      
+        for tag in Sorting.sort(tags, 'name', false, Sorting.string)
+          ret_str += "<li>"
+          ret_str += "<a tag-cloud data-cloud='tag-cloud' name='#{tag.name}' title='#{tag.name}' id='#{tag.id}' class='#{tag.css_class}'>#{tag.name}</a>"
+          ret_str += "</li>"
+        
+        ret_str += "</ul>"
+      
+      ret_str += "<br><center>#{label.messages.close_msg}</center><br>"
+      
+      ret_str
+      

@@ -1,0 +1,1 @@
+(function(){angular.module("portfolioApp").controller("LabelsController",function($scope,Labels){var serverErrorHandler;return $scope.init=function(){return this.labelsService=new Labels(serverErrorHandler),$scope.labels=this.labelsService.all()},serverErrorHandler=function(){return alert("Server error, please try again!")}})}).call(this);

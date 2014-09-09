@@ -1,6 +1,5 @@
 class Api::BaseController < ActionController::Base
   #before_action :check_auth
-  before_filter :authenticate_user!
   
   private
 
