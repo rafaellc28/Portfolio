@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   #before_create :set_auth_token
   before_save :ensure_authentication_token
   
+  validates_presence_of :name, :on => :update, :message => "Fill name!"
+  
   has_many :links, as: :link_ref
   has_many :attachments, as: :attachment_ref
   has_many :awards, as: :award_ref
@@ -40,6 +42,16 @@ class User < ActiveRecord::Base
 =end
   
   private
+  
+    def ensure_name
+      
+      super
+      
+      if some condition
+        errors.add('', 'some text')
+      end
+      
+    end
     
     def ensure_authentication_token
       if authentication_token.blank?

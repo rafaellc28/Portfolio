@@ -1,0 +1,30 @@
+<%= form_tag do %>
+
+  <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <% msg = @user.errors.count.to_s + " " + @error.pluralize(@user.errors.count) %>
+    <%= content_tag :div, msg, class: :error %>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  
+  <p>&nbsp;</p>
+
+  <p>
+    <strong><%= label_tag @label_email %></strong><br>
+    <%= text_field_tag :email %>
+  </p>
+  
+  <p>
+    <strong><%= label_tag @label_name %></strong><br>
+    <%= text_field_tag :name %>
+  </p>
+  
+  <p>
+    <%= submit_tag @label_submit %>
+  </p>
+<% end %>
