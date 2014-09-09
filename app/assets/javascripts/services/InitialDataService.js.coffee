@@ -1,7 +1,7 @@
 angular.module('portfolioApp').factory "InitialDataService", (Labels, Languages, $q) ->
   
   serverErrorHandler = ->
-    alert("Server error, please try again! 1")
+    alert("Server error, please try again!")
   
   ret = () ->
     labels = (new Labels(serverErrorHandler)).all()
