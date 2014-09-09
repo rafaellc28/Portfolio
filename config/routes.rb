@@ -16,14 +16,16 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show]
   end
   
+  namespace :admin do
+    resources :users
+  end
+  
   root :to => redirect('/portfolio')
   
   get '/admin' => 'admin/welcome#index'
   get '/admin/tests' => 'admin/tests#index'
   get '/' => 'templates#index'
   get '/portfolio' => 'templates#index'
-  get '/educations' => 'templates#index'
-  get '/educations/:id' => 'templates#index'
   get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/  }
   
 end

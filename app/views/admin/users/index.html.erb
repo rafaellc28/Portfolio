@@ -1,0 +1,23 @@
+<h2><%= @label_title %></h1>
+
+<% if flash[:warning] -%>
+   <%= content_tag :div, flash[:warning], class: :warning %>
+<% end -%>
+
+<table>
+  
+  <tr>
+    <th><%= @label_name %></th>
+    <th><%= @label_email %></th>
+    <th><%= @label_authToken %></th>
+    <th></th>
+  </tr>
+  
+  <tr>
+    <td><%= link_to h(@user.name), admin_user_path(@user) %></td>
+    <td><%= h(@user.email) %></td>
+    <td><%= h(@user.authentication_token) %></td>
+    <td>&nbsp;<%= link_to @label_edit, edit_admin_user_path(@user) %>&nbsp;</td>
+  </tr>
+  
+</table>
