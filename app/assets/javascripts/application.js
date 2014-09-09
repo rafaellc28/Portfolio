@@ -14,9 +14,9 @@
 
 //= require jquery
 //= require jquery_ujs
-// require ./lib/angular.min
-// require ./lib/angular-resource.min
-// require ./lib/angular-route.min
+//= require ./lib/angular.min
+//= require ./lib/angular-resource.min
+//= require ./lib/angular-route.min
 //= require ./lib/ui-bootstrap-tpls-0.9.0.min
 //= require ./lib/normalize
 //= require ./lib/date-format
@@ -43,4 +43,3 @@
 //= require_tree ./classes
 
 // require turbolinks
-
