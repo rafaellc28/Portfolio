@@ -5,4 +5,4 @@ angular.module('portfolioApp').controller "ProjectController", ($scope, $routePa
     $scope.project = @projectService.find $routeParams.id
     
   serverErrorHandler = ->
-    alert("Server error, please try again!")
+    alert("Server error in ProjectController, please try again!")

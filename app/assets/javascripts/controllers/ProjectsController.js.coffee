@@ -6,6 +6,6 @@ angular.module('portfolioApp').controller "ProjectsController", ($scope, Project
     $scope.projects = @projectsService.all()
   
   serverErrorHandler = ->
-    alert("Server error, please try again!")
+    alert("Server error in ProjectsController, please try again!")
 
   

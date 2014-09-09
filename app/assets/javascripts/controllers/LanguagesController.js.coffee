@@ -17,4 +17,4 @@ angular.module('portfolioApp').controller "LanguagesController", ($scope, Labels
     $scope.icon_color
   
   serverErrorHandler = ->
-    alert("Server error, please try again!")
+    alert("Server error in LanguagesController, please try again!")

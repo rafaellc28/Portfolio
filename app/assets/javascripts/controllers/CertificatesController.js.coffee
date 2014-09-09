@@ -6,6 +6,6 @@ angular.module('portfolioApp').controller "CertificatesController", ($scope, Cer
     $scope.certificates = @certificatesService.all()
   
   serverErrorHandler = ->
-    alert("Server error, please try again!")
+    alert("Server error in CertificatesController, please try again!")
 
   

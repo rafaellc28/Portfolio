@@ -5,4 +5,4 @@ angular.module('portfolioApp').controller "PublicationController", ($scope, $rou
     $scope.publication = @publicationService.find $routeParams.id
     
   serverErrorHandler = ->
-    alert("Server error, please try again!")
+    alert("Server error in PublicationController, please try again!")
