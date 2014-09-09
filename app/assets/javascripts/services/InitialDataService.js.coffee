@@ -10,3 +10,5 @@ angular.module('portfolioApp').factory "InitialDataService", (Labels, Languages,
     $q.all([labels, languages]).then (results) ->
       labels: results[0],
       languages: results[1]
+    , () ->
+      serverErrorHandler()
