@@ -1,0 +1,29 @@
+<h2><%= @label_title %></h2>
+
+<% if flash[:success] -%>
+   <%= content_tag :div, flash[:success], class: :success %>
+<% end -%>
+
+<p>
+  <strong><%= @label_name %></strong>
+  <%= h @user.name %>
+</p>
+ 
+<p>
+  <strong><%= @label_email %></strong>
+  <%= h @user.email %>
+</p>
+
+<p>
+  <strong><%= @label_authToken %></strong>
+  <%= h @user.authentication_token %>
+</p>
+
+<p>
+<table>
+  <tr>
+    <td><%= link_to @label_back, controller: "users", action:"index" %></td>
+    <td><%= link_to @label_edit, edit_admin_user_path(@user) %></td>
+  </tr>
+</table>
+</p>
