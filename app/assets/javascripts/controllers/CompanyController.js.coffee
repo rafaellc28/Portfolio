@@ -5,4 +5,4 @@ angular.module('portfolioApp').controller "CompanyController", ($scope, $routePa
     $scope.company = @companyService.find $routeParams.id
     
   serverErrorHandler = ->
-    alert("Server error, please try again!")
+    alert("Server error in CompanyController, please try again!")

@@ -56,4 +56,4 @@ angular.module('portfolioApp').controller "TagsController", ($scope, Tags, Label
       $scope.item[id].getOrder(parent_id).updateOrder(field, type)
   
   serverErrorHandler = ->
-    alert("Server error, please try again!")
+    alert("Server error in TagsController, please try again!")

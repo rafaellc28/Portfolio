@@ -103,4 +103,4 @@ angular.module('portfolioApp').controller "PortfolioController", ($scope, Educat
     $scope.item[id].getId() == sel
   
   serverErrorHandler = ->
-    alert("Server error, please try again!")
+    alert("Server error in PortfolioController, please try again!")
