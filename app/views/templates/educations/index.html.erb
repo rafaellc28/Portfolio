@@ -1,11 +1,10 @@
-<div ng-cloak>
 	<table ng-show="educations == 0">
 		<tr><td>{{ label.educations.empty_msg }}</td></tr>
 	</table>
 	<table ng-init="validateOrder(ed, 0)" id="educations_list">
 		<tr>
 			<th>
-				<canvas class="icon" ng-click="updateOrder(ed, 0, 'title', string)" icon-sorting data-parent="0" data-neighbors="canvas_ed_started_at,canvas_ed_done_at" data-type="ed" data-field="title" data-color="#2B65EC" id="canvas_ed_title" width="16" height="16"></canvas>
+				<canvas class="icon" ng-click="updateOrder(ed, 0, 'title', string)" icon-sorting data-status="none" data-parent="0" data-neighbors="canvas_ed_start,canvas_ed_end" data-type="ed" data-field="title" data-color="{{ label.config.icon_color }}" id="canvas_ed_title" width="16" height="16"></canvas>
 				{{ label.educations.title }}
 			</th>
 			<th>
@@ -15,12 +14,12 @@
 				{{ label.educations.description }}</a>
 			</th>
 			<th>
-				<canvas class="icon" ng-click="updateOrder(ed, 0, 'started_at', date)" icon-sorting data-parent="0" data-neighbors="canvas_ed_done_at,canvas_ed_title" data-type="ed" data-field="started_at" data-color="#2B65EC" id="canvas_ed_started_at" width="16" height="16"></canvas>
-				{{ label.educations.started_at }}
+				<canvas class="icon" ng-click="updateOrder(ed, 0, 'start', date)" icon-sorting data-status="none" data-parent="0" data-neighbors="canvas_ed_end,canvas_ed_title" data-type="ed" data-field="start" data-color="{{label.config.icon_color}}" id="canvas_ed_start" width="16" height="16"></canvas>
+				{{ label.educations.start }}
 			</th>
 			<th>
-				<canvas class="icon" ng-click="updateOrder(ed, 0, 'done_at', date)" icon-sorting data-parent="0" data-neighbors="canvas_ed_started_at,canvas_ed_title" data-type="ed" data-field="done_at" data-color="#2B65EC" id="canvas_ed_done_at" width="16" height="16"></canvas>
-				{{ label.educations.done_at }}
+				<canvas class="icon" ng-click="updateOrder(ed, 0, 'end', date)" icon-sorting data-status="none" data-parent="0" data-neighbors="canvas_ed_start,canvas_ed_title" data-type="ed" data-field="end" data-color="{{label.config.icon_color}}" id="canvas_ed_end" width="16" height="16"></canvas>
+				{{ label.educations.end }}
 			</th>
 			<th>
 				{{ label.educations.details }}
@@ -28,7 +27,7 @@
 		</tr>
 		<tr class="rows" ng-repeat="education in educations |  orderObjectBy : getOrderField(ed, 0) : getOrderReversibility(ed, 0) : getOrderType(ed, 0)" id="education_{{education.id}}" data-tags="{{education.tags | tags}}">
 			<td>
-				<canvas class="icon" ng-click="selectItem(ed, education.id)" icon-section data-neighbors="canvas_ed_id_" data-color="#2B65EC" id="canvas_ed_id_{{ education.id }}" width="16" height="16"></canvas>
+				<canvas class="icon" ng-click="selectItem(ed, education.id)" icon-section data-status="open" data-neighbors="canvas_ed_id_" data-color="{{label.config.icon_color}}" id="canvas_ed_id_{{ education.id }}" width="16" height="16"></canvas>
 				{{education.title}}
 			</td>
 			<td>
@@ -38,15 +37,15 @@
 				{{education.description}}
 			</td>
 			<td>
-				{{education.started_at | date:'MM/yyyy'}}
+				{{education.start | date:label.config.date_format}}
 			</td>
 			<td>
-				{{education.done_at | date:'MM/yyyy'}}
+				{{education.end | date:label.config.date_format}}
 			</td>
 			<td align="center">
-				<canvas class="icon" icon-section data-neighbors="" data-color="#2B65EC" id="canvas_ed_details_id_{{ education.id }}" width="16" height="16"
-				 title="{{ education.title }}" popover-html-unsafe="{{ popover_message(education.title, education.links, education.attachments, education.tags) }}"></canvas>
-				<!--<canvas class="icon" icon-section data-neighbors="" data-color="#2B65EC" id="canvas_ed_details_id_{{ education.id }}" width="16" height="16"
+				<canvas class="icon" icon-section data-status="open" data-color="{{label.config.icon_color}}" data-neighbors="" id="canvas_ed_details_id_{{ education.id }}" width="16" height="16"
+				 title="{{ education.title }}" popover-html-unsafe="{{ popover_message(education.title, education.links, education.attachments, education.tags, education.awards) }}"></canvas>
+				<!--<canvas class="icon" icon-section data-neighbors="" data-color="{{label.config.icon_color}}" id="canvas_ed_details_id_{{ education.id }}" width="16" height="16"
 				  title="{{ education.title }}" data-placement="bottom" data-html="true" data-trigger="click" data-animation="am-flip-x" data-content="{{ popover_message('', education.links, education.attachments, education.tags) }}" bs-popover></canvas>-->
 			</td>
 		</tr>
@@ -54,10 +53,9 @@
 	<table class="noborder">
 		<tr ng-repeat="education in educations" class="noborder">
 			<td class="noborder">
-				<div ng-hide="true">{{ academic_periods = education.academic_periods }}</div>
+				<div ng-hide="true">{{ academic_terms = education.academic_terms }}</div>
 				<div ng-hide="true">{{ education_id = education.id }}</div>
-				<div ng-show="isSelectedItem(ed, education.id)" ng-include="'templates/academic_periods/index.html'"></div>
+				<div ng-show="isSelectedItem(ed, education.id)" ng-include="'templates/academic_terms/index.html'"></div>
 			</td>
 		</tr>
 	</table>
-</div>

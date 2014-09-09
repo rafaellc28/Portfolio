@@ -3,10 +3,11 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
-  before_filter :authenticate_user!
-  
-  def current_ability
-    @current_ability ||= Ability.new(current_user)
+  private
+
+  # Overwriting the sign_out redirect path method
+  def after_sign_out_path_for(resource_or_scope)
+    admin_path
   end
   
 end

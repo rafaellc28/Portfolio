@@ -18,7 +18,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-#gem 'turbolinks'
+gem 'turbolinks', group: :production
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -42,13 +42,6 @@ gem 'unicorn'
 gem 'acts-as-taggable-on'
 gem 'will_paginate'
 gem 'devise'
-gem 'cancan'
-gem 'omniauth'
-#gem 'mailcatcher' #catch smtp request and show emails in localhost:1080
-gem 'thin'
 gem 'active_model_serializers'
 gem 'acts_as_list'
 gem 'rails_12factor'
-#gem 'angularjs-rails'
-#gem 'angular-rails-templates'
-#gem 'slim'

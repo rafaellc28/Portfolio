@@ -1,0 +1,1 @@
+(function(){angular.module("portfolioApp").filter("number",function(){var func;return func=function(item,decimal_sep,fraction_size){return isNaN(item)?item:Number(item).toFixed(fraction_size).toString().replace(".",decimal_sep)}})}).call(this);

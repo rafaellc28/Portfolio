@@ -1,0 +1,1 @@
+(function(){angular.module("portfolioApp").filter("tags",function(){var func;return func=function(items){var filtered,item,_i,_len;for(filtered=[],_i=0,_len=items.length;_len>_i;_i++)item=items[_i],filtered.push(item.name);return filtered.join(" , ")}})}).call(this);

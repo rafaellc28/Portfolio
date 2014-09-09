@@ -2,7 +2,7 @@ angular.module('portfolioApp').controller "CertificateController", ($scope, $rou
   
   $scope.init = ->        
     @certificateService = new Certificate($routeParams.id, serverErrorHandler)
-    $scope.certificate = @certificateService.find $routeParams.id
+    $scope.certificate = @certificateService.all()
     
   serverErrorHandler = ->
-    alert("There was a server error, please reload the page and try again!")
+    alert("Server error, please try again!")

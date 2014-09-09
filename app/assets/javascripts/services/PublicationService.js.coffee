@@ -6,3 +6,9 @@ angular.module('portfolioApp').factory 'Publication', ($resource) ->
 
     all: ->
       @service.query((-> null), @errorHandler)
+    
+    find: (id, successHandler) ->
+      @service.get(id: id, ((list)-> 
+        successHandler?(list)
+        list), 
+       @errorHandler)

@@ -1,2 +1,0 @@
-class TypesCertificatesController < ApplicationController
-end

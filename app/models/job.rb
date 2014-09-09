@@ -9,19 +9,51 @@ class Job < ActiveRecord::Base
   acts_as_taggable_on :tags
   
   validate :validate_tags
+  validate :validate_awards
   
+  # asserts the company parent also has the tags of this job
   def validate_tags
     tag_list.each do |tag|
-      self.company.validate_tag(tag)
+      company.validate_tag(tag)
+    end
+    company.save
+  end
+  
+  # asserts the company parent also has the awards of this job
+  def validate_awards
+    awards.each do |award|
+      company.validate_award(award)
     end
   end
   
+  # 
+  def end_date
+    
+    end_date = ''
+    
+    if self.end.nil? or self.end.blank?
+      
+      time = Time.new
+      end_date = time.strftime("%Y-%m-%d")
+    else
+      
+      end_date = self.end
+      
+    end
+    
+    end_date
+    
+  end
+  
+  # add links, attachments, awards and tags to the json of this model
+  # substitute nil end dates of jobs to the current date
   def serializable_hash(options = nil)
     options = { 
+      :methods => [:end_date],
       :include => [:links, :attachments, :awards, {:tags => {:only => :name}}] 
     }.update(options)
     
-    super options
+    super(options).tap { |hash| hash["end"] = hash.delete "end_date" }
   end
   
 end

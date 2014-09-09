@@ -1,0 +1,1 @@
+(function(){angular.module("portfolioApp").filter("tagsSearch",function(){var func;return func=function(items,text){var filtered;return filtered=[],""===text?filtered=items:angular.forEach(items,function(item){var i,s,t;return t=normalize(text).toLowerCase(),s=normalize(item.name).toLowerCase(),i=s.indexOf(t),-1!==i?filtered.push(item):void 0}),filtered}})}).call(this);

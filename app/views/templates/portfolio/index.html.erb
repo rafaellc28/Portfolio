@@ -1,0 +1,40 @@
+<div ng-controller="PortfolioController" ng-init="init()">
+	<table ng-show="labels == 0">
+		<tr><td>Labels not retrieved yet!</td></tr>
+	</table>
+	<div ng-hide="true">{{ setCurrentLanguage(); }}</div>
+	<div>
+		<ul class="nav nav-pills">
+			<li ng-class="{ active: isSelected(1) }">
+				<a href ng-click="selectTab(1)">{{ label.educations.label }}</a>
+			</li>
+			<li ng-class="{ active: isSelected(2) }">
+				<a href ng-click="selectTab(2) ">{{ label.experiences.label }}</a>
+			</li>
+			<li ng-class="{ active: isSelected(3) }">
+				<a href ng-click="selectTab(3) ">{{ label.types_certificates.label }}</a>
+			</li>
+			<li ng-class="{ active: isSelected(4) }">
+				<a href ng-click="selectTab(4) ">{{ label.publications.label }}</a>
+			</li>
+			<li ng-class="{ active: isSelected(5) }">
+				<a href ng-click="selectTab(5) ">{{ label.projects.label }}</a>
+			</li>
+		</ul>
+	</div>
+	
+	<div ng-include="'templates/educations/index.html'" ng-show="isSelected(1)">
+	</div>
+	
+	<div ng-include="'templates/companies/index.html'" ng-show="isSelected(2)">
+	</div>
+	
+	<div ng-include="'templates/types_certificates/index.html'" ng-show="isSelected(3)">
+	</div>
+	
+	<div ng-include="'templates/publications/index.html'" ng-show="isSelected(4)">
+	</div>
+	
+	<div ng-include="'templates/projects/index.html'" ng-show="isSelected(5)">
+	</div>
+</div>

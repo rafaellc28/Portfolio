@@ -1,0 +1,1 @@
+(function(){angular.module("portfolioApp").factory("Companies",function($resource){var Companies;return Companies=function(){function Companies(errorHandler){this.service=$resource("/api/companies"),this.errorHandler=errorHandler}return Companies.prototype.all=function(){return this.service.query(function(){return null},this.errorHandler)},Companies}()})}).call(this);

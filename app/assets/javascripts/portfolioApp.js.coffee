@@ -1,19 +1,20 @@
-portfolioApp = angular.module('portfolioApp', ['ngResource', 'ngRoute', 'ui.bootstrap']) #, 'mgcrea.ngStrap', 'mgcrea.ngStrap.tooltip'
+portfolioApp = angular.module('portfolioApp', ['ngResource', 'ngRoute', 'ui.bootstrap'])
 
 # Makes AngularJS work with CSRF protection.
 portfolioApp.config ($httpProvider) ->
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
   $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
-  #$httpProvider.defaults.headers.common['Authorization'] = 'Basic ' + window.btoa("rafaellc25@gmail.com:1PZxZx9AFc1Yh1R")
   $httpProvider.defaults.headers.common['Authorization'] = 'Token token=kbmRirLy1ZoRGQ8gkfwH'
-  
+
 portfolioApp.config ($routeProvider, $locationProvider) ->
   $locationProvider.html5Mode true
-  $routeProvider.when '/spa', templateUrl: '/templates/spa/index.html', controller: 'SpaController'
-  #$routeProvider.when '/educations', templateUrl: '/templates/educations/index.html', controller: 'EducationsController'
-  #$routeProvider.when '/educations/:id', templateUrl: '/templates/educations/show.html', controller: 'EducationController'
-  #alert('"Hello"'.replace(/(^"|"$)/g, ''))
-  
+  $routeProvider.when '/portfolio', 
+    templateUrl: '/templates/show.html', 
+    controller: 'MainController',
+    resolve: 
+      initialData: (InitialDataService) ->
+        InitialDataService()
+
 portfolioApp.config ($tooltipProvider) ->
   triggers = 
     'click': 'click'

@@ -5,4 +5,4 @@ angular.module('portfolioApp').controller "LabelsController", ($scope, Labels) -
     $scope.labels = @labelsService.all()
   
   serverErrorHandler = ->
-    alert("There was a server error, please reload the page and try again!")
+    alert("Server error, please try again!")

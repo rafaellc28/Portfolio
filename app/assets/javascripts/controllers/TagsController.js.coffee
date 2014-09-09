@@ -1,10 +1,16 @@
 angular.module('portfolioApp').controller "TagsController", ($scope, Tags, Labels, Languages, Sorting, Section) ->
   
-  $scope.currentLanguage = Languages.getCurrentLanguage()
+  #$scope.currentLanguage = Languages.getCurrentLanguage()
   
   $scope.init = ->
     
-    $scope.currentLanguage = ''
+    $scope.labels = Labels.getCurrent()
+    $scope.languages = Languages.getCurrent()
+    
+    $scope.currentLanguage = Languages.getCurrentLanguage()
+    $scope.label = $scope.labels[0][$scope.currentLanguage]
+    
+    $scope.icon_color = $scope.label.config.icon_color;
     $scope.search_text = ''
     
     $scope.number = Sorting.number
@@ -18,15 +24,14 @@ angular.module('portfolioApp').controller "TagsController", ($scope, Tags, Label
     
     @tagsService = new Tags(serverErrorHandler)
     $scope.tags = @tagsService.all()
-    
-    @labelsService = new Labels(serverErrorHandler)
-    $scope.labels = @labelsService.all()
-    
-    @languagesService = new Languages(serverErrorHandler)
-    $scope.languages = @languagesService.all()
   
   $scope.setCurrentLanguage = () ->
     $scope.currentLanguage = Languages.getCurrentLanguage()
+    $scope.label = $scope.labels[0][$scope.currentLanguage]
+    $scope.icon_color = $scope.label.config.icon_color;
+  
+  $scope.getIconColor = () ->
+    $scope.icon_color
   
   $scope.validateOrder = (id, parent_id) ->
     $scope.item[id].validateOrder(parent_id)
@@ -51,4 +56,4 @@ angular.module('portfolioApp').controller "TagsController", ($scope, Tags, Label
       $scope.item[id].getOrder(parent_id).updateOrder(field, type)
   
   serverErrorHandler = ->
-    alert("Server error!")
+    alert("Server error, please try again!")
