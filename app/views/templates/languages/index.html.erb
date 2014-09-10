@@ -1,9 +1,7 @@
-<div class="ng-cloak">
-	<div ng-controller="LanguagesController" ng-init="init()">
-		<ul class="nav nav-pills">
-			<li ng-repeat="language in languages" id="{{language.acronym}}" name="{{language.acronym}}" title="{{language.name}}">
-		  		<a select-language data-type="languages" name="{{ language.acronym }}" title="{{ language.name }}" id="{{ language.acronym }}">{{ language.name }}</a>
-		  	</li>
-		</ul>
-	</div>
+<div ng-controller="LanguagesController" ng-init="init()">
+	<ul class="nav nav-pills">
+		<li ng-repeat="language in languages" id="{{language.acronym}}" name="{{language.acronym}}" title="{{language.name}}">
+	  		<a select-language data-type="languages" name="{{ language.acronym }}" title="{{ language.name }}" id="{{ language.acronym }}">{{ language.name }}</a>
+	  	</li>
+	</ul>
 </div>
