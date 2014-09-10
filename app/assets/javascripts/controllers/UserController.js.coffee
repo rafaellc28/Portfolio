@@ -10,8 +10,8 @@ angular.module('portfolioApp').controller "UserController", ($scope, Users, Lang
     $scope.currentLanguage = Languages.getCurrentLanguage()
     $scope.label = $scope.labels[0][$scope.currentLanguage]
   
-  $scope.popover_message = (title, links, attachments, tags, awards) ->
-    Section.popover_message(title, links, attachments, tags, awards, $scope.label)
+  $scope.popover_message = (title, links, attachments, awards) ->
+    Section.popover_message(title, links, attachments, [], awards, $scope.label)
   
   $scope.setCurrentLanguage = () ->
     $scope.currentLanguage = Languages.getCurrentLanguage()
