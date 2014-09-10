@@ -1,0 +1,1 @@
+(function(){angular.module("portfolioApp").controller("MainController",function($scope,Labels,Languages,initialData){return initialData.labels.$resolved&&initialData.languages.$resolved||alert("Server error in MainController, please try again!"),Labels.setLabels(initialData.labels),Languages.setLanguages(initialData.languages)})}).call(this);

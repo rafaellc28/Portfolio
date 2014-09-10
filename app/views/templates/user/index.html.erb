@@ -1,11 +1,11 @@
 <div ng-cloak class="ng-cloak" ng-controller="UserController" ng-init="init()">
-<table ng-show="user == 0">
-	<tr><td>{{ label.user.empty_msg }}</td></tr>
-</table>
 <div ng-hide="true">{{ setCurrentLanguage(); }}</div>
 <div ng-hide="true">{{ user = users[0]; }}</div>
+<table ng-show="users == 0">
+	<tr><td>{{ label.educations.empty_msg }}</td></tr>
+</table>
 <table class="noborder">
-	<tr class="rows link" popover-html-unsafe="{{ popover_message(user.name, user.links, user.attachments, [], user.awards) }}">
+	<tr class="rows link" popover-html-unsafe="{{ popover_message(user.name, user.links, user.attachments, user.awards) }}">
 		<td class="noborder">
 			<h1>{{ user.name }}</h1>
 		</td>

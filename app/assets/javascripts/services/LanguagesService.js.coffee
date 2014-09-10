@@ -12,7 +12,7 @@ angular.module('portfolioApp').factory 'Languages', ($resource) ->
     
     @setLanguages: (current) ->
       @current.languages = current
-      @current.language = @current.languages[0].acronym
+      @current.language = current[0].acronym
     
     @getCurrent: () ->
       @current.languages
