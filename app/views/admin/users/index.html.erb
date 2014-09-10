@@ -11,13 +11,17 @@
     <th><%= @label_email %></th>
     <th><%= @label_authToken %></th>
     <th></th>
+    <th></th>
   </tr>
   
   <tr>
     <td><%= link_to h(@user.name), admin_user_path(@user) %></td>
     <td><%= h(@user.email) %></td>
     <td><%= h(@user.authentication_token) %></td>
-    <td>&nbsp;<%= link_to @label_edit, edit_admin_user_path(@user) %>&nbsp;</td>
+    <td><%= link_to @label_edit, edit_admin_user_path(@user) %></td>
+    <td><%= link_to @label_account, edit_user_registration_path(@user) %></td>
   </tr>
   
 </table>
+
+<p><%= link_to @label_back, admin_path %></p>

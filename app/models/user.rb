@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   #before_create :set_auth_token
   before_save :ensure_authentication_token
   
-  validates_presence_of :name, :on => :update, :message => "Fill name!"
+  validates_presence_of :name, :on => :update, :message => "can't be blank!"
   
   has_many :links, as: :link_ref
   has_many :attachments, as: :attachment_ref

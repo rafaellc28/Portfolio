@@ -13,6 +13,8 @@ class Admin::UsersController < Admin::ApplicationController
     @label_email = "Email"
     @label_authToken = "Authentication Token"
     @label_edit = "Edit"
+    @label_back = "Back"
+    @label_account = "Change password"
     
   end
   
@@ -24,6 +26,7 @@ class Admin::UsersController < Admin::ApplicationController
     @label_authToken = "Authentication Token"
     @label_edit = "Edit"
     @label_back = "Back"
+    @label_account = "Change password"
     
     @user = User.all.first
     
@@ -38,6 +41,7 @@ class Admin::UsersController < Admin::ApplicationController
     @label_edit = "Edit"
     @label_back = "Back"
     @label_submit = "Save"
+    @label_account = "Change password"
     @error = "error"
     
     @user = User.find(params.require(:id))
@@ -48,7 +52,7 @@ class Admin::UsersController < Admin::ApplicationController
   
   def update
     
-    render text: params.inspect
+    #render text: params.inspect
     
     @label_title = "User"
     @label_name = "Name"
@@ -59,20 +63,20 @@ class Admin::UsersController < Admin::ApplicationController
     @label_submit = "Save"
     @error = "error"
     
-    #@user = User.find(params,require(:id))
+    @user = User.find(params.require(:id))
     
-    #if @user.update(user_params)
-    #  flash[:success] = "Updated success!"
-    #  redirect_to action: :show, :id => @use.id
-    #else
-    #  render 'edit'
-    #end
+    if @user.update(user_params)
+      flash[:success] = "Updated success!"
+      redirect_to action: :index, status: 303
+    else
+      render 'edit'
+    end
     
   end
   
   private
     def user_params
-      params.require(:user).permit(:name, :email)
+      params.permit(:name, :email)
     end
   
 end
