@@ -47,7 +47,7 @@ angular.module('portfolioApp').factory 'Section', (Sorting) ->
     @popover_message = (title, links, attachments, tags, awards, label) ->
       ret_str = "<center>#{title}</center><br>"
       
-      if awards.length > 0
+      if awards != undefined and awards.length > 0
         ret_str += "#{label.messages.awards}<br>"
         
         for award in Sorting.sort(awards, 'title', false, Sorting.string)
@@ -56,19 +56,19 @@ angular.module('portfolioApp').factory 'Section', (Sorting) ->
           date_fr = date_issued.format(label.config.date_format_js)
           ret_str += "#{award.title} - #{date_fr}</a><br>"
       
-      if attachments.length > 0
+      if attachments != undefined and attachments.length > 0
         ret_str += "#{label.messages.attachments}<br>"
         
         for attachment in Sorting.sort(attachments, 'name', false, Sorting.string)
           ret_str += "<a href='#{attachment.path}' target='attach_#{attachment.id}'>#{attachment.name}</a><br>"
       
-      if links.length > 0
+      if links != undefined and links.length > 0
         ret_str += "#{label.messages.links}<br>"
         
         for link in Sorting.sort(links, 'text', false, Sorting.string)
           ret_str += "<a href='#{link.link}' target='link_#{link.id}'>#{link.text}</a><br>"
       
-      if tags.length > 0
+      if tags != undefined and tags.length > 0
         ret_str += "#{label.messages.tags}<br>"
         ret_str += "<ul class='nav nav-pills'>"
       
