@@ -1,7 +1,11 @@
 angular.module('portfolioApp').controller "MainController", ($scope, Labels, Languages, initialData) ->
   
-  if not initialData.labels.$resolved or not initialData.languages.$resolved
-    alert("Server error in MainController, please try again!")
+  initialData.labels.$promise.then () ->
+    Labels.setLabels(initialData.labels)
+  , () ->
+    alert("Server error 1 in MainController, please try again!")
   
-  Labels.setLabels(initialData.labels)
-  Languages.setLanguages(initialData.languages)
+  initialData.languages.$promise.then () ->
+    Languages.setLanguages(initialData.languages)
+  , () ->
+    alert("Server error 2 in MainController, please try again!")
