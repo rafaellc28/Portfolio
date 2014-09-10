@@ -7,7 +7,7 @@ angular.module('portfolioApp').factory "InitialDataService", (Labels, Languages,
     labels = (new Labels(serverErrorHandler)).all()
     languages = (new Languages(serverErrorHandler)).all();
       
-    $q.all([labels, languages]).then (results) ->
+    $q.all([labels.$promise, languages.$promise]).then (results) ->
       labels: results[0],
       languages: results[1]
     , () ->
