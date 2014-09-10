@@ -4,14 +4,14 @@ portfolioApp = angular.module('portfolioApp', ['ngResource', 'ngRoute', 'ui.boot
 portfolioApp.config ($httpProvider) ->
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
   $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
-  #$httpProvider.defaults.headers.common['Authorization'] = 'Token token=eXrJL3xxM8MiGgZ-KpiQ'
+  $httpProvider.defaults.headers.common['Authorization'] = 'Token token=eXrJL3xxM8MiGgZ-KpiQ'
 
 portfolioApp.config ($routeProvider, $locationProvider) ->
   $locationProvider.html5Mode true
   $routeProvider.when '/portfolio', 
     templateUrl: '/templates/show.html', 
     controller: 'MainController',
-    resolve: 
+    resolve: # fetch labels and languages data before starting the main controller
       initialData: (InitialDataService) ->
         InitialDataService()
 
