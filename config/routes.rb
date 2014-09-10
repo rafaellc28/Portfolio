@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   
   root :to => redirect('/portfolio')
   
+  match "/admin/users/:id/edit", to: "admin/users#update", via: :post
+  
   get '/admin' => 'admin/welcome#index'
   get '/admin/tests' => 'admin/tests#index'
   get '/' => 'templates#index'
