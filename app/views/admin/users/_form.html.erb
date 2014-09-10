@@ -15,13 +15,13 @@
   <p>&nbsp;</p>
 
   <p>
-    <strong><%= label_tag @label_email %></strong><br>
-    <%= text_field_tag :email %>
+    <strong><%= label_tag :email, @label_email %></strong><br>
+    <%= text_field_tag :email, @user.email %>
   </p>
   
   <p>
-    <strong><%= label_tag @label_name %></strong><br>
-    <%= text_field_tag :name %>
+    <strong><%= label_tag :name, @label_name %></strong><br>
+    <%= text_field_tag :name, @user.name %>
   </p>
   
   <p>
