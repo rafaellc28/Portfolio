@@ -14,3 +14,10 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# ignore all public files
+/public/*
+
+# ignore all assets in images
+/app/assets/images/*
+
