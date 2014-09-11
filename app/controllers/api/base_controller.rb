@@ -1,5 +1,5 @@
 class Api::BaseController < ActionController::Base
-  before_action :check_auth
+  #before_action :check_auth # token authentication
   
   private
 
@@ -14,9 +14,10 @@ class Api::BaseController < ActionController::Base
       
       # https://gist.github.com/josevalim/fb706b1e933ef01e4fb6
       
-      #resource = User.find_by_authentication_token(token)
+      #user = User.find_by_authentication_token(token)
       user = User.all.first
       
+      # secure way in order to avoid timing attacks (https://gist.github.com/josevalim/fb706b1e933ef01e4fb6)
       if user and Devise.secure_compare(user.authentication_token, token)
         return true
       else
