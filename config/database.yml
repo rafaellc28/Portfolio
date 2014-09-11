@@ -6,21 +6,21 @@
 #
 default: &default
   adapter: postgresql
-  username: postgres
-  password: K7i8azjI3A
+  username: #set_username
+  password: #set_password
   pool: 5
   timeout: 5000
 
 development:
   <<: *default
-  database: portfolio_development
+  database: db/development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: portfolio_test
+  database: db/test
 
 production:
   adapter: postgresql
