@@ -1,14 +1,12 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :trackable, :validatable, #:recoverable, :rememberable, 
-         :timeoutable#, :lockable, :confirmable, :omniauthable
-         
+         :trackable, :validatable, :timeoutable
+  
   #before_create :set_auth_token
   before_save :ensure_authentication_token
   
-  validates_presence_of :name, :on => :update, :message => "can't be blank!"
+  validates_presence_of :name, :on => :update
   
   has_many :links, as: :link_ref
   has_many :attachments, as: :attachment_ref
@@ -27,32 +25,7 @@ class User < ActiveRecord::Base
   
   private
     
-=begin
-    def set_auth_token  
-      return if auth_token.present? 
-      self.auth_token = generate_auth_token 
-    end
-    
-    def generate_auth_token 
-      loop do 
-        token = SecureRandom.hex  
-        break token unless self.class.exists?(auth_token: token)  
-      end 
-    end
-=end
-  
-  private
-  
-    def ensure_name
-      
-      super
-      
-      if some condition
-        errors.add('', 'some text')
-      end
-      
-    end
-    
+    # https://gist.github.com/josevalim/fb706b1e933ef01e4fb6
     def ensure_authentication_token
       if authentication_token.blank?
         self.authentication_token = generate_authentication_token

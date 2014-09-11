@@ -5,68 +5,29 @@ class Admin::UsersController < Admin::ApplicationController
     @user = User.all.first
     
     if @user.name.nil? or @user.name.nil?
-      flash[:warning] = "Please, give a name to the user."
+      flash[:warning] = I18n.t('empty_name_msg')
     end
-    
-    @label_title = "User"
-    @label_name = "Name"
-    @label_email = "Email"
-    @label_authToken = "Authentication Token"
-    @label_edit = "Edit"
-    @label_back = "Back"
-    @label_account = "Change password"
     
   end
   
   def show
-    
-    @label_title = "User"
-    @label_name = "Name"
-    @label_email = "Email"
-    @label_authToken = "Authentication Token"
-    @label_edit = "Edit"
-    @label_back = "Back"
-    @label_account = "Change password"
     
     @user = User.all.first
     
   end
   
   def edit
-
-    @label_title = "User"
-    @label_name = "Name"
-    @label_email = "Email"
-    @label_authToken = "Authentication Token"
-    @label_edit = "Edit"
-    @label_back = "Back"
-    @label_submit = "Save"
-    @label_account = "Change password"
-    @error = "error"
     
     @user = User.find(params.require(:id))
-      
-    #render text: @user.name
     
   end
   
   def update
     
-    #render text: params.inspect
-    
-    @label_title = "User"
-    @label_name = "Name"
-    @label_email = "Email"
-    @label_authToken = "Authentication Token"
-    @label_edit = "Edit"
-    @label_back = "Back"
-    @label_submit = "Save"
-    @error = "error"
-    
     @user = User.find(params.require(:id))
     
     if @user.update(user_params)
-      flash[:success] = "Updated success!"
+      flash[:success] = I18n.t('update_success_msg')
       redirect_to action: :index, status: 303
     else
       render 'edit'

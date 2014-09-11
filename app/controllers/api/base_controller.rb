@@ -12,9 +12,12 @@ class Api::BaseController < ActionController::Base
     
     authenticate_or_request_with_http_token do |token, options|
       
-      resource = User.find_by_authentication_token(token)
+      # https://gist.github.com/josevalim/fb706b1e933ef01e4fb6
       
-      if not resource.nil?
+      #resource = User.find_by_authentication_token(token)
+      user = User.all.first
+      
+      if user and Devise.secure_compare(user.authentication_token, token)
         return true
       else
         return false

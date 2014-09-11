@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140908232831) do
+ActiveRecord::Schema.define(version: 20140911024509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,8 @@ ActiveRecord::Schema.define(version: 20140908232831) do
     t.datetime "updated_at"
   end
 
+  add_index "companies", ["name"], name: "index_companies_on_name", unique: true, using: :btree
+
   create_table "educations", force: true do |t|
     t.string   "title",       limit: 50
     t.string   "institution", limit: 100
@@ -85,6 +87,8 @@ ActiveRecord::Schema.define(version: 20140908232831) do
     t.date     "start"
     t.date     "end"
   end
+
+  add_index "educations", ["title"], name: "index_educations_on_title", unique: true, using: :btree
 
   create_table "jobs", force: true do |t|
     t.integer  "company_id"
@@ -117,6 +121,8 @@ ActiveRecord::Schema.define(version: 20140908232831) do
     t.string   "acronym",     limit: 5
   end
 
+  add_index "languages", ["acronym"], name: "index_languages_on_acronym", unique: true, using: :btree
+
   create_table "links", force: true do |t|
     t.integer  "link_ref_id"
     t.string   "link_ref_type"
@@ -136,6 +142,8 @@ ActiveRecord::Schema.define(version: 20140908232831) do
     t.datetime "updated_at"
   end
 
+  add_index "projects", ["name"], name: "index_projects_on_name", unique: true, using: :btree
+
   create_table "publications", force: true do |t|
     t.string   "title",       limit: 500
     t.text     "description"
@@ -143,6 +151,8 @@ ActiveRecord::Schema.define(version: 20140908232831) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "publications", ["title"], name: "index_publications_on_title", unique: true, using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
@@ -170,6 +180,8 @@ ActiveRecord::Schema.define(version: 20140908232831) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "types_certificates", ["name"], name: "index_types_certificates_on_name", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                             default: "", null: false

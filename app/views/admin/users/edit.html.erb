@@ -1,5 +1,5 @@
-<h2><%= @label_title %></h2>
+<h2><%= t('admin_user_title') %></h2>
 
 <%= render 'form' %>
  
-<%= link_to @label_back, admin_user_path(@user) %>
+<%= link_to t('back'), admin_user_path(@user) %>
