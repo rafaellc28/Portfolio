@@ -16,7 +16,7 @@
 /tmp
 
 # ignore all public files
-/public/assets/*.pdf
+#/public/assets/*.pdf
 
 # ignore all assets in images
 /app/assets/images/*.pdf
