@@ -2,7 +2,7 @@
 
   <% if @user.errors.any? %>
   <div id="error_explanation">
-    <% msg = @user.errors.count.to_s + " " + @error.pluralize(@user.errors.count) %>
+    <% msg = @user.errors.count.to_s + " " + t('error').pluralize(@user.errors.count) %>
     <%= content_tag :div, msg, class: :error %>
     <ul>
     <% @user.errors.full_messages.each do |msg| %>
@@ -15,16 +15,16 @@
   <p>&nbsp;</p>
 
   <p>
-    <strong><%= label_tag :email, @label_email %></strong><br>
+    <strong><%= label_tag :email, t('email') %></strong><br>
     <%= text_field_tag :email, @user.email %>
   </p>
   
   <p>
-    <strong><%= label_tag :name, @label_name %></strong><br>
+    <strong><%= label_tag :name, t('name') %></strong><br>
     <%= text_field_tag :name, @user.name %>
   </p>
   
   <p>
-    <%= submit_tag @label_submit %>
+    <%= submit_tag t('submit') %>
   </p>
 <% end %>

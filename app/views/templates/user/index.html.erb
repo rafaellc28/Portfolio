@@ -2,7 +2,7 @@
 <div ng-hide="true">{{ setCurrentLanguage(); }}</div>
 <div ng-hide="true">{{ user = users[0]; }}</div>
 <table ng-show="users == 0">
-	<tr><td>{{ label.educations.empty_msg }}</td></tr>
+	<tr><td>{{ label.users.empty_msg }}</td></tr>
 </table>
 <table class="noborder">
 	<tr class="rows link" popover-html-unsafe="{{ popover_message(user.name, user.links, user.attachments, user.awards) }}">

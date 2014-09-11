@@ -1,11 +1,15 @@
 class Company < ActiveRecord::Base
   
   has_many :jobs
+  
   has_many :links, as: :link_ref
   has_many :attachments, as: :attachment_ref
   has_many :awards, as: :award_ref
   
   acts_as_taggable_on :tags
+  
+  # asserts that name is present and unique
+  validates :name, presence: true, uniqueness: true
   
   # asserts that this company has the tags of its children of type job
   def validate_tag(tag = nil)

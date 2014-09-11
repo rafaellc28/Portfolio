@@ -52,7 +52,7 @@ class Admin::TestsController < Admin::ApplicationController
     labelsEn[:tags] = Hash.new
     labelsEn[:tags][:name] = "Name"
     labelsEn[:tags][:taggings_count] = "Quantity"
-    labelsEn[:tags][:empty_msg] = "There are no tags."
+    labelsEn[:tags][:empty_msg] = "There is no tag."
     
     labelsEn[:messages] = Hash.new
     labelsEn[:messages][:attachments] = "Attachments:"
@@ -65,7 +65,7 @@ class Admin::TestsController < Admin::ApplicationController
     
     labelsEn[:educations] = Hash.new
     labelsEn[:educations][:label] = "Education"
-    labelsEn[:educations][:empty_msg] = "There are no education records."
+    labelsEn[:educations][:empty_msg] = "There is no education."
     labelsEn[:educations][:title] = "Title"
     labelsEn[:educations][:institution] = "Institution"
     labelsEn[:educations][:description] = "Description"
@@ -75,7 +75,7 @@ class Admin::TestsController < Admin::ApplicationController
     
     labelsEn[:educations][:academic_terms] = Hash.new
     labelsEn[:educations][:academic_terms][:label] = "Academic Term"
-    labelsEn[:educations][:academic_terms][:empty_msg] = "There are no academic period records."
+    labelsEn[:educations][:academic_terms][:empty_msg] = "There is no academic term for this education."
     labelsEn[:educations][:academic_terms][:name] = "Academic Term"
     labelsEn[:educations][:academic_terms][:start] = "Start"
     labelsEn[:educations][:academic_terms][:end] = "End"
@@ -83,7 +83,7 @@ class Admin::TestsController < Admin::ApplicationController
     
     labelsEn[:educations][:academic_terms][:academic_courses] = Hash.new
     labelsEn[:educations][:academic_terms][:academic_courses][:label] = "Courses"
-    labelsEn[:educations][:academic_terms][:academic_courses][:empty_msg] = "There are no course records."
+    labelsEn[:educations][:academic_terms][:academic_courses][:empty_msg] = "There is no course for this academic term."
     labelsEn[:educations][:academic_terms][:academic_courses][:course] = "Course"
     labelsEn[:educations][:academic_terms][:academic_courses][:grade] = "Grade"
     labelsEn[:educations][:academic_terms][:academic_courses][:description] = "Description"
@@ -94,7 +94,7 @@ class Admin::TestsController < Admin::ApplicationController
     
     labelsEn[:experiences][:companies] = Hash.new
     labelsEn[:experiences][:companies][:label] = "Company"
-    labelsEn[:experiences][:companies][:empty_msg] = "There are no company records."
+    labelsEn[:experiences][:companies][:empty_msg] = "There is no company."
     labelsEn[:experiences][:companies][:name] = "Company"
     labelsEn[:experiences][:companies][:description] = "Description"
     labelsEn[:experiences][:companies][:first_job_date] = "Start"
@@ -103,7 +103,7 @@ class Admin::TestsController < Admin::ApplicationController
     
     labelsEn[:experiences][:companies][:jobs] = Hash.new
     labelsEn[:experiences][:companies][:jobs][:label] = "Jobs"
-    labelsEn[:experiences][:companies][:jobs][:empty_msg] = "There are no job records to this company."
+    labelsEn[:experiences][:companies][:jobs][:empty_msg] = "There is no job for this company."
     labelsEn[:experiences][:companies][:jobs][:title] = "Job"
     labelsEn[:experiences][:companies][:jobs][:description] = "Description"
     labelsEn[:experiences][:companies][:jobs][:start] = "Start"
@@ -112,14 +112,14 @@ class Admin::TestsController < Admin::ApplicationController
     
     labelsEn[:types_certificates] = Hash.new
     labelsEn[:types_certificates][:label] = "Certificates"
-    labelsEn[:types_certificates][:empty_msg] = "There are no certificate records."
+    labelsEn[:types_certificates][:empty_msg] = "There are no type of certificate."
     labelsEn[:types_certificates][:name] = "Name"
     labelsEn[:types_certificates][:description] = "Description"
     labelsEn[:types_certificates][:details] = "Details"
     
     labelsEn[:types_certificates][:certificates] = Hash.new
     labelsEn[:types_certificates][:certificates][:label] = "Certificates"
-    labelsEn[:types_certificates][:certificates][:empty_msg] = "There are no certificate records."
+    labelsEn[:types_certificates][:certificates][:empty_msg] = "There is no certificate for this type of certificates."
     labelsEn[:types_certificates][:certificates][:title] = "Title"
     labelsEn[:types_certificates][:certificates][:description] = "Description"
     labelsEn[:types_certificates][:certificates][:issued] = "Issued"
@@ -127,7 +127,7 @@ class Admin::TestsController < Admin::ApplicationController
     
     labelsEn[:publications] = Hash.new
     labelsEn[:publications][:label] = "Publications"
-    labelsEn[:publications][:empty_msg] = "There are no publication records."
+    labelsEn[:publications][:empty_msg] = "There is no publication."
     labelsEn[:publications][:title] = "Title"
     labelsEn[:publications][:description] = "Description"
     labelsEn[:publications][:published] = "Published"
@@ -135,7 +135,7 @@ class Admin::TestsController < Admin::ApplicationController
     
     labelsEn[:projects] = Hash.new
     labelsEn[:projects][:label] = "Projects"
-    labelsEn[:projects][:empty_msg] = "There is no projects."
+    labelsEn[:projects][:empty_msg] = "There is no project."
     labelsEn[:projects][:name] = "Name"
     labelsEn[:projects][:description] = "Description"
     labelsEn[:projects][:created] = "Created"

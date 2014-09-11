@@ -1,6 +1,6 @@
 class AcademicCourse < ActiveRecord::Base
   
-  belongs_to :academic_term
+  belongs_to :academic_term, :inverse_of => :academic_courses
   
   has_many :links, as: :link_ref
   has_many :attachments, as: :attachment_ref
@@ -8,8 +8,13 @@ class AcademicCourse < ActiveRecord::Base
   
   acts_as_taggable_on :tags
   
-  validate :validate_tags
-  validate :validate_awards
+  validates :academic_term_id, :presence => true
+  
+  # asserts that course is present and unique with relation to the academic_term which this record belongs to
+  validates :course, presence: true, uniqueness: {value: true, scope: :academic_term_id}
+  
+  validate :validate_tags, {:if => proc{|o| not o.academic_term.blank? }}
+  validate :validate_awards, {:if => proc{|o| not o.academic_term.blank? }}
   
   # asserts the academic_term parent also has the tags of this academic_course
   def validate_tags

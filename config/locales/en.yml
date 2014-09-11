@@ -21,3 +21,22 @@
 
 en:
   hello: "Hello world"
+
+  home: "Home"
+  logout: "Logout"
+  back: "Back"
+  edit: "Edit"
+  submit: "Save"
+  admin_user_title: "User"
+  name: "Name"
+  email: "Email"
+  authToken: "Authentication Token"
+  change_passwd: "Change Password"
+  
+  invalid_date_msg: "must be a valid date in format yyyy-mm-dd"
+  invalid_date_msg_with_blank: "must be blank or a valid date in format yyyy-mm-dd"
+
+  error: "error"
+  update_success_msg: "Updated with success!"
+  empty_name_msg: "Please, give a name to the user."
+
