@@ -18,11 +18,23 @@ Rails.application.routes.draw do
   
   namespace :admin do
     resources :users
+    resources :educations
+    resources :academic_terms
+    resources :academic_courses
+    resources :companies
+    resources :jobs
+    resources :types_certificates
+    resources :certificates
+    resources :publications
+    resources :projects
+    resources :labels
+    resources :languages
   end
   
   root :to => redirect('/portfolio')
   
   match "/admin/users/:id/edit", to: "admin/users#update", via: :post
+  match "/admin/users/:id", to: "admin/users#update", via: :post
   
   get '/admin' => 'admin/welcome#index'
   get '/admin/tests' => 'admin/tests#index'

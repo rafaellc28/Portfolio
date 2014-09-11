@@ -1,4 +1,4 @@
 <h2>Admin Session</h2>
-<p><%= link_to 'Home', admin_path %></p>
-<p><%= link_to @user, controller: "users" %></p>
-<p><%= link_to 'Logout', destroy_user_session_path, method: :delete %></p>
+<p><%= link_to t('home'), admin_path %></p>
+<p><%= link_to t('admin_user_title'), controller: "users" %></p>
+<p><%= link_to t('logout'), destroy_user_session_path, method: :delete %></p>

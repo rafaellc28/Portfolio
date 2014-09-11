@@ -8,6 +8,9 @@ class TypesCertificate < ActiveRecord::Base
   
   acts_as_taggable_on :tags
   
+  # asserts that name is present and unique
+  validates :name, presence: true, uniqueness: true
+  
   # asserts that this types_certificate has the tags of its children of type certificate
   def validate_tag(tag = nil)
     if not tag.nil?
