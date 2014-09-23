@@ -12,7 +12,7 @@ portfolioApp.config ($routeProvider, $locationProvider) ->
   $routeProvider.when '/portfolio', 
     templateUrl: '/templates/show.html', 
     controller: 'MainController',
-    reloadOnSearch: false, 
+    #reloadOnSearch: false, 
     resolve: # fetch labels and languages data before starting the main controller
       initialData: (InitialDataService) ->
         InitialDataService()
