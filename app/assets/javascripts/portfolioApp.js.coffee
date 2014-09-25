@@ -29,8 +29,7 @@ portfolioApp.config ($tooltipProvider) ->
   $tooltipProvider.options(opt)
   
 # Makes AngularJS work with turbolinks.
-#$(document).ready ->
-#  $('[ng-app]').each ->
-#    module = $(this).attr('ng-app')
-#    angular.bootstrap(this, [module])
-  
+$(document).on 'page:load', ->
+  $('[ng-app]').each ->
+    module = $(this).attr('ng-app')
+    angular.bootstrap(this, [module])
