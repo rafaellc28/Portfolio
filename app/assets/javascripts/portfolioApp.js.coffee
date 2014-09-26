@@ -4,7 +4,7 @@ portfolioApp = angular.module('portfolioApp', ['ngResource', 'ngRoute', 'ui.boot
 portfolioApp.config ($httpProvider) ->
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
   $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
-  #$httpProvider.defaults.headers.common['Authorization'] = 'Token token=token_generated_for_single_user'
+  $httpProvider.defaults.headers.common['Authorization'] = 'Token token=eXrJL3xxM8MiGgZ-KpiQ'
 
 portfolioApp.config ($routeProvider, $locationProvider) ->
   $locationProvider.html5Mode true
