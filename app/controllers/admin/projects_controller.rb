@@ -2,27 +2,6 @@ class Admin::ProjectsController < Admin::ApplicationController
   
   def index
     
-    @project = Project.find("1")
-    
-    @project.update(description: "Single User Online Portfolio Application developed using RubyOnRails integrated with AngularJS and Bootstrap.")
-    @link = @project.links.create(:link => "https://github.com/rafaellc28/Portfolio", :text => "GitHub")
-    
-    # It is necessary to do not show duplicated attachments, links and awards
-    @project.reload
-    
-    @str = "Project:<br><br>Name: " + @project.name + 
-      "<br>Description: " + @project.description +
-      "<br>Created: " + @project.created.to_s +
-      "<br>Updated: " + @project.updated.to_s + "<br><br><br>"
-    
-    @str += "Attachments: " + @project.attachments.map{|e| [e.name, e.path]}.to_s + "<br><br>"
-    @str += "Links: " + @project.links.map{|e| [e.text, e.link]}.to_s + "<br><br>"
-    @str += "Awards: " + @project.awards.map{|e| [e.title, e.description, e.issued]}.to_s + "<br><br>"
-    @str += "Tags: " + @project.tags.map{|e| e.name}.to_s + "<br><br>"
-    @str += "<br>"
-    
-    render text: @str
-    
 =begin
     #create Project record
     @project = Project.create(:name => "name1", :description => "description1", "created" => "2014-07-07", "updated" => "2014-07-07")
