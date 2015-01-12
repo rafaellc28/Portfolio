@@ -1,4 +1,4 @@
-angular.module('portfolioApp').controller "PortfolioController", ($scope, Educations, Publications, TypesCertificates, Companies, Projects, Languages, Labels, Sorting, Section) ->
+angular.module('portfolioApp').controller "PortfolioController", ($scope, Spa, Languages, Labels, Sorting, Section) ->
   
   $scope.init = ->
   	
@@ -38,22 +38,17 @@ angular.module('portfolioApp').controller "PortfolioController", ($scope, Educat
     $scope.item[$scope.cert] = new Section(0, new Sorting(0, ['-issued'], '-issued', Sorting.date))
     $scope.item[$scope.pub] = new Section(0, new Sorting(0, ['-published'], '-published', Sorting.date))
     $scope.item[$scope.type_cert] = new Section(0, new Sorting(0, ['name'], 'name', Sorting.string))
+
+    $scope.successHandler = () ->
+    	$scope.projects = $scope.spa[0]
+    	$scope.educations = $scope.spa[1]
+    	$scope.publications = $scope.spa[2]
+    	$scope.typesCertificates = $scope.spa[3]
+    	$scope.companies = $scope.spa[4]
     
-    @projectsService = new Projects(serverErrorHandler)
-    $scope.projects = @projectsService.all()
+    @spaService = new Spa(serverErrorHandler)
+    $scope.spa = @spaService.all($scope)
     
-    @educationsService = new Educations(serverErrorHandler)
-    $scope.educations = @educationsService.all()
-    
-    @publicationsService = new Publications(serverErrorHandler)
-    $scope.publications = @publicationsService.all()
-  	
-    @typesCertificatesService = new TypesCertificates(serverErrorHandler)
-    $scope.typesCertificates = @typesCertificatesService.all()
-    
-    @companiesService = new Companies(serverErrorHandler)
-    $scope.companies = @companiesService.all()
-  
   $scope.setCurrentLanguage = () ->
     $scope.currentLanguage = Languages.getCurrentLanguage()
     $scope.label = $scope.labels[0][$scope.currentLanguage]

@@ -7,5 +7,3 @@ angular.module('portfolioApp').controller "CertificatesController", ($scope, Cer
   
   serverErrorHandler = ->
     alert("Server error in CertificatesController, please try again!")
-
-  

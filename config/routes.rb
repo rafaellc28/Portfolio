@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :languages, only: [:index, :show]
     resources :projects, only: [:index, :show]
     resources :users, only: [:index, :show]
+    resources :spa, only: [:index]
   end
   
   namespace :admin do
@@ -35,6 +36,8 @@ Rails.application.routes.draw do
   
   match "/admin/users/:id/edit", to: "admin/users#update", via: :post
   match "/admin/users/:id", to: "admin/users#update", via: :post
+  
+  get "/admin/addLinks", to: "admin/users#addLinks"
   
   get '/admin' => 'admin/welcome#index'
   get '/admin/tests' => 'admin/tests#index'

@@ -17,7 +17,8 @@
 //= require ./lib/angular.min
 //= require ./lib/angular-resource.min
 //= require ./lib/angular-route.min
-//= require ./lib/ui-bootstrap-tpls-0.9.0.min
+//= require ./lib/angular-aria.min
+//= require ./lib/ui-bootstrap-tpls-0.12.0.min
 //= require ./lib/normalize
 //= require ./lib/date-format
 //= require portfolioApp
@@ -32,6 +33,7 @@
 //= require ./services/UsersService
 //= require ./services/TagsService
 //= require ./services/TypesCertificatesService
+//= require ./services/SpaServices
 //= require ./controllers/MainController
 //= require ./controllers/PortfolioController
 //= require ./controllers/TagsController
