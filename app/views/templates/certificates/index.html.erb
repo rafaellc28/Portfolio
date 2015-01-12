@@ -2,7 +2,7 @@
 <table ng-show="certificates == 0">
 	<tr><td>{{ label.types_certificates.certificates.empty_msg }}</td></tr>
 </table>
-<table ng-init="validateOrder(cert, type_certificate_id); idx = 0" id="certificates_list">
+<table ng-init="validateOrder(cert, type_certificate_id)" id="certificates_list">
 	<tr>
 		<th>
 			<canvas class="icon" ng-click="updateOrder(cert, type_certificate_id, 'title', string)" icon-sorting data-parent="{{ type_certificate_id }}" data-neighbors="canvas_cert_issued_{{ type_certificate_id }}" data-type="cert" data-field="title" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_cert_title_{{ type_certificate_id }}" width="16" height="16"></canvas>
@@ -14,17 +14,10 @@
 			{{ label.types_certificates.certificates.issued }}
 		</th>
 	</tr>
-	<!--<tr tabindex="{{idx}}" class="rows link" title="{{ label.messages.tooltip }}" 
-	ng-repeat="certificate in certificates | orderObjectBy : getOrderField(cert, type_certificate_id) : getOrderReversibility(cert, type_certificate_id) : getOrderType(cert, type_certificate_id)" id="certificate_{{certificate.id}}"
-	data-tags="{{certificate.tags | tags}}"
-	data-idx="{{idx = idx + 1}}" 
-	popover-html-unsafe="{{ popover_message(certificate.title, certificate.links, certificate.attachments, certificate.tags, certificate.awards) }}">-->
-
 	<tr class="rows link" title="{{ label.messages.tooltip }}" 
 	ng-repeat="certificate in certificates | orderObjectBy : getOrderField(cert, type_certificate_id) : getOrderReversibility(cert, type_certificate_id) : getOrderType(cert, type_certificate_id)" id="certificate_{{certificate.id}}"
-	data-tags="{{certificate.tags | tags}}"
+	data-tags="{{certificate.tags | tags}}" 
 	popover-html-unsafe="{{ popover_message(certificate.title, certificate.links, certificate.attachments, certificate.tags, certificate.awards) }}">
-
 		<td>{{certificate.title}}</td>
 		<td>{{certificate.description}}</td>
 		<td>{{certificate.issued | date:label.config.date_format}}</td>

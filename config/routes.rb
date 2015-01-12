@@ -37,8 +37,6 @@ Rails.application.routes.draw do
   match "/admin/users/:id/edit", to: "admin/users#update", via: :post
   match "/admin/users/:id", to: "admin/users#update", via: :post
   
-  get "/admin/addLinks", to: "admin/users#addLinks"
-  
   get '/admin' => 'admin/welcome#index'
   get '/admin/tests' => 'admin/tests#index'
   get '/' => 'templates#index'
