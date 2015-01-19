@@ -23,25 +23,18 @@
 //= require ./lib/date-format
 //= require portfolioApp
 //= require ./services/InitialDataService
-//= require ./services/CertificatesService
-//= require ./services/CompaniesService
-//= require ./services/EducationsService
 //= require ./services/LabelsService
 //= require ./services/LanguagesService
-//= require ./services/PublicationsService
-//= require ./services/ProjectsService
 //= require ./services/UsersService
 //= require ./services/TagsService
-//= require ./services/TypesCertificatesService
 //= require ./services/SpaServices
 //= require ./controllers/MainController
 //= require ./controllers/PortfolioController
 //= require ./controllers/TagsController
 //= require ./controllers/LanguagesController
-//= require ./controllers/ProjectsController
 //= require ./controllers/UserController
 //= require_tree ./filters
 //= require_tree ./directives
 //= require_tree ./classes
 
-// require turbolinks
+//= require turbolinks
