@@ -20,7 +20,7 @@ class Admin::TypesCertificatesController < Admin::ApplicationController
     @typesCertificate = TypesCertificate.find_by_name("name1")
     
     # Add an attachment to this TypesCertificate record
-    @attachment = @typesCertificate.attachments.create(:path => "assets/attachment1.pdf", :name => "Attachment1")
+    @attachment = @typesCertificate.attachments.create(:name => "Attachment1")
     
     # Stop if there was some error in adding this attachment
     if @attachment.errors.any?
@@ -31,6 +31,9 @@ class Admin::TypesCertificatesController < Admin::ApplicationController
       return
       
     end
+    
+    @attachment.file = File.open("/local/path/to/file")
+    @attachment.save
     
     # Add a link to this TypesCertificate record
     @link = @typesCertificate.links.create(:link => "http://github.com", :text => "GitHub")

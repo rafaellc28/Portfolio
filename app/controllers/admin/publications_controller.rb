@@ -20,7 +20,7 @@ class Admin::PublicationsController < Admin::ApplicationController
     @publication = Publication.find_by_title("title1")
     
     # Add an attachment to this Publication record
-    @attachment = @publication.attachments.create(:path => "assets/attachment1.pdf", :name => "Attachment1")
+    @attachment = @publication.attachments.create(:name => "Attachment1")
     
     # Stop if there was some error in adding this attachment
     if @attachment.errors.any?
@@ -31,6 +31,9 @@ class Admin::PublicationsController < Admin::ApplicationController
       return
       
     end
+    
+    @attachment.file = File.open("/local/path/to/file")
+    @attachment.save
     
     # Add a link to this Publication record
     @link = @publication.links.create(:link => "http://github.com", :text => "GitHub")

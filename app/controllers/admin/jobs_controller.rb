@@ -23,7 +23,7 @@ class Admin::JobsController < Admin::ApplicationController
     @job = @company.jobs.find_by_title("title1")
     
     # Add an attachment to this Job record
-    @attachment = @job.attachments.create(:path => "assets/attachment1.pdf", :name => "Attachment1")
+    @attachment = @job.attachments.create(:name => "Attachment1")
     
     # Stop if there was some error in adding this attachment
     if @attachment.errors.any?
@@ -34,6 +34,9 @@ class Admin::JobsController < Admin::ApplicationController
       return
       
     end
+    
+    @attachment.file = File.open("/local/path/to/file")
+    @attachment.save
     
     # Add a link to this Job record
     @link = @job.links.create(:link => "http://github.com", :text => "GitHub")
