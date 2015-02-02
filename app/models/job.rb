@@ -35,34 +35,4 @@ class Job < ActiveRecord::Base
     end
   end
   
-  # 
-  def end_date
-    
-    end_date = ''
-    
-    if self.end.nil? or self.end.blank?
-      
-      time = Time.new
-      end_date = time.strftime("%Y-%m-%d")
-    else
-      
-      end_date = self.end
-      
-    end
-    
-    end_date
-    
-  end
-  
-  # add links, attachments, awards and tags to the json of this model
-  # substitute nil end dates of jobs to the current date
-  def serializable_hash(options = nil)
-    options = { 
-      :methods => [:end_date],
-      :include => [:links, :attachments, :awards, {:tags => {:only => :name}}] 
-    }.update(options)
-    
-    super(options).tap { |hash| hash["end"] = hash.delete "end_date" }
-  end
-  
 end

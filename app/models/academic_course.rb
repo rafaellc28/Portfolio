@@ -31,13 +31,4 @@ class AcademicCourse < ActiveRecord::Base
     end
   end
   
-  # add tags to the json of this model
-  def serializable_hash(options = nil)
-    options = { 
-      :include => {:tags => {:only => [:id, :name]}} 
-    }.update(options)
-    
-    super options
-  end
-  
 end

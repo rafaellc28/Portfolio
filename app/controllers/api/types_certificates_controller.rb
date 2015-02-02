@@ -1,11 +1,11 @@
 class Api::TypesCertificatesController < Api::BaseController
   
   def index
-    render json: TypesCertificate.all.to_json
+    render json: TypesCertificate.all
   end
   
   def show
-    render json: TypesCertificate.find(params.require(:id)).to_json
+    render json: TypesCertificate.find(params.require(:id))
   end
   
 end

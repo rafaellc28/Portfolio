@@ -1,11 +1,11 @@
 class Api::UsersController < Api::BaseController
   
   def index
-    render json: User.all.to_json
+    render json: User.all
   end
   
   def show
-    render json: User.find(params.require(:id)).to_json
+    render json: User.find(params.require(:id))
   end
   
 end

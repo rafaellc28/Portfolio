@@ -54,14 +54,4 @@ class AcademicTerm < ActiveRecord::Base
     end
   end
   
-  # add links, attachments, awards, tags and the related academic_courses
-  # to the json of an instance of this model
-  def serializable_hash(options = nil)
-    options = { 
-      :include => [:academic_courses, :links, :attachments, :awards, {:tags => {:only => [:id, :name]}}] 
-    }.update(options)
-    
-    super options
-  end
-  
 end

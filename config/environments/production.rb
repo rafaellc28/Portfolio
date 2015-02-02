@@ -95,4 +95,14 @@ Rails.application.configure do
   # run 'RAILS_ENV=production bundle exec rake assets:precompile' on app directory
   config.assets.precompile += ['*.css', '*.js', '*.js.coffee', '*.pdf', '*.png', '*.jpg', '*.jpeg', '*.gif']
   
+  # config the access to AWS S3
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['S3_BUCKET_NAME'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
+  }
+  
 end

@@ -8,8 +8,7 @@ class Api::SpaController < Api::BaseController
     certificates = TypesCertificate.all
     companies = Company.all
     
-    render json: [projects, educations, publications, certificates, companies].to_json
-    #render json: [projects, publications]
+    render json: [projects, educations, publications, certificates, companies]
     
   end
   

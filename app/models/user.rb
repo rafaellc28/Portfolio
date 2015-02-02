@@ -12,17 +12,6 @@ class User < ActiveRecord::Base
   has_many :attachments, as: :attachment_ref
   has_many :awards, as: :award_ref
   
-  # add its links, attachments and awards to the json of this model
-  # and include only the id, name e email fields
-  def serializable_hash(options = nil)
-    options = { 
-      :only => [:id, :name, :email],
-      :include => [:links, :attachments, :awards] 
-    }.update(options)
-    
-    super options
-  end
-  
   private
     
     # https://gist.github.com/josevalim/fb706b1e933ef01e4fb6
