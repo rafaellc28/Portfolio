@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>class Admin::LabelsController - Rails Application Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="ApplicationController.html">Admin::ApplicationController</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-index">#index</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Admin::LabelsController">
+  <h1 id="class-Admin::LabelsController" class="class">
+    class Admin::LabelsController
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin/labels_controller.rb, line 3</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  
+  <span class="ruby-identifier">labelsEn</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:config</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:config</span>][<span class="ruby-value">:number_format</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:config</span>][<span class="ruby-value">:number_format</span>][<span class="ruby-value">:decimal_separator</span>] = <span class="ruby-string">&quot;.&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:config</span>][<span class="ruby-value">:number_format</span>][<span class="ruby-value">:fraction_size</span>] = <span class="ruby-string">&quot;2&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:config</span>][<span class="ruby-value">:date_format</span>] = <span class="ruby-string">&#39;MMM yyyy&#39;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:config</span>][<span class="ruby-value">:time_format</span>] = <span class="ruby-string">&#39;hh:mm a&#39;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:config</span>][<span class="ruby-value">:date_format_js</span>] = <span class="ruby-string">&#39;M Y&#39;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:config</span>][<span class="ruby-value">:time_format_js</span>] = <span class="ruby-string">&#39;h:i A&#39;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:config</span>][<span class="ruby-value">:icon_color</span>] = <span class="ruby-string">&#39;#0000FF&#39;</span>
+  
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:tags</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:tags</span>][<span class="ruby-value">:name</span>] = <span class="ruby-string">&quot;Name&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:tags</span>][<span class="ruby-value">:taggings_count</span>] = <span class="ruby-string">&quot;Quantity&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:tags</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;There is no tag.&quot;</span>
+  
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:messages</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:messages</span>][<span class="ruby-value">:attachments</span>] = <span class="ruby-string">&quot;Attachments:&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:messages</span>][<span class="ruby-value">:links</span>] = <span class="ruby-string">&quot;References:&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:messages</span>][<span class="ruby-value">:tags</span>] = <span class="ruby-string">&quot;Tags:&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:messages</span>][<span class="ruby-value">:awards</span>] = <span class="ruby-string">&quot;Awards:&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:messages</span>][<span class="ruby-value">:close_msg</span>] = <span class="ruby-string">&quot;Click again in the above line to close this popup.&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:messages</span>][<span class="ruby-value">:tooltip</span>] = <span class="ruby-string">&quot;Click to see more information ...&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:messages</span>][<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;More information ...&quot;</span>
+  
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:label</span>] = <span class="ruby-string">&quot;Education&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;There is no education.&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:title</span>] = <span class="ruby-string">&quot;Title&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:institution</span>] = <span class="ruby-string">&quot;Institution&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:description</span>] = <span class="ruby-string">&quot;Description&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:start</span>] = <span class="ruby-string">&quot;Start&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:end</span>] = <span class="ruby-string">&quot;End&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;Details&quot;</span>
+  
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:label</span>] = <span class="ruby-string">&quot;Academic Term&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;There is no academic term for this education.&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:name</span>] = <span class="ruby-string">&quot;Academic Term&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:start</span>] = <span class="ruby-string">&quot;Start&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:end</span>] = <span class="ruby-string">&quot;End&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;Details&quot;</span>
+  
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:academic_courses</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:academic_courses</span>][<span class="ruby-value">:label</span>] = <span class="ruby-string">&quot;Courses&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:academic_courses</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;There is no course for this academic term.&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:academic_courses</span>][<span class="ruby-value">:course</span>] = <span class="ruby-string">&quot;Course&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:academic_courses</span>][<span class="ruby-value">:grade</span>] = <span class="ruby-string">&quot;Grade&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:academic_courses</span>][<span class="ruby-value">:description</span>] = <span class="ruby-string">&quot;Description&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:academic_courses</span>][<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;Details&quot;</span>
+  
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:experiences</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:label</span>] = <span class="ruby-string">&quot;Experience&quot;</span>
+  
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:label</span>] = <span class="ruby-string">&quot;Company&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;There is no company.&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:name</span>] = <span class="ruby-string">&quot;Company&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:description</span>] = <span class="ruby-string">&quot;Description&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:first_job_date</span>] = <span class="ruby-string">&quot;Start&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:last_job_date</span>] = <span class="ruby-string">&quot;End&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;Details&quot;</span>
+  
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:jobs</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:jobs</span>][<span class="ruby-value">:label</span>] = <span class="ruby-string">&quot;Jobs&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:jobs</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;There is no job for this company.&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:jobs</span>][<span class="ruby-value">:title</span>] = <span class="ruby-string">&quot;Job&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:jobs</span>][<span class="ruby-value">:description</span>] = <span class="ruby-string">&quot;Description&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:jobs</span>][<span class="ruby-value">:start</span>] = <span class="ruby-string">&quot;Start&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:jobs</span>][<span class="ruby-value">:end</span>] = <span class="ruby-string">&quot;End&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:jobs</span>][<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;Details&quot;</span>
+  
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:types_certificates</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:label</span>] = <span class="ruby-string">&quot;Certificates&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;There are no type of certificate.&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:name</span>] = <span class="ruby-string">&quot;Name&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:description</span>] = <span class="ruby-string">&quot;Description&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;Details&quot;</span>
+  
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:certificates</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:certificates</span>][<span class="ruby-value">:label</span>] = <span class="ruby-string">&quot;Certificates&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:certificates</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;There is no certificate for this type of certificates.&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:certificates</span>][<span class="ruby-value">:title</span>] = <span class="ruby-string">&quot;Title&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:certificates</span>][<span class="ruby-value">:description</span>] = <span class="ruby-string">&quot;Description&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:certificates</span>][<span class="ruby-value">:issued</span>] = <span class="ruby-string">&quot;Issued&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:certificates</span>][<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;Details&quot;</span>
+  
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:publications</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:publications</span>][<span class="ruby-value">:label</span>] = <span class="ruby-string">&quot;Publications&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:publications</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;There is no publication.&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:publications</span>][<span class="ruby-value">:title</span>] = <span class="ruby-string">&quot;Title&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:publications</span>][<span class="ruby-value">:description</span>] = <span class="ruby-string">&quot;Description&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:publications</span>][<span class="ruby-value">:published</span>] = <span class="ruby-string">&quot;Published&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:publications</span>][<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;Details&quot;</span>
+  
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:projects</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:projects</span>][<span class="ruby-value">:label</span>] = <span class="ruby-string">&quot;Projects&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:projects</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;There is no project.&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:projects</span>][<span class="ruby-value">:name</span>] = <span class="ruby-string">&quot;Name&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:projects</span>][<span class="ruby-value">:description</span>] = <span class="ruby-string">&quot;Description&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:projects</span>][<span class="ruby-value">:created</span>] = <span class="ruby-string">&quot;Created&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:projects</span>][<span class="ruby-value">:updated</span>] = <span class="ruby-string">&quot;Updated&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:projects</span>][<span class="ruby-value">:version</span>] = <span class="ruby-string">&quot;Version&quot;</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:projects</span>][<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;Details&quot;</span>
+  
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:users</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsEn</span>[<span class="ruby-value">:users</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;There is no user.&quot;</span>
+  
+  <span class="ruby-ivar">@langEn</span> = <span class="ruby-constant">Language</span>.<span class="ruby-identifier">find_by_acronym</span>(<span class="ruby-string">&quot;en&quot;</span>)
+  <span class="ruby-ivar">@labelsEN</span> = <span class="ruby-ivar">@langEn</span>.<span class="ruby-identifier">labels</span>
+  
+  <span class="ruby-ivar">@labelsEN</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">content</span><span class="ruby-operator">:</span> <span class="ruby-identifier">labelsEn</span>.<span class="ruby-identifier">to_json</span>)
+  
+  <span class="ruby-ivar">@str</span> = <span class="ruby-identifier">labelsEn</span>.<span class="ruby-identifier">to_json</span>
+  
+  <span class="ruby-identifier">labelsBr</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:config</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:config</span>][<span class="ruby-value">:number_format</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:config</span>][<span class="ruby-value">:number_format</span>][<span class="ruby-value">:decimal_separator</span>] = <span class="ruby-string">&quot;,&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:config</span>][<span class="ruby-value">:number_format</span>][<span class="ruby-value">:fraction_size</span>] = <span class="ruby-string">&quot;3&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:config</span>][<span class="ruby-value">:date_format</span>] = <span class="ruby-string">&#39;MM/yyyy&#39;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:config</span>][<span class="ruby-value">:time_format</span>] = <span class="ruby-string">&#39;HH:mm&#39;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:config</span>][<span class="ruby-value">:date_format_js</span>] = <span class="ruby-string">&#39;m/Y&#39;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:config</span>][<span class="ruby-value">:time_format_js</span>] = <span class="ruby-string">&#39;H:i&#39;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:config</span>][<span class="ruby-value">:icon_color</span>] = <span class="ruby-string">&#39;#2B65EC&#39;</span>
+  
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:tags</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:tags</span>][<span class="ruby-value">:name</span>] = <span class="ruby-string">&quot;Nome&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:tags</span>][<span class="ruby-value">:taggings_count</span>] = <span class="ruby-string">&quot;Quantidade&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:tags</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;Não há tags cadastradas.&quot;</span>
+  
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:messages</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:messages</span>][<span class="ruby-value">:attachments</span>] = <span class="ruby-string">&quot;Anexos:&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:messages</span>][<span class="ruby-value">:links</span>] = <span class="ruby-string">&quot;Referências:&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:messages</span>][<span class="ruby-value">:tags</span>] = <span class="ruby-string">&quot;Tags:&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:messages</span>][<span class="ruby-value">:awards</span>] = <span class="ruby-string">&quot;Prêmios:&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:messages</span>][<span class="ruby-value">:close_msg</span>] = <span class="ruby-string">&quot;Clique novamente na linha acima para fechar esta janela.&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:messages</span>][<span class="ruby-value">:tooltip</span>] = <span class="ruby-string">&quot;Clique para ver mais detalhes ...&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:messages</span>][<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;Mais informações ...&quot;</span>
+  
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:label</span>] = <span class="ruby-string">&quot;Educação&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;Não há registro de educação cadastrado.&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:title</span>] = <span class="ruby-string">&quot;Título&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:institution</span>] = <span class="ruby-string">&quot;Instituição&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:description</span>] = <span class="ruby-string">&quot;Descrição&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:start</span>] = <span class="ruby-string">&quot;Início&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:end</span>] = <span class="ruby-string">&quot;Término&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;Detalhes&quot;</span>
+  
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:label</span>] = <span class="ruby-string">&quot;Períodos Letivos&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;Não há períodos letivos cadastrados para esse nível.&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:name</span>] = <span class="ruby-string">&quot;Período Letivo&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:start</span>] = <span class="ruby-string">&quot;Início&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:end</span>] = <span class="ruby-string">&quot;Término&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;Detalhes&quot;</span>
+  
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:academic_courses</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:academic_courses</span>][<span class="ruby-value">:label</span>] = <span class="ruby-string">&quot;Cursos&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:academic_courses</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;Não há cursos cadastrados para esse perído letivo.&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:academic_courses</span>][<span class="ruby-value">:course</span>] = <span class="ruby-string">&quot;Curso&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:academic_courses</span>][<span class="ruby-value">:grade</span>] = <span class="ruby-string">&quot;Nota&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:academic_courses</span>][<span class="ruby-value">:description</span>] = <span class="ruby-string">&quot;Descrição&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:educations</span>][<span class="ruby-value">:academic_terms</span>][<span class="ruby-value">:academic_courses</span>][<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;Detalhes&quot;</span>
+  
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:experiences</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:label</span>] = <span class="ruby-string">&quot;Experiência&quot;</span>
+  
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:label</span>] = <span class="ruby-string">&quot;Empresas&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;Não há empresas cadastradas&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:name</span>] = <span class="ruby-string">&quot;Empresa&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:description</span>] = <span class="ruby-string">&quot;Descrição&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:first_job_date</span>] = <span class="ruby-string">&quot;Data de Entrada&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:last_job_date</span>] = <span class="ruby-string">&quot;Data de Saída&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;Detalhes&quot;</span>
+  
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:jobs</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:jobs</span>][<span class="ruby-value">:label</span>] = <span class="ruby-string">&quot;Cargos&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:jobs</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;Não há cargos cadastrados para essa empresa.&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:jobs</span>][<span class="ruby-value">:title</span>] = <span class="ruby-string">&quot;Cargo&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:jobs</span>][<span class="ruby-value">:description</span>] = <span class="ruby-string">&quot;Descrição&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:jobs</span>][<span class="ruby-value">:start</span>] = <span class="ruby-string">&quot;Início&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:jobs</span>][<span class="ruby-value">:end</span>] = <span class="ruby-string">&quot;Término&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:experiences</span>][<span class="ruby-value">:companies</span>][<span class="ruby-value">:jobs</span>][<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;Detalhes&quot;</span>
+  
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:types_certificates</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:label</span>] = <span class="ruby-string">&quot;Certificados&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;Não há certificados cadastrados&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:name</span>] = <span class="ruby-string">&quot;Nome&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:description</span>] = <span class="ruby-string">&quot;Descrição&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;Detalhes&quot;</span>
+  
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:certificates</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:certificates</span>][<span class="ruby-value">:label</span>] = <span class="ruby-string">&quot;Certificados&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:certificates</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;Não há certificados cadastrados&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:certificates</span>][<span class="ruby-value">:title</span>] = <span class="ruby-string">&quot;Título&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:certificates</span>][<span class="ruby-value">:description</span>] = <span class="ruby-string">&quot;Descrição&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:certificates</span>][<span class="ruby-value">:issued</span>] = <span class="ruby-string">&quot;Emissão&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:types_certificates</span>][<span class="ruby-value">:certificates</span>][<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;Detalhes&quot;</span>
+  
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:publications</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:publications</span>][<span class="ruby-value">:label</span>] = <span class="ruby-string">&quot;Publicações&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:publications</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;Não há publicações cadastradas.&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:publications</span>][<span class="ruby-value">:title</span>] = <span class="ruby-string">&quot;Título&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:publications</span>][<span class="ruby-value">:description</span>] = <span class="ruby-string">&quot;Descrição&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:publications</span>][<span class="ruby-value">:published</span>] = <span class="ruby-string">&quot;Publicação&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:publications</span>][<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;Detalhes&quot;</span>
+  
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:projects</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:projects</span>][<span class="ruby-value">:label</span>] = <span class="ruby-string">&quot;Projetos&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:projects</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;Não há projetos cadastrados.&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:projects</span>][<span class="ruby-value">:name</span>] = <span class="ruby-string">&quot;Nome&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:projects</span>][<span class="ruby-value">:description</span>] = <span class="ruby-string">&quot;Descrição&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:projects</span>][<span class="ruby-value">:created</span>] = <span class="ruby-string">&quot;Criado&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:projects</span>][<span class="ruby-value">:updated</span>] = <span class="ruby-string">&quot;Atualizado&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:projects</span>][<span class="ruby-value">:version</span>] = <span class="ruby-string">&quot;Versão&quot;</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:projects</span>][<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;Detalhes&quot;</span>
+  
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:users</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">labelsBr</span>[<span class="ruby-value">:users</span>][<span class="ruby-value">:empty_msg</span>] = <span class="ruby-string">&quot;Não há usuários cadastrados.&quot;</span>
+  
+  <span class="ruby-ivar">@langBr</span> = <span class="ruby-constant">Language</span>.<span class="ruby-identifier">find_by_acronym</span>(<span class="ruby-string">&quot;br&quot;</span>)
+  <span class="ruby-ivar">@labelsBr</span> = <span class="ruby-ivar">@langBr</span>.<span class="ruby-identifier">labels</span>
+  
+  <span class="ruby-ivar">@labelsBr</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">content</span><span class="ruby-operator">:</span> <span class="ruby-identifier">labelsBr</span>.<span class="ruby-identifier">to_json</span>)
+  
+  <span class="ruby-ivar">@str</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;br&gt;&lt;br&gt;&quot;</span>
+  <span class="ruby-ivar">@str</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">labelsBr</span>.<span class="ruby-identifier">to_json</span>
+  
+  <span class="ruby-identifier">render</span> <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@str</span>
+  
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
