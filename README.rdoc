@@ -1,28 +1,33 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
 * Ruby version
+  - 2.1.1
+
+* Rails version
+  - 4.2.0
 
 * System dependencies
+  - devise (https://github.com/plataformatec/devise)
+  - acts-as-taggable-on (https://github.com/mbleigh/acts-as-taggable-on)
+  - active_model_serializers (https://github.com/rails-api/active_model_serializers)
+  - validates_timeliness (https://github.com/adzap/validates_timeliness)
+  - paperclip (https://github.com/thoughtbot/paperclip)
+  - aws-sdk (https://github.com/aws/aws-sdk-ruby)
+  - figaro (https://github.com/laserlemon/figaro)
+  - pg (https://rubygems.org/gems/pg)
+  - coffee-rails (https://github.com/rails/coffee-rails)
+  - jquery-rails (https://github.com/rails/jquery-rails)
 
-* Configuration
+* Configuration Files
+  - app/assets/javascripts/portfolioApp.js.coffee
+  - config/database.yml
+  - config/application.yml
 
 * Database creation
-
+  - Run <tt>rake db:setup</tt>
+  
 * Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
+  - Run <tt>rake db:seed</tt>
 
 * Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+  - Run <tt>bundle install</tt>
