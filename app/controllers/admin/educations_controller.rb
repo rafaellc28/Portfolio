@@ -20,7 +20,7 @@ class Admin::EducationsController < Admin::ApplicationController
     @education = Education.find_by_title("title1")
     
     # Add an attachment to this Education record
-    @attachment = @education.attachments.create(:name => "Attachment1")
+    @attachment = @education.attachments.create(:path => "assets/file", :name => "Attachment1")
     
     # Stop if there was some error in adding this attachment
     if @attachment.errors.any?
@@ -32,7 +32,7 @@ class Admin::EducationsController < Admin::ApplicationController
       
     end
     
-    @attachment.file = File.open("/local/path/to/file")
+    @attachment.file = File.open("public/assets/file")
     @attachment.save
     
     # Add a link to this Education record

@@ -26,7 +26,7 @@ class Admin::AcademicCoursesController < Admin::ApplicationController
     @academic_course = @academic_term.academic_courses.find_by_course("course1")
     
     # Add an attachment to this AcademicCourse record
-    @attachment = @academic_course.attachments.create(:name => "Attachment1")
+    @attachment = @academic_course.attachments.create(:path => "assets/file", :name => "Attachment1")
     
     # Stop if there was some error in adding this attachment
     if @attachment.errors.any?
@@ -38,7 +38,7 @@ class Admin::AcademicCoursesController < Admin::ApplicationController
       
     end
 
-    @attachment.file = File.open("/local/path/to/file")
+    @attachment.file = File.open("public/assets/file")
     @attachment.save
         
     # Add a link to this AcademicCourse record

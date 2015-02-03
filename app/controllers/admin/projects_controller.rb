@@ -20,7 +20,7 @@ class Admin::ProjectsController < Admin::ApplicationController
     @project = Project.find_by_name("name1")
     
     # Add an attachment to this Project record
-    @attachment = @project.attachments.create(:name => "Attachment1")
+    @attachment = @project.attachments.create(:path => "assets/file", :name => "Attachment1")
     
     # Stop if there was some error in adding this attachment
     if @attachment.errors.any?
@@ -32,7 +32,7 @@ class Admin::ProjectsController < Admin::ApplicationController
       
     end
     
-    @attachment.file = File.open("/local/path/to/file")
+    @attachment.file = File.open("public/assets/file")
     @attachment.save
     
     # Add a link to this Project record

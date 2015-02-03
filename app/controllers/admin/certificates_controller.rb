@@ -23,7 +23,7 @@ class Admin::CertificatesController < Admin::ApplicationController
     @certificate = @typesCertificate.certificates.find_by_title("title1")
     
     # Add an attachment to this Certificate record
-    @attachment = @certificate.attachments.create(:name => "Attachment1")
+    @attachment = @certificate.attachments.create(:path => "assets/file", :name => "Attachment1")
     
     # Stop if there was some error in adding this attachment
     if @attachment.errors.any?
@@ -35,7 +35,7 @@ class Admin::CertificatesController < Admin::ApplicationController
       
     end
 
-    @attachment.file = File.open("/local/path/to/file")
+    @attachment.file = File.open("public/assets/file")
     @attachment.save
     
     # Add a link to this Job record

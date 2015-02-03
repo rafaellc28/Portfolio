@@ -23,7 +23,7 @@ class Admin::AcademicTermsController < Admin::ApplicationController
     @academic_term = @education.academic_terms.find_by_name("name1")
     
     # Add an attachment to this AcademicTerm record
-    @attachment = @academic_term.attachments.create(:name => "Attachment1")
+    @attachment = @academic_term.attachments.create(:path => "assets/file", :name => "Attachment1")
     
     # Stop if there was some error in adding this attachment
     if @attachment.errors.any?
@@ -35,7 +35,7 @@ class Admin::AcademicTermsController < Admin::ApplicationController
       
     end
 
-    @attachment.file = File.open("/local/path/to/file")
+    @attachment.file = File.open("public/assets/file")
     @attachment.save
     
     # Add a link to this AcademicTerm record
