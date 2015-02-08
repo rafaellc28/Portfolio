@@ -2,7 +2,7 @@ angular.module('portfolioApp').controller "MainController", ($scope, Labels, Lan
   
   # set static labels information
   initialData.labels.$promise.then () ->
-    Labels.setLabels(initialData.labels)
+    Labels.setLabels(initialData.labels[0])
   , () ->
     alert("Server error 1 in MainController, please try again!")
   

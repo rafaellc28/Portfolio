@@ -72,3 +72,99 @@ tr > td {
 .noborder-left {
   border-left-style: none;
 }
+
+#mainbar {
+  display: none;
+}
+
+#mainbar.active {
+  display: block;
+}
+
+#sidebar {
+  display: none;
+}
+
+#sidebar.active {
+  display: block;
+}
+
+/* Toggle Styles */
+#tags-toggle {
+  float:right;
+  margin-right:-4px;
+}
+
+#wrapper {
+    padding: 0;
+}
+
+#wrapper.toggled {
+    padding: 0;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    right: 300px;
+    width: 0;
+    height: 100%;
+    margin-top: 0;
+    padding-top: 0;
+    margin-right: -300px;
+    overflow-y: auto;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 100%;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    margin-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    width: 0;
+    margin-left: -500px;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+      width: 100%;
+    }
+
+    #wrapper.toggled {
+      width: 100%;
+    }
+
+    #sidebar-wrapper {
+        width: 0;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 30%;
+    }
+
+    #page-content-wrapper {
+        position: absolute;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        width: 70%;
+        position: absolute;
+        margin-left: 0;
+    }
+}

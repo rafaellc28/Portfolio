@@ -1,18 +1,45 @@
-<table class="noborder" width="100%">
-<tr><td class="noborder">
-<div ng-include="'templates/user/index.html'"></div>
-</td></tr>
-<tr><td class="noborder">
-<div ng-include="'templates/languages/index.html'"></div>
-</td></tr>
-<tr><td class="noborder">
-<table class="noborder" width="100%"><tr>
-<td width="70%" valign="top" class="noborder">
-<div ng-include="'templates/portfolio/index.html'"></div>
-</td>
-<td width="30%" align="right" valign="top" class="noborder">
-<div ng-include="'templates/tags/index.html'"></div>
-</td>
-</tr></table>
-</td></tr>
-</table>
+<div ng-cloak class="ng-cloak" ng-controller="PortfolioController" ng-init="init()">
+	<div class='navbar navbar-default navbar-static-top'>
+		<div ng-hide="true">{{ user = users[0]; }}</div>
+	    <div class='container'>
+	    	<div class='navbar-header'>
+		        <div ng-include="'/templates/user/index.html'"></div>
+				
+				<button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
+					<span class='sr-only'>Toggle navigation</span>
+					<span class='icon-bar'></span>
+					<span class='icon-bar'></span>
+					<span class='icon-bar'></span>
+				</button>
+			</div>
+			
+	        <ul class='nav navbar-nav navbar-right collapse navbar-collapse'>
+					<li ng-class="{ active: isSelected(1) }">
+						<a href ng-click="selectTab(1)">{{ label.educations.label }}</a>
+					</li>
+					<li ng-class="{ active: isSelected(2) }">
+						<a href ng-click="selectTab(2) ">{{ label.experiences.label }}</a>
+					</li>
+					<li ng-class="{ active: isSelected(3) }">
+						<a href ng-click="selectTab(3) ">{{ label.types_certificates.label }}</a>
+					</li>
+					<li ng-class="{ active: isSelected(4) }">
+						<a href ng-click="selectTab(4) ">{{ label.publications.label }}</a>
+					</li>
+					<li ng-class="{ active: isSelected(5) }">
+						<a href ng-click="selectTab(5) ">{{ label.projects.label }}</a>
+					</li>
+	        </ul>
+	    </div>
+	</div>
+	<div class="row">
+		<div class="col-xs-10 col-md-8" ng-include="'/templates/languages/index.html'"></div>
+		<div class="col-xs-2 col-md-4">
+            <a id="tags-toggle" toggle-tags class="btn btn-default" ng-class="{active: tagsShown}">Tags</a>
+		</div>
+	</div>
+	<div id="wrapper" ng-class="{toggled: tagsShown}">
+		<div id="page-content-wrapper" ng-include="'/templates/portfolio/index.html'"></div>
+		<div id="sidebar-wrapper" ng-include="'/templates/tags/index.html'"></div>
+	</div>
+</div>

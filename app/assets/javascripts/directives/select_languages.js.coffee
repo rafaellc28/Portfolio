@@ -10,7 +10,7 @@ angular.module('portfolioApp').directive "selectLanguage", (Section, Sorting) ->
         # get all language links
         languages = $("a[data-type='#{elem.dataset.type}']")
         
-        # deactivate all language links
+        # inactivate all language links
         for language in languages
           $("##{language.id}").prop('class', '')
         
@@ -21,20 +21,3 @@ angular.module('portfolioApp').directive "selectLanguage", (Section, Sorting) ->
         scope.setCurrentLanguage(elem.id)
         
         scope.$apply()
-        
-        #icons = $(".icon")
-        
-        #for icon in icons
-        #  icon_canvas = $("##{icon.id}")
-        #  icon_canvas.prop('data-color', scope.getIconColor())
-        
-        #  ctx_aux = icon.getContext('2d')
-        #  ctx_aux.fillStyle = icon_canvas.prop('data-color')
-        
-        #  switch icon.dataset.status
-        #    when Section.open then Section.drawOpen(ctx_aux, icon)
-        #    when Section.close then Section.drawClose(ctx_aux, icon)
-        #    when Sorting.none then Sorting.drawNone(ctx_aux, icon)
-        #    when Sorting.asc then Sorting.drawAsc(ctx_aux, icon)
-        #    when Sorting.desc then Sorting.drawDesc(ctx_aux, icon)
- 

@@ -1,15 +1,23 @@
-angular.module('portfolioApp').controller "PortfolioController", ($scope, Spa, Languages, Labels, Sorting, Section) ->
+angular.module('portfolioApp').controller "PortfolioController", ($scope, $window, Users, Tags, Spa, Languages, Labels, Sorting, Section) ->
   
   $scope.init = ->
-  	
+    
     @tab = 1
+
+    @screenWidth = $window.innerWidth
+
+    if @screenWidth >= 768
+      $scope.tagsShown = true
+    else
+      $scope.tagsShown = false
+
+    @usersService = new Users(serverErrorHandler)
+    $scope.users = @usersService.all()
     
-    $scope.labels = Labels.getCurrent()
-    $scope.languages = Languages.getCurrent()
+    @tagsService = new Tags(serverErrorHandler)
+    $scope.tags = @tagsService.all()
     
-    $scope.currentLanguage = Languages.getCurrentLanguage()
-    $scope.label = $scope.labels[0][$scope.currentLanguage]
-    $scope.icon_color = $scope.label.config.icon_color;
+    $scope.search_text = ''
     
     $scope.num = Sorting.number
     $scope.date = Sorting.date
@@ -25,6 +33,7 @@ angular.module('portfolioApp').controller "PortfolioController", ($scope, Spa, L
     $scope.cert = 'cert'
     $scope.type_cert = 'type_cert'
     $scope.pub = 'pub'
+    $scope.tag_section = 'tag_section'
     
     $scope.item = {}
     
@@ -38,21 +47,41 @@ angular.module('portfolioApp').controller "PortfolioController", ($scope, Spa, L
     $scope.item[$scope.cert] = new Section(0, new Sorting(0, ['-issued'], '-issued', Sorting.date))
     $scope.item[$scope.pub] = new Section(0, new Sorting(0, ['-published'], '-published', Sorting.date))
     $scope.item[$scope.type_cert] = new Section(0, new Sorting(0, ['name'], 'name', Sorting.string))
-
+    $scope.item[$scope.tag_section] = new Section(0, new Sorting(0, ['-taggings_count'], '-taggings_count', Sorting.number))
+  
     $scope.successHandler = () ->
-    	$scope.projects = $scope.spa[0]
-    	$scope.educations = $scope.spa[1]
-    	$scope.publications = $scope.spa[2]
-    	$scope.typesCertificates = $scope.spa[3]
-    	$scope.companies = $scope.spa[4]
+      $scope.projects = $scope.spa[0]
+      $scope.educations = $scope.spa[1]
+      $scope.publications = $scope.spa[2]
+      $scope.typesCertificates = $scope.spa[3]
+      $scope.companies = $scope.spa[4]
+      #Languages.setLanguages($scope.spa[5])
+      #Labels.setLabels($scope.spa[6])
     
+      $scope.labels = Labels.getCurrent()
+      $scope.languages = Languages.getCurrent()
+      
+      #alert JSON.stringify(Labels.getCurrent())
+      #alert JSON.stringify(Languages.getCurrentLanguage())
+      
+      $scope.currentLanguage = Languages.getCurrentLanguage()
+      $scope.label = $scope.labels[$scope.currentLanguage]
+      $scope.icon_color = $scope.label.config.icon_color;
+      
     @spaService = new Spa(serverErrorHandler)
     $scope.spa = @spaService.all($scope)
     
-  $scope.setCurrentLanguage = () ->
+  #$scope.setCurrentLanguage = () ->
+  #  $scope.currentLanguage = Languages.getCurrentLanguage()
+  #  $scope.label = $scope.labels[Languages.getCurrentLanguage()]
+  #  $scope.icon_color = $scope.label.config.icon_color;
+  
+  $scope.setCurrentLanguage = (lang) ->
+    Languages.setCurrentLanguage(lang)
     $scope.currentLanguage = Languages.getCurrentLanguage()
-    $scope.label = $scope.labels[0][$scope.currentLanguage]
-    $scope.icon_color = $scope.label.config.icon_color;
+    $scope.label = $scope.labels[Languages.getCurrentLanguage()]
+    $scope.icon_color = $scope.labels[$scope.currentLanguage].config.icon_color
+    #$scope.$apply()
   
   $scope.getIconColor = () ->
     $scope.icon_color

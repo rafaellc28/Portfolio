@@ -8,7 +8,7 @@ angular.module('portfolioApp').controller "TagsController", ($scope, Tags, Label
     $scope.languages = Languages.getCurrent()
     
     $scope.currentLanguage = Languages.getCurrentLanguage()
-    $scope.label = $scope.labels[0][$scope.currentLanguage]
+    $scope.label = $scope.labels[$scope.currentLanguage]
     
     $scope.icon_color = $scope.label.config.icon_color;
     $scope.search_text = ''
@@ -27,7 +27,7 @@ angular.module('portfolioApp').controller "TagsController", ($scope, Tags, Label
   
   $scope.setCurrentLanguage = () ->
     $scope.currentLanguage = Languages.getCurrentLanguage()
-    $scope.label = $scope.labels[0][$scope.currentLanguage]
+    $scope.label = $scope.labels[$scope.currentLanguage]
     $scope.icon_color = $scope.label.config.icon_color;
   
   $scope.getIconColor = () ->

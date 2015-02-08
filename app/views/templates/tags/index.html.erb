@@ -1,8 +1,7 @@
-<div ng-cloak class="ng-cloak" ng-controller="TagsController" ng-init="init()">
+<div ng-cloak class="ng-cloak">
 	<table ng-show="labels == 0">
 		<tr><td>Labels not retrieved yet!</td></tr>
 	</table>
-	<div ng-hide="true">{{ setCurrentLanguage(); }}</div>
 	<table ng-show="tags == 0">
 		<tr><td>{{ label.tags.empty_msg }}</td></tr>
 	</table>
@@ -10,7 +9,7 @@
 		<table id="tag_section_list" ng-init="validateOrder(tag_section, 0)" class="noborder" width="100%">
 			<tr width="100%">
 				<th width="30%" class="noborder">
-					<canvas class="icon" ng-click="updateOrder(tag_section, 0, 'taggings_count', number)" icon-sorting data-parent="0" data-neighbors="canvas_tag_section_name" data-type="tag_section" data-field="taggings_count" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_tag_section_taggings_count" width="16" height="16"></canvas>
+					<canvas class="icon" ng-click="updateOrder(tag_section, 0, 'taggings_count', num)" icon-sorting data-parent="0" data-neighbors="canvas_tag_section_name" data-type="tag_section" data-field="taggings_count" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_tag_section_taggings_count" width="16" height="16"></canvas>
 					{{ label.tags.taggings_count }}
 				</th>
 				<th width="30%" class="noborder">

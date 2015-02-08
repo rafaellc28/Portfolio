@@ -1,22 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="portfolioApp">
+<html>
 <head>
-	<!--[if lte IE 7]>
-      <script src="/lib/json3.min.js"></script>
-    <![endif]-->  <title>SinglePagePortfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SinglePagePortfolio</title>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<body xmlns:ng="http://angularjs.org" id="ng-app" ng-app="portfolioApp">
 
 <%= yield %>
 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" %>
   <%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>  
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" %>
 </body>
 </html>
