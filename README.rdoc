@@ -31,3 +31,4 @@
 
 * Deployment instructions
   - Run <tt>bundle install</tt>
+  - Precompile the assets before deploy to production: <tt>RAILS_ENV=production bundle exec rake assets:precompile</tt>
