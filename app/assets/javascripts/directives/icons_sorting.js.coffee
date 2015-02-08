@@ -12,7 +12,7 @@ angular.module('portfolioApp').directive "iconSorting", (Sorting) ->
       ctx = elem.getContext('2d')
       
       # set the icon color
-      ctx.fillStyle = scope.getIconColor()#'#2B65EC'
+      ctx.fillStyle = scope.getIconColor() || '#2B65EC'
       
       # when the icon is clicked
       element.bind 'click', (event) ->

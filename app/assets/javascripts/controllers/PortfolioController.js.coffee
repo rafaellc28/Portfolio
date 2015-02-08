@@ -23,7 +23,6 @@ angular.module('portfolioApp').controller "PortfolioController", ($scope, $windo
     $scope.date = Sorting.date
     $scope.string = Sorting.string
     
-    $scope.user = 'user'
     $scope.proj = 'proj'
     $scope.ed = 'ed'
     $scope.ed_term = 'ed_term'
@@ -37,7 +36,6 @@ angular.module('portfolioApp').controller "PortfolioController", ($scope, $windo
     
     $scope.item = {}
     
-    #$scope.item[$scope.user] = new Section(0, new Sorting(0, ['name'], 'name', Sorting.string))
     $scope.item[$scope.proj] = new Section(0, new Sorting(0, ['-updated'], '-updated', Sorting.date))
     $scope.item[$scope.ed] = new Section(0, new Sorting(0, ['-end'], '-end', Sorting.date))
     $scope.item[$scope.ed_term] = new Section(0, new Sorting(0, ['-end'], '-end', Sorting.date))
@@ -55,14 +53,9 @@ angular.module('portfolioApp').controller "PortfolioController", ($scope, $windo
       $scope.publications = $scope.spa[2]
       $scope.typesCertificates = $scope.spa[3]
       $scope.companies = $scope.spa[4]
-      #Languages.setLanguages($scope.spa[5])
-      #Labels.setLabels($scope.spa[6])
     
       $scope.labels = Labels.getCurrent()
       $scope.languages = Languages.getCurrent()
-      
-      #alert JSON.stringify(Labels.getCurrent())
-      #alert JSON.stringify(Languages.getCurrentLanguage())
       
       $scope.currentLanguage = Languages.getCurrentLanguage()
       $scope.label = $scope.labels[$scope.currentLanguage]
@@ -70,18 +63,12 @@ angular.module('portfolioApp').controller "PortfolioController", ($scope, $windo
       
     @spaService = new Spa(serverErrorHandler)
     $scope.spa = @spaService.all($scope)
-    
-  #$scope.setCurrentLanguage = () ->
-  #  $scope.currentLanguage = Languages.getCurrentLanguage()
-  #  $scope.label = $scope.labels[Languages.getCurrentLanguage()]
-  #  $scope.icon_color = $scope.label.config.icon_color;
   
   $scope.setCurrentLanguage = (lang) ->
     Languages.setCurrentLanguage(lang)
     $scope.currentLanguage = Languages.getCurrentLanguage()
-    $scope.label = $scope.labels[Languages.getCurrentLanguage()]
-    $scope.icon_color = $scope.labels[$scope.currentLanguage].config.icon_color
-    #$scope.$apply()
+    $scope.label = $scope.labels[$scope.currentLanguage]
+    $scope.icon_color = $scope.label.config.icon_color
   
   $scope.getIconColor = () ->
     $scope.icon_color
