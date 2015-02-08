@@ -1,0 +1,1 @@
+(function(){angular.module("portfolioApp").factory("Spa",function($resource){var Spa;return Spa=function(){function Spa(errorHandler){this.service=$resource("/api/spa"),this.errorHandler=errorHandler}return Spa.prototype.all=function($scope){return this.service.query(function(){return $scope.successHandler()},this.errorHandler)},Spa}()})}).call(this);

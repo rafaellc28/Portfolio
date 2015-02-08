@@ -1,0 +1,1 @@
+(function(){angular.module("portfolioApp").directive("toggleTags",function(){var ret;return ret={restrict:"A",link:function(scope,element){var elem;return elem=element[0],element.bind("click",function(event){return event.preventDefault(),scope.tagsShown=!scope.tagsShown,scope.$apply()})}}})}).call(this);

@@ -1,0 +1,1 @@
+(function(){angular.module("portfolioApp").filter("orderObjectBy",function(Sorting){var func;return func=function(items,field,reverse,type){return Sorting.sort(items,field,reverse,type)}})}).call(this);
