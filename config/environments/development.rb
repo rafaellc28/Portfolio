@@ -44,7 +44,7 @@ Rails.application.configure do
   
   config.assets.js_compressor = Uglifier.new(mangle: false)
   
-  config.serve_static_assets = false
+  config.serve_static_files = false
   
   # Logger configuration to the development environment
   #Rails.logger = Logger.new(STDOUT)

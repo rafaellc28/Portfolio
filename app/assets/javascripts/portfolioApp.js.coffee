@@ -10,10 +10,7 @@ portfolioApp.config ($routeProvider, $locationProvider) ->
   $locationProvider.html5Mode true
   $routeProvider.when '/portfolio', 
     templateUrl: '/templates/show.html', 
-    controller: 'MainController',
-    resolve: # fetch labels and languages data before starting the main controller
-      initialData: (InitialDataService) ->
-        InitialDataService()
+    controller: 'PortfolioController'
 
 portfolioApp.config ($tooltipProvider) ->
   triggers = 

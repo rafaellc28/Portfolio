@@ -1,9 +1,8 @@
 <div ng-cloak class="ng-cloak" ng-controller="PortfolioController" ng-init="init()">
 	<div class='navbar navbar-default navbar-static-top'>
-		<div ng-hide="true">{{ user = users[0]; }}</div>
 	    <div class='container'>
 	    	<div class='navbar-header'>
-		        <div ng-include="'/templates/user/index.html'"></div>
+		        <div ng-include="'templates/user/index.html'"></div>
 				
 				<button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
 					<span class='sr-only'>Toggle navigation</span>
@@ -33,13 +32,13 @@
 	    </div>
 	</div>
 	<div class="row">
-		<div class="col-xs-10 col-md-8" ng-include="'/templates/languages/index.html'"></div>
+		<div class="col-xs-10 col-md-8" ng-include="'templates/languages/index.html'"></div>
 		<div class="col-xs-2 col-md-4">
             <a id="tags-toggle" toggle-tags class="btn btn-default" ng-class="{active: tagsShown}">Tags</a>
 		</div>
 	</div>
 	<div id="wrapper" ng-class="{toggled: tagsShown}">
-		<div id="page-content-wrapper" ng-include="'/templates/portfolio/index.html'"></div>
-		<div id="sidebar-wrapper" ng-include="'/templates/tags/index.html'"></div>
+		<div id="page-content-wrapper" ng-include="'templates/portfolio/index.html'"></div>
+		<div id="sidebar-wrapper" ng-include="'templates/tags/index.html'"></div>
 	</div>
 </div>

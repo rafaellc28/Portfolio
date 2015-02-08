@@ -22,17 +22,8 @@
 //= require ./lib/normalize
 //= require ./lib/date-format
 //= require portfolioApp
-//= require ./services/InitialDataService
-//= require ./services/LabelsService
-//= require ./services/LanguagesService
-//= require ./services/UsersService
-//= require ./services/TagsService
 //= require ./services/SpaServices
-//= require ./controllers/MainController
 //= require ./controllers/PortfolioController
-//= require ./controllers/TagsController
-//= require ./controllers/LanguagesController
-//= require ./controllers/UserController
 //= require_tree ./filters
 //= require_tree ./directives
 //= require_tree ./classes

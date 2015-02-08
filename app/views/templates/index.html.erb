@@ -1,1 +1,441 @@
 <div ng-view=""></div>
+
+<script type="text/ng-template" id="templates/user/index.html">
+<div ng-cloak class="ng-cloak">
+	<div ng-show="user == 0">
+		{{ label.users.empty_msg }}
+	</div>
+	<div>
+		<a href='#' class='navbar-brand' popover-html-unsafe="{{ popover_message(user.name, user.links, user.attachments, user.awards) }}">
+          {{ user.name }}
+		</a>
+	</div>
+</div>
+</script>
+
+<script type="text/ng-template" id="templates/languages/index.html">
+<div ng-cloak class="ng-cloak">
+	<ul class="nav nav-pills">
+		<li ng-repeat="language in languages" id="{{language.acronym}}" name="{{language.acronym}}" title="{{language.name}}">
+	  		<a select-language data-type="languages" name="{{ language.acronym }}" title="{{ language.name }}" id="{{ language.acronym }}">{{ language.name }}</a>
+	  	</li>
+	</ul>
+</div>
+</script>
+
+<script type="text/ng-template" id="templates/portfolio/index.html">
+<div class="page-content inset" ng-cloak class="ng-cloak">
+	<div ng-show="labels == 0">Labels not retrieved yet!</div>
+	
+	<div ng-include="'templates/educations/index.html'" ng-show="isSelected(1)"></div>
+	
+	<div ng-include="'templates/companies/index.html'" ng-show="isSelected(2)"></div>
+	
+	<div ng-include="'templates/types_certificates/index.html'" ng-show="isSelected(3)"></div>
+	
+	<div ng-include="'templates/publications/index.html'" ng-show="isSelected(4)"></div>
+	
+	<div ng-include="'templates/projects/index.html'" ng-show="isSelected(5)"></div>
+</div>
+</script>
+
+<script type="text/ng-template" id="templates/educations/index.html">
+<div ng-cloak class="ng-cloak">
+<table ng-show="educations == 0">
+	<tr><td>{{ label.educations.empty_msg }}</td></tr>
+</table>
+<table ng-init="validateOrder(ed, 0)" id="educations_list">
+	<tr>
+		<th>
+			<canvas class="icon" ng-click="updateOrder(ed, 0, 'title', string)" icon-sorting data-status="none" data-parent="0" data-neighbors="canvas_ed_start,canvas_ed_end" data-type="ed" data-field="title" data-color="{{ label.config.icon_color }}" id="canvas_ed_title" width="16" height="16"></canvas>
+			{{ label.educations.title }}
+		</th>
+		<th>
+			{{ label.educations.institution }}
+		</th>
+		<th>
+			{{ label.educations.description }}</a>
+		</th>
+		<th>
+			<canvas class="icon" ng-click="updateOrder(ed, 0, 'start', date)" icon-sorting data-status="none" data-parent="0" data-neighbors="canvas_ed_end,canvas_ed_title" data-type="ed" data-field="start" data-color="{{label.config.icon_color}}" id="canvas_ed_start" width="16" height="16"></canvas>
+			{{ label.educations.start }}
+		</th>
+		<th>
+			<canvas class="icon" ng-click="updateOrder(ed, 0, 'end', date)" icon-sorting data-status="none" data-parent="0" data-neighbors="canvas_ed_start,canvas_ed_title" data-type="ed" data-field="end" data-color="{{label.config.icon_color}}" id="canvas_ed_end" width="16" height="16"></canvas>
+			{{ label.educations.end }}
+		</th>
+		<th>
+			{{ label.educations.details }}
+		</th>
+	</tr>
+	<tr class="rows" ng-repeat="education in educations |  orderObjectBy : getOrderField(ed, 0) : getOrderReversibility(ed, 0) : getOrderType(ed, 0)" id="education_{{education.id}}" data-tags="{{education.tags | tags}}">
+		<td>
+			<canvas class="icon" ng-click="selectItem(ed, education.id)" icon-section data-status="open" data-neighbors="canvas_ed_id_" data-color="{{label.config.icon_color}}" id="canvas_ed_id_{{ education.id }}" width="16" height="16"></canvas>
+			{{education.title}}
+		</td>
+		<td>
+			{{education.institution}}
+		</td>
+		<td>
+			{{education.description}}
+		</td>
+		<td>
+			{{education.start | date:label.config.date_format}}
+		</td>
+		<td>
+			{{education.end | date:label.config.date_format}}
+		</td>
+		<td align="center">
+			<canvas class="icon" icon-section data-status="open" data-color="{{label.config.icon_color}}" data-neighbors="" id="canvas_ed_details_id_{{ education.id }}" width="16" height="16"
+			 title="{{ education.title }}" popover-html-unsafe="{{ popover_message(education.title, education.links, education.attachments, education.tags, education.awards) }}"></canvas>
+			<!--<canvas class="icon" icon-section data-neighbors="" data-color="{{label.config.icon_color}}" id="canvas_ed_details_id_{{ education.id }}" width="16" height="16"
+			  title="{{ education.title }}" data-placement="bottom" data-html="true" data-trigger="click" data-animation="am-flip-x" data-content="{{ popover_message('', education.links, education.attachments, education.tags) }}" bs-popover></canvas>-->
+		</td>
+	</tr>
+</table>
+<table class="noborder">
+	<tr ng-repeat="education in educations" class="noborder">
+		<td class="noborder">
+			<div ng-hide="true">{{ academic_terms = education.academic_terms }}</div>
+			<div ng-hide="true">{{ education_id = education.id }}</div>
+			<div ng-show="isSelectedItem(ed, education.id)" ng-include="'templates/academic_terms/index.html'"></div>
+		</td>
+	</tr>
+</table>
+</div>
+</script>
+
+<script type="text/ng-template" id="templates/academic_terms/index.html">
+<div ng-cloak class="ng-cloak">
+<table ng-show="academic_terms == 0">
+	<tr><td>{{ label.educations.academic_terms.empty_msg }}</td></tr>
+</table>
+<table ng-init="validateOrder(ed_term, education_id)" id="academic_terms_list">
+	<tr>
+		<th>
+			<canvas class="icon" ng-click="updateOrder(ed_term, education_id, 'name', string)" icon-sorting data-parent="{{ education_id }}" data-neighbors="canvas_ed_term_start_{{ education_id }},canvas_ed_term_end_{{ education_id }}" data-type="ed_term" data-field="name" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_ed_term_name_{{ education_id }}" width="16" height="16"></canvas>
+			{{ label.educations.academic_terms.name }}
+		</th>
+		<th>
+			<canvas class="icon" ng-click="updateOrder(ed_term, education_id, 'start', date)" icon-sorting data-parent="{{ education_id }}" data-neighbors="canvas_ed_term_name_{{ education_id }},canvas_ed_term_end_{{ education_id }}" data-type="ed_term" data-field="start" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_ed_term_start_{{ education_id }}" width="16" height="16"></canvas>
+			{{ label.educations.academic_terms.start }}
+		</th>
+		<th>
+			<canvas class="icon" ng-click="updateOrder(ed_term, education_id, 'end', date)" icon-sorting data-parent="{{ education_id }}" data-neighbors="canvas_ed_term_name_{{ education_id }},canvas_ed_term_start_{{ education_id }}" data-type="ed_term" data-field="end" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_ed_term_end_{{ education_id }}" width="16" height="16"></canvas>
+			{{ label.educations.academic_terms.end }}
+		</th>
+		<th>
+			{{ label.educations.academic_terms.details }}
+		</th>
+	</tr>
+	<tr class="rows" ng-repeat="academicTerm in academic_terms | orderObjectBy : getOrderField(ed_term, education_id) : getOrderReversibility(ed_term, education_id) : getOrderType(ed_term, education_id)" id="academic_term_{{academicTerm.id}}" data-tags="{{academicTerm.tags | tags}}">
+		<td>
+			<canvas class="icon" ng-click="selectItem(ed_term, academicTerm.id)" icon-section data-neighbors="canvas_ed_term_id_" data-status="open" data-color="{{label.config.icon_color}}" id="canvas_ed_term_id_{{ academicTerm.id }}" width="16" height="16"></canvas>
+			{{academicTerm.name}}
+		</td>
+		<td>{{academicTerm.start | date:label.config.date_format}}</td>
+		<td>{{academicTerm.end | date:label.config.date_format}}</td>
+		<td align="center">
+			<canvas class="icon" icon-section data-neighbors="" data-status="open" data-color="{{label.config.icon_color}}" id="canvas_ed_term_details_id_{{ academicTerm.id }}" width="16" height="16"
+			popover-html-unsafe="{{ popover_message(academicTerm.name, academicTerm.links, academicTerm.attachments, academicTerm.tags, academicTerm.awards) }}"></canvas>
+		</td>
+	</tr>
+</table>
+<table class="noborder">
+	<tr ng-repeat="academicTerm in education.academic_terms" class="noborder">
+		<td class="noborder">
+			<div ng-hide="true">{{ academic_courses = academicTerm.academic_courses }}</div>
+			<div ng-hide="true">{{ academic_term_id = academicTerm.id }}</div>
+			<div ng-show="isSelectedItem(ed_term, academicTerm.id)" ng-include="'templates/academic_courses/index.html'"></div>
+		</td>
+	</tr>
+</table>
+</div>
+</script>
+
+<script type="text/ng-template" id="templates/academic_courses/index.html">
+<div ng-cloak class="ng-cloak">
+<table ng-show="academic_courses == 0">
+	<tr><td>{{ label.educations.academic_terms.academic_courses.empty_msg }}</td></tr>
+</table>
+<table ng-init="validateOrder(ed_term_course, academic_term_id)" id="academic_courses_list">
+	<tr>
+		<th>
+			<canvas class="icon" ng-click="updateOrder(ed_term_course, academic_term_id, 'course', string)" icon-sorting data-parent="{{ academic_term_id }}" data-neighbors="canvas_ed_term_course_grade_{{ academic_term_id }}" data-type="ed_term_course" data-field="course" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_ed_term_course_course_{{ academic_term_id }}" width="16" height="16"></canvas>
+			{{ label.educations.academic_terms.academic_courses.course }}
+		</th>
+		<th>
+			<canvas class="icon" ng-click="updateOrder(ed_term_course, academic_term_id, 'grade', num)" icon-sorting data-parent="{{ academic_term_id }}" data-neighbors="canvas_ed_term_course_course_{{ academic_term_id }}" data-type="ed_term_course" data-field="grade" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_ed_term_course_grade_{{ academic_term_id }}" width="16" height="16"></canvas>
+			{{ label.educations.academic_terms.academic_courses.grade }}
+		</th>
+		<th>{{ label.educations.academic_terms.academic_courses.description }}</th>
+	</tr>
+	<tr class="rows link" ng-repeat="academicCourse in academic_courses | orderObjectBy : getOrderField(ed_term_course, academic_term_id) : getOrderReversibility(ed_term_course, academic_term_id) : getOrderType(ed_term_course, academic_term_id)" id="academic_course_{{academicCourse.id}}" data-tags="{{academicCourse.tags | tags}}"
+	popover-html-unsafe="{{ popover_message(academicCourse.course, academicCourse.links, academicCourse.attachments, academicCourse.tags, academicCourse.awards) }}">
+		<td width="30%">{{academicCourse.course}}</td>
+		<td width="10%">{{academicCourse.grade | number:label.config.number_format.decimal_separator:label.config.number_format.fraction_size}}</td>
+		<td>{{academicCourse.description}}</td>
+	</tr>
+</table>
+</div>
+</script>
+
+<script type="text/ng-template" id="templates/companies/index.html">
+<div ng-cloak class="ng-cloak">
+<table ng-show="companies == 0">
+	<tr><td>{{ label.experiences.companies.empty_msg }}</td></tr>
+</table>
+<table ng-init="validateOrder(comp, 0)" id="companies_list">
+	<tr>
+		<th>
+			<canvas class="icon" ng-click="updateOrder(comp, 0, 'name', string)" icon-sorting data-parent="0" data-neighbors="canvas_comp_first_job_date,canvas_comp_last_job_date" data-type="comp" data-field="name" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_comp_name" width="16" height="16"></canvas>
+			{{ label.experiences.companies.name }}
+		</th>
+		<th>{{ label.experiences.companies.description }}</th>
+		<th>
+			<canvas class="icon" ng-click="updateOrder(comp, 0, 'first_job_date', date)" icon-sorting data-parent="0" data-neighbors="canvas_comp_last_job_date,canvas_comp_name" data-type="comp" data-field="first_job_date" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_comp_first_job_date" width="16" height="16"></canvas>
+			{{ label.experiences.companies.first_job_date }}
+		</th>
+		<th>
+			<canvas class="icon" ng-click="updateOrder(comp, 0, 'last_job_date', date)" icon-sorting data-parent="0" data-neighbors="canvas_comp_first_job_date,canvas_comp_name" data-type="comp" data-field="last_job_date" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_comp_last_job_date" width="16" height="16"></canvas>
+			{{ label.experiences.companies.last_job_date }}
+		</th>
+		<th>
+			{{ label.experiences.companies.details }}
+		</th>
+	</tr>
+	<tr class="rows" ng-repeat="company in companies |  orderObjectBy : getOrderField(comp, 0) : getOrderReversibility(comp, 0) : getOrderType(comp, 0)" id="company_{{company.id}}" data-tags="{{company.tags | tags}}">
+		<td>
+			<canvas class="icon" ng-click="selectItem(comp, company.id)" icon-section data-neighbors="canvas_comp_id_" data-status="open" data-color="{{label.config.icon_color}}" id="canvas_comp_id_{{ company.id }}" width="16" height="16"></canvas>
+			{{company.name}}
+		</td>
+		<td>{{company.description}}</td>
+		<td>{{company.first_job_date | date:label.config.date_format}}</td>
+		<td>{{company.last_job_date | date:label.config.date_format}}</td>
+		<td align="center">
+			<canvas class="icon" icon-section data-status="open" data-color="{{label.config.icon_color}}" data-neighbors="" id="canvas_comp_details_id_{{ company.id }}" width="16" height="16"
+			 title="{{ company.name }}" popover-html-unsafe="{{ popover_message(company.name, company.links, company.attachments, company.tags, company.awards) }}"></canvas>
+		</td>
+	</tr>
+</table>
+<table class="noborder">
+	<tr ng-repeat="company in companies" data-tags="{{company.tags | tags}}" class="noborder">
+		<td class="noborder">
+			<div ng-hide="true">{{ jobs = company.jobs }}</div>
+			<div ng-hide="true">{{ company_id = company.id }}</div>
+			<div ng-show="isSelectedItem(comp, company.id)" ng-include="'templates/jobs/index.html'"></div>
+		</td>
+	</tr>
+</table>
+</div>
+</script>
+
+<script type="text/ng-template" id="templates/jobs/index.html">
+<div ng-cloak class="ng-cloak">
+<table ng-show="jobs == 0">
+	<tr><td>{{ label.experiences.companies.jobs.empty_msg }}</td></tr>
+</table>
+<table ng-init="validateOrder(job, company_id)" id="jobs_list">
+	<tr>
+		<th>
+			<canvas class="icon" ng-click="updateOrder(job, company_id, 'title', string)" icon-sorting data-parent="{{ company_id }}" data-neighbors="canvas_job_end_{{ company_id }},canvas_job_start_{{ company_id }}" data-type="job" data-field="title" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_job_title_{{ company_id }}" width="16" height="16"></canvas>
+			{{ label.experiences.companies.jobs.title }}
+		</th>
+		<th>{{ label.experiences.companies.jobs.description }}</th>
+		<th width="10%">
+			<canvas class="icon" ng-click="updateOrder(job, company_id, 'start', date)" icon-sorting data-parent="{{ company_id }}" data-neighbors="canvas_job_end_{{ company_id }},canvas_job_title_{{ company_id }}" data-type="job" data-field="start" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_job_start_{{ company_id }}" width="16" height="16"></canvas>
+			{{ label.experiences.companies.jobs.start }}
+		</th>
+		<th width="15%">
+			<canvas class="icon" ng-click="updateOrder(job, company_id, 'end', date)" icon-sorting data-parent="{{ company_id }}" data-neighbors="canvas_job_start_{{ company_id }},canvas_job_title_{{ company_id }}" data-type="job" data-field="end" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_job_end_{{ company_id }}" width="16" height="16"></canvas>
+			{{ label.experiences.companies.jobs.end }}
+		</th>
+	</tr>
+	<tr class="rows link" ng-repeat="job in jobs |  orderObjectBy : getOrderField(job, company_id) : getOrderReversibility(job, company_id) : getOrderType(job, company_id)" id="job_{{job.id}}" data-tags="{{job.tags | tags}}"
+	popover-html-unsafe="{{ popover_message(job.title, job.links, job.attachments, job.tags, job.awards) }}">
+		<td>{{job.title}}</td>
+		<td>{{job.description}}</td>
+		<td>{{job.start | date:label.config.date_format}}</td>
+		<td>{{job.end | date:label.config.date_format}}</td>
+	</tr>
+</table>
+</div>
+</script>
+
+<script type="text/ng-template" id="templates/types_certificates/index.html">
+<div  ng-cloak class="ng-cloak">
+<table ng-show="typesCertificates == 0">
+	<tr><td>{{ label.types_certificates.empty_msg }}</td></tr>
+</table>
+<table ng-init="validateOrder(type_cert, 0)" id="types_certificates_list">
+	<tr>
+		<th>
+			<canvas class="icon" ng-click="updateOrder(type_cert, 0, 'name', string)" icon-sorting data-parent="0" data-neighbors="" data-type="type_cert" data-field="name" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_type_cert_name" width="16" height="16"></canvas>
+			{{ label.types_certificates.name }}
+		</th>
+		<th>{{ label.types_certificates.description }}</th>
+		<th>{{ label.types_certificates.details }}</th>
+	</tr>
+	<tr class="rows" ng-repeat="typeCert in typesCertificates |  orderObjectBy : getOrderField(type_cert, 0) : getOrderReversibility(type_cert, 0) : getOrderType(type_cert, 0)" id="type_certificate_{{typeCert.id}}" data-tags="{{typeCert.tags | tags}}">
+		<td>
+			<canvas class="icon" ng-click="selectItem(type_cert, typeCert.id)" icon-section data-neighbors="canvas_type_cert_id_" data-status="open" data-color="{{label.config.icon_color}}" id="canvas_type_cert_id_{{ typeCert.id }}" width="16" height="16"></canvas>
+			{{typeCert.name}}
+		</td>
+		<td>{{typeCert.description}}</td>
+		<td align="center">
+			<canvas class="icon" icon-section data-status="open" data-color="{{label.config.icon_color}}" data-neighbors="" id="canvas_type_cert_details_id_{{ typeCert.id }}" width="16" height="16"
+			 title="{{ typeCert.name }}" popover-html-unsafe="{{ popover_message(typeCert.name, typeCert.links, typeCert.attachments, typeCert.tags, typeCert.awards) }}"></canvas>
+		</td>
+	</tr>
+</table>
+<table class="noborder">
+	<tr ng-repeat="typeCert in typesCertificates" data-tags="{{typeCert.tags | tags}}" class="noborder">
+		<td class="noborder">
+			<div ng-hide="true">{{ certificates = typeCert.certificates }}</div>
+			<div ng-hide="true">{{ type_certificate_id = typeCert.id }}</div>
+			<div ng-show="isSelectedItem(type_cert, typeCert.id)" ng-include="'templates/certificates/index.html'"></div>
+		</td>
+	</tr>
+</table>
+</div>
+</script>
+
+<script type="text/ng-template" id="templates/certificates/index.html">
+<div ng-cloak class="ng-cloak">
+<table ng-show="certificates == 0">
+	<tr><td>{{ label.types_certificates.certificates.empty_msg }}</td></tr>
+</table>
+<table ng-init="validateOrder(cert, type_certificate_id); idx = 0" id="certificates_list">
+	<tr>
+		<th>
+			<canvas class="icon" ng-click="updateOrder(cert, type_certificate_id, 'title', string)" icon-sorting data-parent="{{ type_certificate_id }}" data-neighbors="canvas_cert_issued_{{ type_certificate_id }}" data-type="cert" data-field="title" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_cert_title_{{ type_certificate_id }}" width="16" height="16"></canvas>
+			{{ label.types_certificates.certificates.title }}
+		</th>
+		<th>{{ label.types_certificates.certificates.description }}</th>
+		<th>
+			<canvas class="icon" ng-click="updateOrder(cert, type_certificate_id, 'issued', date)" icon-sorting data-parent="{{ type_certificate_id }}" data-neighbors="canvas_cert_title_{{ type_certificate_id }}" data-type="cert" data-field="issued" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_cert_issued_{{ type_certificate_id }}" width="16" height="16"></canvas>
+			{{ label.types_certificates.certificates.issued }}
+		</th>
+	</tr>
+	<!--<tr tabindex="{{idx}}" class="rows link" title="{{ label.messages.tooltip }}" 
+	ng-repeat="certificate in certificates | orderObjectBy : getOrderField(cert, type_certificate_id) : getOrderReversibility(cert, type_certificate_id) : getOrderType(cert, type_certificate_id)" id="certificate_{{certificate.id}}"
+	data-tags="{{certificate.tags | tags}}"
+	data-idx="{{idx = idx + 1}}" 
+	popover-html-unsafe="{{ popover_message(certificate.title, certificate.links, certificate.attachments, certificate.tags, certificate.awards) }}">-->
+
+	<tr class="rows link" title="{{ label.messages.tooltip }}" 
+	ng-repeat="certificate in certificates | orderObjectBy : getOrderField(cert, type_certificate_id) : getOrderReversibility(cert, type_certificate_id) : getOrderType(cert, type_certificate_id)" id="certificate_{{certificate.id}}"
+	data-tags="{{certificate.tags | tags}}"
+	popover-html-unsafe="{{ popover_message(certificate.title, certificate.links, certificate.attachments, certificate.tags, certificate.awards) }}">
+
+		<td>{{certificate.title}}</td>
+		<td>{{certificate.description}}</td>
+		<td>{{certificate.issued | date:label.config.date_format}}</td>
+	</tr>
+</table>
+</div>
+</script>
+
+<script type="text/ng-template" id="templates/publications/index.html">
+<div ng-cloak class="ng-cloak">
+<table ng-show="publications == 0">
+	<tr><td>{{ label.publications.empty_msg }}</td></tr>
+</table>
+<table ng-init="validateOrder(pub, 0)" id="publications_list">
+	<tr>
+		<th>
+			<canvas class="icon" ng-click="updateOrder(pub, 0, 'title', string)" icon-sorting data-parent="0" data-neighbors="canvas_pub_published" data-type="pub" data-field="title" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_pub_title" width="16" height="16"></canvas>
+			{{ label.publications.title }}
+		</th>
+		<th>{{ label.publications.description }}</th>
+		<th width="15%">
+			<canvas class="icon" ng-click="updateOrder(pub, 0, 'published', date)" icon-sorting data-parent="0" data-neighbors="canvas_pub_title" data-type="pub" data-field="published" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_pub_published" width="16" height="16"></canvas>
+			{{ label.publications.published }}
+		</th>
+	</tr>
+	<tr class="rows link" ng-repeat="publication in publications |  orderObjectBy : getOrderField(pub, 0) : getOrderReversibility(pub, 0) : getOrderType(pub, 0)" id="publication_{{publication.id}}" data-tags="{{publication.tags | tags}}"
+	popover-html-unsafe="{{ popover_message(publication.title, publication.links, publication.attachments, publication.tags, publication.awards) }}">
+		<td>{{publication.title}}</td>
+		<td>{{publication.description}}</td>
+		<td>{{publication.published | date:label.config.date_format}}</td>
+	</tr>
+</table>
+</div>
+</script>
+
+<script type="text/ng-template" id="templates/projects/index.html">
+<div ng-cloak class="ng-cloak">
+<table ng-show="projects == 0">
+	<tr><td>{{ label.projects.empty_msg }}</td></tr>
+</table>
+<table ng-init="validateOrder(proj, 0)" id="projects_list">
+	<tr>
+		<th>
+			<canvas class="icon" ng-click="updateOrder(proj, 0, 'name', string)" icon-sorting data-parent="0" data-neighbors="canvas_proj_created,canvas_proj_updated" data-type="proj" data-field="name" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_proj_name" width="16" height="16"></canvas>
+			{{ label.projects.name }}
+		</th>
+		<th>{{ label.projects.description }}</th>
+		<th width="15%">
+			<canvas class="icon" ng-click="updateOrder(proj, 0, 'created', date)" icon-sorting data-parent="0" data-neighbors="canvas_proj_name,canvas_proj_updated" data-type="proj" data-field="created" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_proj_created" width="16" height="16"></canvas>
+			{{ label.projects.created }}
+		</th>
+		<th width="15%">
+			<canvas class="icon" ng-click="updateOrder(proj, 0, 'updated', date)" icon-sorting data-parent="0" data-neighbors="canvas_proj_name,canvas_proj_created" data-type="proj" data-field="updated" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_proj_updated" width="16" height="16"></canvas>
+			{{ label.projects.updated }}
+		</th>
+		<th>{{ label.projects.version }}</th>
+	</tr>
+	<tr class="rows link" ng-repeat="project in projects |  orderObjectBy : getOrderField(proj, 0) : getOrderReversibility(proj, 0) : getOrderType(proj, 0)" id="project_{{project.id}}" data-tags="{{project.tags | tags}}"
+	popover-html-unsafe="{{ popover_message(project.name, project.links, project.attachments, project.tags, project.awards) }}">
+		<td>{{project.name}}</td>
+		<td>{{project.description}}</td>
+		<td>{{project.created | date:label.config.date_format}}</td>
+		<td>{{project.updated | date:label.config.date_format}}</td>
+		<td>{{project.version}}</td>
+	</tr>
+</table>
+</div>
+</script>
+
+<script type="text/ng-template" id="templates/tags/index.html">
+<div ng-cloak class="ng-cloak">
+	<table ng-show="labels == 0">
+		<tr><td>Labels not retrieved yet!</td></tr>
+	</table>
+	<table ng-show="tags == 0">
+		<tr><td>{{ label.tags.empty_msg }}</td></tr>
+	</table>
+    <div id="tag_cloud">
+		<table id="tag_section_list" ng-init="validateOrder(tag_section, 0)" class="noborder" width="100%">
+			<tr width="100%">
+				<th width="30%" class="noborder">
+					<canvas class="icon" ng-click="updateOrder(tag_section, 0, 'taggings_count', num)" icon-sorting data-parent="0" data-neighbors="canvas_tag_section_name" data-type="tag_section" data-field="taggings_count" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_tag_section_taggings_count" width="16" height="16"></canvas>
+					{{ label.tags.taggings_count }}
+				</th>
+				<th width="30%" class="noborder">
+					<canvas class="icon" ng-click="updateOrder(tag_section, 0, 'name', string)" icon-sorting data-parent="0" data-neighbors="canvas_tag_section_taggings_count" data-type="tag_section" data-field="name" data-status="none" data-color="{{label.config.icon_color}}" id="canvas_tag_section_name" width="16" height="16"></canvas>
+					{{ label.tags.name }}
+				</th>
+				<th width="40%" class="noborder">
+					<input ng-model="search_text" type="text" size="12"></input>
+				</th>
+			</tr>
+		</table>
+		<ul class="nav nav-pills">
+			<li ng-repeat="tag in tags | tagsSearch : search_text | orderObjectBy : getOrderField(tag_section, 0) : getOrderReversibility(tag_section, 0) : getOrderType(tag_section, 0)" id="{{tag.id}}" name="{{tag.name}}" title="{{tag.name}}" data-cloudname="{{tag.name}}">
+		  		<a href="#" tag-cloud data-cloudname="{{tag.name}}" name="{{tag.name}}" title="{{tag.name + ': ' + tag.taggings_count}}" id="{{tag.id}}" class="{{tag.css_class}}">{{tag.name}}</a>
+		  	</li>
+		</ul>
+	</div>
+</div>
+</script>
+
+<script type="text/ng-template" id="/templates/popover/popover-html-unsafe-popup.html">
+<div class="popover {{placement}}" ng-class="{ in: isOpen(), fade: animation() }">
+  <div class="arrow"></div>
+  <div class="popover-inner">
+  	<h3 class="popover-title" ng-bind="title" ng-show="title"></h3>
+    <div class="popover-content" bind-html-unsafe="content"></div>
+  </div>
+</div>
+</script>

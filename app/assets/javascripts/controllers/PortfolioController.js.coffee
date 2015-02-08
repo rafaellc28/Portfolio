@@ -1,4 +1,4 @@
-angular.module('portfolioApp').controller "PortfolioController", ($scope, $window, Users, Tags, Spa, Languages, Labels, Sorting, Section) ->
+angular.module('portfolioApp').controller "PortfolioController", ($scope, $window, Spa, Sorting, Section) ->
   
   $scope.init = ->
     
@@ -10,12 +10,6 @@ angular.module('portfolioApp').controller "PortfolioController", ($scope, $windo
       $scope.tagsShown = true
     else
       $scope.tagsShown = false
-
-    @usersService = new Users(serverErrorHandler)
-    $scope.users = @usersService.all()
-    
-    @tagsService = new Tags(serverErrorHandler)
-    $scope.tags = @tagsService.all()
     
     $scope.search_text = ''
     
@@ -53,11 +47,12 @@ angular.module('portfolioApp').controller "PortfolioController", ($scope, $windo
       $scope.publications = $scope.spa[2]
       $scope.typesCertificates = $scope.spa[3]
       $scope.companies = $scope.spa[4]
-    
-      $scope.labels = Labels.getCurrent()
-      $scope.languages = Languages.getCurrent()
-      
-      $scope.currentLanguage = Languages.getCurrentLanguage()
+      $scope.labels = $scope.spa[5]
+      $scope.languages = $scope.spa[6]
+      $scope.user = $scope.spa[7]
+      $scope.tags = $scope.spa[8]
+
+      $scope.currentLanguage = $scope.languages[0].acronym
       $scope.label = $scope.labels[$scope.currentLanguage]
       $scope.icon_color = $scope.label.config.icon_color;
       
@@ -65,8 +60,7 @@ angular.module('portfolioApp').controller "PortfolioController", ($scope, $windo
     $scope.spa = @spaService.all($scope)
   
   $scope.setCurrentLanguage = (lang) ->
-    Languages.setCurrentLanguage(lang)
-    $scope.currentLanguage = Languages.getCurrentLanguage()
+    $scope.currentLanguage = lang
     $scope.label = $scope.labels[$scope.currentLanguage]
     $scope.icon_color = $scope.label.config.icon_color
   
