@@ -11,7 +11,7 @@ The attachments must be stored in a S3 bucket. In order to do it you must have a
 
 You can filter the records by clicking in any tag. Therefore, only the records associated to the active tags are shown. If there is not active tags, then all records are shown. You have to click in the tags in order to activate/inactivate them.
 
-You have to create an account in the <b>Admin Area</b> on /admin url in order to set your username and create the records. The ruby scripts in app/controllers/admin contain examples of how to create the records and associate the tags, links, awards and attachments. You must be logged to do it. The remaining of the <b>Admin Area</b> is under construction.
+You have to create an account in the <b>Admin Area</b> on /admin path in order to set your username and create the records. The ruby scripts in app/controllers/admin contain examples of how to create the records and associate the tags, links, awards and attachments, but you must be logged to do it. The remaining of the <b>Admin Area</b> is under construction.
 
 <h3>TODO</h3>
 - Improve the layout
