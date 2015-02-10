@@ -16,7 +16,7 @@
 //= require jquery_ujs
 //= require ./lib/angular.min
 //= require ./lib/angular-resource.min
-//= require ./lib/angular-route.min
+//= require ./lib/angular-ui-router.min
 //= require ./lib/angular-aria.min
 //= require ./lib/ui-bootstrap-tpls-0.12.0.min
 //= require ./lib/normalize
