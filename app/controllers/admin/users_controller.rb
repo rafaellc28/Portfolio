@@ -1,5 +1,6 @@
 class Admin::UsersController < Admin::ApplicationController
-  
+  include CacheSpa
+
   def index
     
     @user = User.all.first
@@ -28,6 +29,10 @@ class Admin::UsersController < Admin::ApplicationController
     
     if @user.update(user_params)
       flash[:success] = I18n.t('update_success_msg')
+      
+      # Cache the JSON response read by the API
+      Rails.cache.write("spa", spa_api_response)
+      
       redirect_to action: :index, status: 303
     else
       render 'edit'

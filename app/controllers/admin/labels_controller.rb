@@ -1,4 +1,5 @@
 class Admin::LabelsController < Admin::ApplicationController
+  include CacheSpa
   
   def index
     
@@ -111,10 +112,10 @@ class Admin::LabelsController < Admin::ApplicationController
     labelsEn[:users] = Hash.new
     labelsEn[:users][:empty_msg] = "There is no user."
     
-    @langEn = Language.find_by_acronym("en")
-    @labelsEN = @langEn.labels
+    langEn = Language.find_by_acronym("en")
+    recLabelsEN = langEn.labels
     
-    @labelsEN.update(content: labelsEn.to_json)
+    recLabelsEN.update(content: labelsEn.to_json)
     
     @str = labelsEn.to_json
     
@@ -227,10 +228,10 @@ class Admin::LabelsController < Admin::ApplicationController
     labelsBr[:users] = Hash.new
     labelsBr[:users][:empty_msg] = "Não há usuários cadastrados."
     
-    @langBr = Language.find_by_acronym("br")
-    @labelsBr = @langBr.labels
+    langBr = Language.find_by_acronym("br")
+    recLabelsBR = langBr.labels
     
-    @labelsBr.update(content: labelsBr.to_json)
+    recLabelsBR.update(content: labelsBr.to_json)
     
     @str += "<br><br>"
     @str += labelsBr.to_json
