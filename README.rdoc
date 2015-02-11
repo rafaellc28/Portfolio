@@ -32,3 +32,4 @@
 * Deployment instructions
   - Run <tt>bundle install</tt>
   - Precompile the assets before deploy to production: <tt>RAILS_ENV=production bundle exec rake assets:precompile</tt>
+  - If deploying to Heroku you can use the Memcachier cache store (https://devcenter.heroku.com/articles/memcachier). In order to do it you will have to run <tt>heroku addons:add memcachier:dev</tt> and uncomment the following lines in Gemfile: <tt>gem 'dalli', group: :production</tt> and <tt>gem 'memcachier', group: :production</tt>. Also, the line <tt>config.cache_store = :dalli_store, ...</tt> in config/environments/production.rb.
