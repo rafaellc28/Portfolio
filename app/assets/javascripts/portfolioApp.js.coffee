@@ -1,21 +1,23 @@
-portfolioApp = angular.module('portfolioApp', ['ngResource', 'ui.router', 'ui.bootstrap'])
+portfolioApp = angular.module('portfolioApp', ['ngResource', 'ui.router', 'ngAria', 'ui.bootstrap'])
 
 # Makes AngularJS work with CSRF protection.
 portfolioApp.config ($httpProvider) ->
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
   $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
-  #$httpProvider.defaults.headers.common['Authorization'] = 'Token token=token_generated_for_single_user'
+  $httpProvider.defaults.headers.common['Authorization'] = 'Token token=eXrJL3xxM8MiGgZ-KpiQ'
 
 portfolioApp.config ($locationProvider) ->
   $locationProvider.html5Mode 
     enabled: true
     requireBase: false
-
-portfolioApp.config ($stateProvider) ->
+  
+portfolioApp.config ($stateProvider, $urlRouterProvider) ->
   $stateProvider.state 'portfolio',
-    url: "/portfolio",
+    url: "/",
     templateUrl: "templates/show.html",
     controller: 'PortfolioController'
+
+  $urlRouterProvider.otherwise('/')
 
 portfolioApp.config ($tooltipProvider) ->
   triggers = 

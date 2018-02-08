@@ -1,5 +1,5 @@
 class Api::BaseController < ActionController::Base
-  #before_action :check_auth # token authentication
+  before_action :check_auth # authentication
   
   private
 
