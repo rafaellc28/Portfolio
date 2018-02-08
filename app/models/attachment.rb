@@ -15,5 +15,11 @@ class Attachment < ActiveRecord::Base
   def delete_file=(value)
     @delete_file = !value.to_i.zero?
   end
+
+  def path
+    
+    file.url
+    
+  end
   
 end

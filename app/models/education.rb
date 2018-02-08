@@ -33,4 +33,20 @@ class Education < ActiveRecord::Base
     end
   end
   
+  # add link, attachments, awards, tags and the related academic_terms to the json of an
+  # instance of this model
+  # Also, add the related academic_courses of the academic_terms
+  def serializable_hash(options = nil)
+    
+    options = { 
+      :include => [{:academic_terms => {:include => [{:academic_courses => 
+      {:include => [{:tags => {:only => [:id, :name]}}, :links, :attachments, :awards]}}, 
+        {:tags => {:only => [:id, :name]}}, :links, :attachments, :awards]}}, 
+      :links, :attachments, :awards, {:tags => {:only => [:id, :name]}}] 
+    }.update(options)
+    
+    super options
+    
+  end
+  
 end

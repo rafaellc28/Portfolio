@@ -12,10 +12,11 @@ class Api::TagsController < Api::BaseController
     @academic_courses_tags = AcademicCourse.tag_counts_on(:tags)
     @companies_tags = Company.tag_counts_on(:tags)
     @jobs_tags = Job.tag_counts_on(:tags)
+    @projects_tags = Project.tag_counts_on(:tags)
     
     @tags = @certificates_tags + @types_certificates_tags + @publications_tags + 
     @educations_tags + @academic_terms_tags + @academic_courses_tags +
-    @companies_tags + @jobs_tags
+    @companies_tags + @jobs_tags + @projects_tags
     
     @tags = @tags.uniq
     #@tags = @tags.sort_by{|tag| -tag.taggings_count }

@@ -14,8 +14,10 @@ AWS_ACCESS_KEY_ID: aws_access_key_id
 AWS_SECRET_ACCESS_KEY: aws_secret_access_key
 
 development:
-  S3_BUCKET_NAME: localbucketportfolioapp
+  S3_BUCKET_NAME: local_bucket_portfolioapp
+  S3_REGION: region_local_bucket_portfolioapp
 
 production:
-  S3_BUCKET_NAME: bucketportfolioapp
+  S3_BUCKET_NAME: bucket_portfolioapp
+  S3_REGION: region_bucket_portfolioapp
 

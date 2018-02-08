@@ -24,5 +24,15 @@ class TypesCertificate < ActiveRecord::Base
       awards.create(title: award.title, description: award.description, issued: award.issued)
     end
   end
+
+  # add links, attachments, awards, tags and the related certificates to the json of an instance
+  # of this model
+  def serializable_hash(options = nil)
+    options = { 
+      :include => [:certificates, {:tags => {:only => :name}}, :links, :attachments, :awards] 
+    }.update(options)
+    
+    super options
+  end
   
 end
