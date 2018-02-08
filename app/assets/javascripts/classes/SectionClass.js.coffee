@@ -48,7 +48,8 @@ angular.module('portfolioApp').factory 'Section', (Sorting) ->
       ret_str = "<center>#{title}</center>"
       
       if awards != undefined and awards.length > 0
-        ret_str += "<br>#{label.messages.awards}<br>"
+        if label != undefined and label.messages != undefined
+          ret_str += "<br>#{label.messages.awards}<br>"
         
         for award in Sorting.sort(awards, 'title', false, Sorting.string)
           
@@ -57,19 +58,22 @@ angular.module('portfolioApp').factory 'Section', (Sorting) ->
           ret_str += "#{award.title} - #{date_fr}</a><br>"
       
       if attachments != undefined and attachments.length > 0
-        ret_str += "<br>#{label.messages.attachments}<br>"
+        if label != undefined and label.messages != undefined
+          ret_str += "<br>#{label.messages.attachments}<br>"
         
         for attachment in Sorting.sort(attachments, 'name', false, Sorting.string)
           ret_str += "<a href='#{attachment.path}' target='attach_#{attachment.id}'>#{attachment.name}</a><br>"
       
       if links != undefined and links.length > 0
-        ret_str += "<br>#{label.messages.links}<br>"
+        if label != undefined and label.messages != undefined
+          ret_str += "<br>#{label.messages.links}<br>"
         
         for link in Sorting.sort(links, 'text', false, Sorting.string)
           ret_str += "<a href='#{link.link}' target='link_#{link.id}'>#{link.text}</a><br>"
       
       if tags != undefined and tags.length > 0
-        ret_str += "<br>#{label.messages.tags}<br>"
+        if label != undefined and label.messages != undefined
+          ret_str += "<br>#{label.messages.tags}<br>"
         ret_str += "<ul class='nav nav-pills'>"
       
         for tag in Sorting.sort(tags, 'name', false, Sorting.string)
@@ -79,7 +83,8 @@ angular.module('portfolioApp').factory 'Section', (Sorting) ->
         
         ret_str += "</ul>"
       
-      ret_str += "<br><center>#{label.messages.close_msg}</center><br>"
+      if label != undefined and label.messages != undefined
+        ret_str += "<br><center>#{label.messages.close_msg}</center><br>"
       
       ret_str
       
